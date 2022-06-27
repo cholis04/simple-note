@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 
-function TabList({ panel, setPanel }) {
+function TabList({ panel, setPanel, amountOfData }) {
   const [tabFocus, setTabFocus] = useState(0);
 
   // Ref document
@@ -54,7 +54,7 @@ function TabList({ panel, setPanel }) {
         ref={activeMenuTab}
         onClick={() => setPanel('active')}
       >
-        <span>[Icon]</span> Aktif (0)
+        <span>[Icon]</span> Aktif ({amountOfData.active})
       </button>
       <button
         role="tab"
@@ -66,7 +66,7 @@ function TabList({ panel, setPanel }) {
         ref={archiveMenuTab}
         onClick={() => setPanel('archive')}
       >
-        <span>Icon</span> Arisp (9)
+        <span>Icon</span> Arisp ({amountOfData.archive})
       </button>
     </div>
   );

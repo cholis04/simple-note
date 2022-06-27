@@ -1,260 +1,120 @@
 import { useEffect, useState } from 'react';
-import TabList from '../containers/TabList';
 
-import EmptyInboxDesktop from '../assets/images/Empty_Inbox_Outline_Desktop.png';
-import EmptyInboxMobile from '../assets/images/Empty_Inbox_Outline_Mobile.png';
+import { getInitialData } from '../data';
+
+import TabList from '../containers/TabList';
+import ModalForm from '../containers/ModalForm';
+import SearchForm from '../containers/SearchForm';
+
+import Navbar from '../components/Navbar';
+import TabPanel from '../components/TabPanel';
 
 function Home() {
+  const [notes, setNotes] = useState(getInitialData);
+
   const [panel, setPanel] = useState('active');
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  const activeNotes = notes.filter((note) => note.archived === false);
+  const archiveNotes = notes.filter((note) => note.archived === true);
+
+  const amountOfData = {
+    active: activeNotes.length,
+    archive: archiveNotes.length,
+  };
 
   // Title Document
   useEffect(() => {
     document.title = 'Simple Notes';
   });
 
+  // Open Modal
+  const openModal = () => {
+    document.body.style.overflow = 'hidden';
+    setIsOpen(true);
+  };
+
+  // Close Modal
+  const closeModal = () => {
+    document.body.style.removeProperty('overflow');
+    setIsOpen(false);
+  };
+
+  // Delete note by Id
+  const deleteNote = (id) => {
+    if (window.confirm('Hapus catatan ?')) {
+      const deletedNotes = notes.filter((note) => note.id !== id);
+      setNotes(deletedNotes);
+    }
+  };
+
+  // Move Note Archived False or True by ID
+  const moveNote = (id) => {
+    const filteredNotes = notes.map((note) => {
+      if (note.id === id) {
+        return {
+          ...note,
+          archived: !note.archived,
+        };
+      }
+
+      return note;
+    });
+    setNotes(filteredNotes);
+  };
+
+  // Render Component
   return (
     <>
       {/* Navbar */}
-      <header>
-        <div className="wrapper">
-          <h1>Catatan Singkat</h1>
-          <button>
-            <span>[Icon]</span> Buat Catatan
-          </button>
-        </div>
-      </header>
+      <Navbar openModal={openModal} />
+      {/* End Navbar */}
 
       {/* Main Content */}
       <main>
         <div className="wrapper">
           {/* Filter  */}
-          <nav>
-            <form role="search">
-              <div className="input-group">
-                <span>[Icon]</span>
-                <input
-                  name="cari-catatan"
-                  type="search"
-                  placeholder="Cari catatan... "
-                  aria-label="Cari catatan"
-                />
-              </div>
-            </form>
-
-            <TabList panel={panel} setPanel={setPanel} />
-          </nav>
+          <div className="heading-main">
+            <SearchForm />
+            <TabList
+              panel={panel}
+              setPanel={setPanel}
+              amountOfData={amountOfData}
+            />
+          </div>
+          {/* End Filter */}
 
           {/* Notes */}
           <section id="daftar-catatan" aria-label="Daftar Catatan">
-            <div
-              id="panel-aktif"
-              role="tabpanel"
-              tabIndex="0"
-              aria-labelledby="tab-catatan-aktif"
-              hidden={panel !== 'active'}
-            >
-              <div className="box-card">
-                <article tabIndex="0">
-                  <h2>Fusce ac ipsum</h2>
-                  <p className="date-info">
-                    <span>[Icon]</span>{' '}
-                    <time dateTime="2015-08-17 20:22">
-                      Kamis, 14 April 2022
-                    </time>
-                  </p>
-                  <hr />
-                  <p>
-                    Suspendisse sed ipsum nisi. Nullam venenatis id libero nec
-                    pellentesque. Fusce elementum libero eget ante commodo, eu
-                    ultricies neque sagittis. Nulla dignissim, arcu nec luctus
-                    pulvinar, tortor risus convallis lacus, vitae convallis
-                    tortor est quis risus.
-                  </p>
-                  <hr />
-                  <div className="action">
-                    <button>Arsipkan →</button>
-
-                    <button>
-                      <span>[Icon] </span> Hapus
-                    </button>
-                  </div>
-                </article>
-
-                <article tabIndex="0">
-                  <h2>Proin sem massa</h2>
-                  <p className="date-info">
-                    <span>[Icon]</span>{' '}
-                    <time dateTime="2015-08-17 20:22">
-                      Kamis, 14 April 2022
-                    </time>
-                  </p>
-                  <hr />
-                  <p>
-                    Vestibulum fringilla dolor turpis, sed ornare urna ultricies
-                    quis. Pellentesque habitant morbi tristique senectus et
-                    netus et malesuada fames ac turpis egestas. Cras cursus in
-                    dui nec dignissim. Cras neque nunc, scelerisque vel lectus.
-                  </p>
-                  <hr />
-                  <div className="action">
-                    <button>Arsipkan →</button>
-
-                    <button>
-                      <span>[Icon] </span> Hapus
-                    </button>
-                  </div>
-                </article>
-
-                <article tabIndex="0">
-                  <h2>SED</h2>
-                  <p className="date-info">
-                    <span>[Icon]</span>{' '}
-                    <time dateTime="2015-08-17 20:22">
-                      Kamis, 14 April 2022
-                    </time>
-                  </p>
-                  <hr />
-                  <p>
-                    Phasellus malesuada placerat turpis eu efficitur. Mauris
-                    sodales ullamcorper.
-                  </p>
-                  <hr />
-                  <div className="action">
-                    <button>Arsipkan →</button>
-
-                    <button>
-                      <span>[Icon] </span> Hapus
-                    </button>
-                  </div>
-                </article>
-
-                <article tabIndex="0">
-                  <h2>Class aptent taciti sociosqu</h2>
-                  <p className="date-info">
-                    <span>[Icon]</span>{' '}
-                    <time dateTime="2015-08-17 20:22">
-                      Kamis, 14 April 2022
-                    </time>
-                  </p>
-                  <hr />
-                  <p>
-                    Ut commodo, ligula viverra ultrices aliquam, mauris risus
-                    tempus nisl, non pharetra odio ante et lacus. Duis nec
-                    cursus massa. Etiam eget odio pretium, rhoncus lacus quis,
-                    lacinia sem. Etiam laoreet bibendum blandit.
-                  </p>
-                  <hr />
-                  <div className="action">
-                    <button>Arsipkan →</button>
-
-                    <button>
-                      <span>[Icon] </span> Hapus
-                    </button>
-                  </div>
-                </article>
-
-                <article tabIndex="0">
-                  <h2>Fusce ac ipsum</h2>
-                  <p className="date-info">
-                    <span>[Icon]</span>{' '}
-                    <time dateTime="2015-08-17 20:22">
-                      Kamis, 14 April 2022
-                    </time>
-                  </p>
-                  <hr />
-                  <p>
-                    Suspendisse sed ipsum nisi. Nullam venenatis id libero nec
-                    pellentesque. Fusce elementum libero eget ante commodo, eu
-                    ultricies neque sagittis. Nulla dignissim, arcu nec luctus
-                    pulvinar, tortor risus convallis lacus, vitae convallis
-                    tortor est quis risus.
-                  </p>
-                  <hr />
-                  <div className="action">
-                    <button>Arsipkan →</button>
-
-                    <button>
-                      <span>[Icon] </span> Hapus
-                    </button>
-                  </div>
-                </article>
-
-                <article tabIndex="0">
-                  <h2>Aliquam ac vestibulum diam</h2>
-                  <p className="date-info">
-                    <span>[Icon]</span>{' '}
-                    <time dateTime="2015-08-17 20:22">
-                      Kamis, 14 April 2022
-                    </time>
-                  </p>
-                  <hr />
-                  <p>
-                    Nullam justo neque, molestie ac mi a, porttitor sagittis
-                    nisi. Maecenas eget ex.
-                  </p>
-                  <hr />
-                  <div className="action">
-                    <button>Arsipkan →</button>
-
-                    <button>
-                      <span>[Icon] </span> Hapus
-                    </button>
-                  </div>
-                </article>
-
-                <article tabIndex="0">
-                  <h2>Nulla tempor</h2>
-                  <p className="date-info">
-                    <span>[Icon]</span>{' '}
-                    <time dateTime="2015-08-17 20:22">
-                      Kamis, 14 April 2022
-                    </time>
-                  </p>
-                  <hr />
-                  <p>
-                    Curabitur euismod erat eleifend, maximus augue at, dapibus
-                    nisl. Curabitur accumsan interdum feugiat. Donec eget neque
-                    suscipit, congue felis nec, facilisis massa. Fusce feugiat
-                    fringilla diam pharetra fringilla. Sed at pretium lectus,
-                    nec scelerisque
-                  </p>
-                  <hr />
-                  <div className="action">
-                    <button>Arsipkan →</button>
-
-                    <button>
-                      <span>[Icon] </span> Hapus
-                    </button>
-                  </div>
-                </article>
-              </div>
-            </div>
-            <div
-              id="panel-arsip"
-              role="tabpanel"
-              tabIndex="0"
-              aria-labelledby="tab-catatan-arsip"
-              hidden={panel !== 'archive'}
-            >
-              <div className="box-empty">
-                <picture>
-                  <source
-                    media="(min-width:768px)"
-                    srcSet={EmptyInboxDesktop}
-                  />
-                  <img src={EmptyInboxMobile} alt="" />
-                </picture>
-                <p>
-                  Catatan singkat tidak ditemukan,{' '}
-                  <button>Buat sekarang!</button>
-                </p>
-              </div>
-            </div>
+            <TabPanel
+              panel={panel}
+              panelId={`panel-aktif`}
+              panelName={`active`}
+              panelLabel={`tab-catatan-aktif`}
+              notes={activeNotes}
+              moveNote={moveNote}
+              deleteNote={deleteNote}
+              openModal={openModal}
+            />
+            <TabPanel
+              panel={panel}
+              panelId={`panel-arsip`}
+              panelName={`archive`}
+              panelLabel={`tab-catatan-arsip`}
+              notes={archiveNotes}
+              moveNote={moveNote}
+              deleteNote={deleteNote}
+              openModal={openModal}
+            />
           </section>
+          {/* End Notes */}
         </div>
-
-        {/* Modal Dialog Form */}
       </main>
+      {/* End Main */}
+
+      {/* Modal Dialog Form */}
+      <ModalForm modalIsOpen={modalIsOpen} closeModal={closeModal} />
+      {/* End Modal Dialong Form */}
     </>
   );
 }
