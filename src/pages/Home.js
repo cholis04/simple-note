@@ -40,6 +40,20 @@ function Home() {
     setIsOpen(false);
   };
 
+  // Add Note
+  const addNote = (newTitle, newBodyText) => {
+    setNotes([
+      {
+        id: new Date().getTime(),
+        title: newTitle.trim(),
+        body: newBodyText.trim(),
+        createdAt: new Date().toJSON(),
+        archived: false,
+      },
+      ...notes,
+    ]);
+  };
+
   // Delete note by Id
   const deleteNote = (id) => {
     if (window.confirm('Hapus catatan ?')) {
@@ -113,7 +127,11 @@ function Home() {
       {/* End Main */}
 
       {/* Modal Dialog Form */}
-      <ModalForm modalIsOpen={modalIsOpen} closeModal={closeModal} />
+      <ModalForm
+        modalIsOpen={modalIsOpen}
+        closeModal={closeModal}
+        addNote={addNote}
+      />
       {/* End Modal Dialong Form */}
     </>
   );
