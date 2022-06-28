@@ -3,10 +3,9 @@ function MarkText({ text, keyword, regExpKeyword }) {
     const splitterText = '___{$#(!VMV!)#$}___';
 
     // Replacement with string
-    const replace = text.replaceAll(
-      regExpKeyword,
-      `${splitterText}$&${splitterText}`,
-    );
+    const replace = text
+      .toString()
+      .replaceAll(regExpKeyword, `${splitterText}$&${splitterText}`);
 
     const split = replace.split(splitterText);
 

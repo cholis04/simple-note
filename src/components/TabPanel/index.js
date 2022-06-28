@@ -1,7 +1,6 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 
 import { ModalContext } from '../../context/ModalContext';
-import { NotesContext } from '../../context/NotesContext';
 import { PanelContext } from '../../context/PanelContext';
 
 import BoxNoteCard from '../BoxNoteCard';
@@ -10,7 +9,6 @@ import Empty from '../Empty';
 function TabPanel({ panelId, panelName, panelLabel, notes }) {
   const { panel } = useContext(PanelContext);
   const { openModal } = useContext(ModalContext);
-  const { moveNote, deleteNote } = useContext(NotesContext);
 
   return (
     <div
@@ -21,11 +19,7 @@ function TabPanel({ panelId, panelName, panelLabel, notes }) {
       hidden={panel !== panelName}
     >
       {notes.length >= 1 ? (
-        <BoxNoteCard
-          notes={notes}
-          moveNote={moveNote}
-          deleteNote={deleteNote}
-        />
+        <BoxNoteCard notes={notes} />
       ) : (
         <Empty openModal={openModal} />
       )}
@@ -33,4 +27,4 @@ function TabPanel({ panelId, panelName, panelLabel, notes }) {
   );
 }
 
-export default TabPanel;
+export default React.memo(TabPanel);
