@@ -1,16 +1,17 @@
+import { useContext } from 'react';
+
+import { ModalContext } from '../../context/ModalContext';
+import { NotesContext } from '../../context/NotesContext';
+import { PanelContext } from '../../context/PanelContext';
+
 import BoxNoteCard from '../BoxNoteCard';
 import Empty from '../Empty';
 
-function TabPanel({
-  panel,
-  panelId,
-  panelName,
-  panelLabel,
-  notes,
-  moveNote,
-  deleteNote,
-  openModal,
-}) {
+function TabPanel({ panelId, panelName, panelLabel, notes }) {
+  const { panel } = useContext(PanelContext);
+  const { openModal } = useContext(ModalContext);
+  const { moveNote, deleteNote } = useContext(NotesContext);
+
   return (
     <div
       id={panelId}

@@ -1,6 +1,12 @@
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 
-function TabList({ panel, setPanel, amountOfData }) {
+import { NotesContext } from '../../context/NotesContext';
+import { PanelContext } from '../../context/PanelContext';
+
+function TabList() {
+  const { archiveNotes, activeNotes } = useContext(NotesContext);
+  const { panel, setPanel } = useContext(PanelContext);
+
   const [tabFocus, setTabFocus] = useState(0);
 
   // Ref document
@@ -8,6 +14,12 @@ function TabList({ panel, setPanel, amountOfData }) {
   const archiveMenuTab = useRef(null);
 
   const tabs = [activeMenuTab, archiveMenuTab];
+
+  // Amount of Data
+  const amountOfData = {
+    active: activeNotes.length,
+    archive: archiveNotes.length,
+  };
 
   // Tablist
   const handleKeyDown = (e) => {

@@ -1,5 +1,9 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Modal from 'react-modal';
+
+import { ModalContext } from '../../context/ModalContext';
+import { NotesContext } from '../../context/NotesContext';
+import { PanelContext } from '../../context/PanelContext';
 
 import {
   bodyTextValidation,
@@ -35,7 +39,11 @@ const initialState = {
   },
 };
 
-function ModalForm({ modalIsOpen, closeModal, addNote }) {
+function ModalForm() {
+  const { modalIsOpen, closeModal } = useContext(ModalContext);
+  const { addNote } = useContext(NotesContext);
+  const { setPanel } = useContext(PanelContext);
+
   const [form, setForm] = useState(initialState);
 
   const validForm = !form.title.error && !form.bodyText.error;
@@ -79,6 +87,9 @@ function ModalForm({ modalIsOpen, closeModal, addNote }) {
 
       // Clear form
       setForm(initialState);
+
+      // Switch to active panel
+      setPanel('active');
     }
 
     closeModal();

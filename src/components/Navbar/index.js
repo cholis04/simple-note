@@ -1,4 +1,10 @@
-function Navbar({ openModal }) {
+import { useContext } from 'react';
+
+import { ModalContext } from '../../context/ModalContext';
+
+function Navbar() {
+  const { openModal } = useContext(ModalContext);
+
   return (
     <nav>
       <div className="wrapper">
