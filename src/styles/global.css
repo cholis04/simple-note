@@ -1,0 +1,53 @@
+@import-normalize; /* bring in normalize.css styles */
+
+/* Import Font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Theme Color */
+  --primay-color: hsl(148,30%,46%);
+  --secondary-color: hsl(90,18%,64%);
+  --tertiary-color: hsl(157,16%,28%);
+
+  /* Element Color */
+  --background-color: hsl(0,0%,9%);
+  --surface-color: hsl(0,0%,15%);
+  --overlay-color:hsla(0,0%,0%,70%);
+  --input-backgournd-color:hsl(0,0%,23%);
+  --text-primary-color: hsl(0,0%,100%);
+  --text-secondary-color: hsl(0,0%,72%);
+
+  /* Dimensions */
+  --maxWidth: 1280px;
+  --midWidth:375px;
+  --navHeight:80px;
+
+  /* Font Weight */
+  --fw-light:300;
+  --fw-reguler:400;
+  --fw-medium:500;
+  --fw-semibold:600;
+  --fw-bold:700;
+
+}
+
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+  min-width: var(--minWWidth);
+  background-color: var(--background-color);
+  color:var(--text-primary-color);
+  font-family: 'Quicksand', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p, h1,h2,h3,h4,h5,h6 {
+  line-height: 180%;
+}

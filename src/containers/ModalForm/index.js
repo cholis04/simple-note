@@ -12,7 +12,7 @@ import {
 
 const customStyles = {
   overlay: {
-    backgroundColor: 'rgba(0,0,0,0.7)',
+    backgroundColor: 'var(--overlay-color)',
   },
   content: {
     top: '50%',
@@ -21,6 +21,9 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
+    backgroundColor: 'var(--surface-color)',
+    border: 'none',
+    borderRadius: '25px',
   },
 };
 
