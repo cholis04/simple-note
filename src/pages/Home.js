@@ -4,9 +4,9 @@ import { NotesContext } from '../context/NotesContext';
 
 import TabList from '../containers/TabList';
 import ModalForm from '../containers/ModalForm';
-import SearchForm from '../containers/SearchForm';
 
 import Navbar from '../components/Navbar';
+import SearchForm from '../components/SearchForm';
 import TabPanel from '../components/TabPanel';
 
 function Home() {
@@ -20,10 +20,10 @@ function Home() {
   // Render Component
   return (
     <>
-      {/* Navbar */}
+      {/* Navbar ================================ */}
       <Navbar />
 
-      {/* Main Content */}
+      {/* Main Content ================================ */}
       <main>
         <div className="wrapper">
           {/* Filter  */}
@@ -50,7 +50,10 @@ function Home() {
         </div>
       </main>
 
-      {/* Modal Dialog Form */}
+      {/* Footer ================================ */}
+      {/* <Footer /> */}
+
+      {/* Modal Dialog Form ================================ */}
       <ModalForm />
     </>
   );

@@ -13,9 +13,19 @@ const initialState = () => {
 
 const NotesContextProvider = (props) => {
   const [notes, setNotes] = useState(initialState());
+  const [keyword, setKeyword] = useState('');
 
-  const activeNotes = notes.filter((note) => note.archived === false);
-  const archiveNotes = notes.filter((note) => note.archived === true);
+  const filteredNotes =
+    keyword !== ''
+      ? notes.filter(
+          (note) =>
+            note.title.toLowerCase().includes(keyword.toLowerCase()) ||
+            note.body.toLowerCase().includes(keyword.toLowerCase()),
+        )
+      : notes;
+
+  const activeNotes = filteredNotes.filter((note) => note.archived === false);
+  const archiveNotes = filteredNotes.filter((note) => note.archived === true);
 
   // Add Note
   const addNote = (newTitle, newBodyText) => {
@@ -61,7 +71,15 @@ const NotesContextProvider = (props) => {
 
   return (
     <NotesContext.Provider
-      value={{ activeNotes, archiveNotes, addNote, moveNote, deleteNote }}
+      value={{
+        keyword,
+        setKeyword,
+        activeNotes,
+        archiveNotes,
+        addNote,
+        moveNote,
+        deleteNote,
+      }}
     >
       {props.children}
     </NotesContext.Provider>
