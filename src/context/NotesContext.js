@@ -5,6 +5,7 @@ import { getInitialData } from '../data';
 export const NotesContext = createContext();
 
 const LocalStorageName = 'simple-notes-XS89DF28SSD093SD';
+const MaxNotes = 30;
 
 const initialState = () => {
   const localData = localStorage.getItem(LocalStorageName);
@@ -27,18 +28,23 @@ const NotesContextProvider = (props) => {
   const activeNotes = filteredNotes.filter((note) => note.archived === false);
   const archiveNotes = filteredNotes.filter((note) => note.archived === true);
 
+  const totalNotes = notes.length;
+  const availableNotes = totalNotes < MaxNotes;
+
   // Add Note
   const addNote = (newTitle, newBodyText) => {
-    setNotes([
-      {
-        id: new Date().getTime(),
-        title: newTitle.trim(),
-        body: newBodyText.trim(),
-        createdAt: new Date().toJSON(),
-        archived: false,
-      },
-      ...notes,
-    ]);
+    if (availableNotes) {
+      setNotes([
+        {
+          id: new Date().getTime(),
+          title: newTitle.trim(),
+          body: newBodyText.trim(),
+          createdAt: new Date().toJSON(),
+          archived: false,
+        },
+        ...notes,
+      ]);
+    }
   };
 
   // Delete note by Id
@@ -76,6 +82,7 @@ const NotesContextProvider = (props) => {
         setKeyword,
         activeNotes,
         archiveNotes,
+        availableNotes,
         addNote,
         moveNote,
         deleteNote,

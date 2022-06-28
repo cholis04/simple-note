@@ -41,7 +41,7 @@ const initialState = {
 
 function ModalForm() {
   const { modalIsOpen, closeModal } = useContext(ModalContext);
-  const { addNote } = useContext(NotesContext);
+  const { addNote, availableNotes } = useContext(NotesContext);
   const { setPanel } = useContext(PanelContext);
 
   const [form, setForm] = useState(initialState);
@@ -104,51 +104,59 @@ function ModalForm() {
     >
       <h2>Catatan Baru</h2>
       <hr />
-      <form onSubmit={handleSubmit}>
-        {/* Input Group */}
-        <div className="text-input-group">
-          <div className="head-input-group">
-            <label>Judul :</label>
-            <span>
-              <b>{form.title.maxChar - form.title.value.length}</b> sisa
-              karakter
-            </span>
+
+      {availableNotes ? (
+        <form onSubmit={handleSubmit}>
+          {/* Input Group */}
+          <div className="text-input-group">
+            <div className="head-input-group">
+              <label>Judul :</label>
+              <span>
+                <b>{form.title.maxChar - form.title.value.length}</b> sisa
+                karakter
+              </span>
+            </div>
+            <input
+              type="text"
+              placeholder="Apa judul yang ingin ditulis? ..."
+              name="title"
+              value={form.title.value}
+              onChange={handleChange}
+            />
+            {form.title.error && <p role="alert">{form.title.error}</p>}
           </div>
+
+          {/* Input Group */}
+          <div className="text-input-group">
+            <div className="head-input-group">
+              <label>Isi Catatan :</label>
+              <span>
+                <b>{form.bodyText.maxChar - form.bodyText.value.length}</b> sisa
+                karakter
+              </span>
+            </div>
+            <textarea
+              placeholder="Tuliskan isi catatan disini ..."
+              name="bodyText"
+              value={form.bodyText.value}
+              onChange={handleChange}
+            ></textarea>
+            {form.bodyText.error && <p role="alert">{form.bodyText.error}</p>}
+          </div>
+
+          {/* Submit button */}
           <input
-            type="text"
-            placeholder="Apa judul yang ingin ditulis? ..."
-            name="title"
-            value={form.title.value}
-            onChange={handleChange}
+            type="submit"
+            value="Tambahkan"
+            disabled={!validForm || emptyForm}
           />
-          {form.title.error && <p role="alert">{form.title.error}</p>}
-        </div>
-
-        {/* Input Group */}
-        <div className="text-input-group">
-          <div className="head-input-group">
-            <label>Isi Catatan :</label>
-            <span>
-              <b>{form.bodyText.maxChar - form.bodyText.value.length}</b> sisa
-              karakter
-            </span>
-          </div>
-          <textarea
-            placeholder="Tuliskan isi catatan disini ..."
-            name="bodyText"
-            value={form.bodyText.value}
-            onChange={handleChange}
-          ></textarea>
-          {form.bodyText.error && <p role="alert">{form.bodyText.error}</p>}
-        </div>
-
-        {/* Submit button */}
-        <input
-          type="submit"
-          value="Tambahkan"
-          disabled={!validForm || emptyForm}
-        />
-      </form>
+        </form>
+      ) : (
+        <p>
+          Ups, anda telah mencapai <b>jumlah maksimal catatan 30</b>, silahkan
+          hapus beberapa untuk menambah catatan yang baru!
+        </p>
+      )}
     </Modal>
   );
 }
