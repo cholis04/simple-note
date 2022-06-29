@@ -1,0 +1,70 @@
+/* Main */
+.main {
+  position:relative;
+  margin-top: var(--navHeight);
+}
+
+.main__heading {
+  position:fixed;
+
+  left: 0;
+  right: 0;
+
+  height: var(--mainHeadingHeightMobile);
+  z-index:998;
+  
+  background-color: var(--background-color);
+}
+
+
+.main__headingWrapper {
+  margin:0 auto;
+  max-width: var(--maxWidth);
+  padding:0 1em;
+
+  height: inherit;
+
+  display: flex;
+  flex-direction: column;
+  justify-content:space-around;
+  align-items: center;
+}
+
+.main__notelist {
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  top:var(--mainHeadingHeightMobile);
+  transform: translateX(-50%);
+}
+
+.main__notelistWrapper {
+  max-width: var(--maxWidth);
+  margin:0 auto;
+  padding:0 1em;
+}
+
+  
+/* Desktop */
+/* Desktop */
+@media only screen and (min-width: 768px) {
+
+  .main__heading {
+    height: var(--mainHeadingHeightDesktop);
+  }
+  .main__headingWrapper {
+    padding:0 2em;
+
+    flex-direction: row;
+    justify-content:space-between;
+  }
+
+  .main__notelist {
+    top: var(--mainHeadingHeightDesktop);
+  }
+
+  .main__notelistWrapper {
+    padding:0 2em;
+  }
+  
+}

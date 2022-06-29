@@ -1,0 +1,32 @@
+.form{
+    width: 100%;
+    max-width: 460px;
+    padding: 1.2em 0;
+    border-bottom:1px solid var(--text-secondary-color);
+}
+
+.inputGroup {
+    display:flex;
+    align-items: center;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+}
+
+.textbox{
+    border:none;
+    width: 100%;
+    margin-left: 1em;
+    padding:1em 1em;
+    font-size: 1rem;
+    font-weight: var(--fw-medium);
+    color:var(--text-primary-color);
+    background:none;
+    border-left: 1px solid var(--text-secondary-color);
+}
+.textbox::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: var(--text-secondary-color);
+    opacity: 1; /* Firefox */
+}

@@ -13,6 +13,7 @@ import {
 const customStyles = {
   overlay: {
     backgroundColor: 'var(--overlay-color)',
+    zIndex: 999,
   },
   content: {
     top: '50%',

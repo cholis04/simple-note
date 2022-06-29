@@ -21,6 +21,8 @@
   --maxWidth: 1280px;
   --midWidth:375px;
   --navHeight:80px;
+  --mainHeadingHeightMobile:180px;
+  --mainHeadingHeightDesktop:100px;
 
   /* Font Weight */
   --fw-light:300;
@@ -50,4 +52,15 @@ body {
 
 p, h1,h2,h3,h4,h5,h6 {
   line-height: 180%;
+}
+
+input,button,textarea{
+  font-family: 'Quicksand', sans-serif;
+}
+
+
+
+/* Desktop */
+/* Desktop */
+@media only screen and (min-width: 768px) {
 }

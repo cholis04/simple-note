@@ -3,6 +3,7 @@
     width: 100%;
     top:0;
     left:0;
+    z-index: 998;
     background-color: var(--surface-color);
     box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
 }

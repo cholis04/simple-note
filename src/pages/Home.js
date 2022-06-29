@@ -9,6 +9,8 @@ import Navbar from '../components/Navbar';
 import SearchForm from '../components/SearchForm';
 import TabPanel from '../components/TabPanel';
 
+import styles from '../styles/home.module.css';
+
 function Home() {
   const { activeNotes, archiveNotes } = useContext(NotesContext);
 
@@ -24,16 +26,23 @@ function Home() {
       <Navbar />
 
       {/* Main Content ============###======###=====###====###=== */}
-      <main>
-        <div className="wrapper">
-          {/* Filter  */}
-          <div className="heading-main">
+      <main className={styles.main}>
+        {/* Main Heading */}
+        <div className={styles.main__heading}>
+          <div className={styles.main__headingWrapper}>
             <SearchForm />
             <TabList />
           </div>
+        </div>
+        {/* Main Heading */}
 
-          {/* Notes */}
-          <section id="daftar-catatan" aria-label="Daftar Catatan">
+        {/* Note List */}
+        <section
+          className={styles.main__notelist}
+          id="daftar-catatan"
+          aria-label="Daftar Catatan"
+        >
+          <div className={styles.main__notelistWrapper}>
             <TabPanel
               panelId={`panel-aktif`}
               panelName={`active`}
@@ -46,12 +55,12 @@ function Home() {
               panelLabel={`tab-catatan-arsip`}
               notes={archiveNotes}
             />
-          </section>
-        </div>
+          </div>
+        </section>
+        {/* Note List */}
       </main>
 
       {/* Footer ============###======###=====###====###=== */}
-      {/* <Footer /> */}
 
       {/* Modal Dialog Form ============###======###=====###====###=== */}
       <ModalForm />
