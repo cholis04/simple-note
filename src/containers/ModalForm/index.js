@@ -10,6 +10,8 @@ import {
   titleValidation,
 } from '../../utils/validationAddNote';
 
+import styles from './index.module.css';
+
 const customStyles = {
   overlay: {
     backgroundColor: 'var(--overlay-color)',
@@ -21,6 +23,9 @@ const customStyles = {
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
+    padding: '2em',
+    width: '90%',
+    maxWidth: '460px',
     transform: 'translate(-50%, -50%)',
     backgroundColor: 'var(--surface-color)',
     border: 'none',
@@ -106,16 +111,16 @@ function ModalForm() {
       style={customStyles}
       contentLabel="Example Modal"
     >
-      <h2>Catatan Baru</h2>
-      <hr />
+      <h2 className={styles.title}>Catatan Baru</h2>
+      <hr className={styles.lineBreak} />
 
       {availableNotes ? (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={styles.formNote}>
           {/* Input Group */}
-          <div className="text-input-group">
-            <div className="head-input-group">
-              <label>Judul :</label>
-              <span>
+          <div className={styles.textInputGroup}>
+            <div className={styles.headInputGroup}>
+              <label className={styles.label}>Judul :</label>
+              <span className={styles.char}>
                 <b>{form.title.maxChar - form.title.value.length}</b> sisa
                 karakter
               </span>
@@ -126,15 +131,20 @@ function ModalForm() {
               name="title"
               value={form.title.value}
               onChange={handleChange}
+              className={styles.textInput}
             />
-            {form.title.error && <p role="alert">{form.title.error}</p>}
+            {form.title.error && (
+              <p role="alert" className={styles.alert}>
+                *{form.title.error}
+              </p>
+            )}
           </div>
 
           {/* Input Group */}
-          <div className="text-input-group">
-            <div className="head-input-group">
-              <label>Isi Catatan :</label>
-              <span>
+          <div className={styles.textInputGroup}>
+            <div className={styles.headInputGroup}>
+              <label className={styles.label}>Isi Catatan :</label>
+              <span className={styles.char}>
                 <b>{form.bodyText.maxChar - form.bodyText.value.length}</b> sisa
                 karakter
               </span>
@@ -144,8 +154,13 @@ function ModalForm() {
               name="bodyText"
               value={form.bodyText.value}
               onChange={handleChange}
+              className={styles.textAreaInput}
             ></textarea>
-            {form.bodyText.error && <p role="alert">{form.bodyText.error}</p>}
+            {form.bodyText.error && (
+              <p role="alert" className={styles.alert}>
+                *{form.bodyText.error}
+              </p>
+            )}
           </div>
 
           {/* Submit button */}
@@ -153,10 +168,11 @@ function ModalForm() {
             type="submit"
             value="Tambahkan"
             disabled={!validForm || emptyForm}
+            className={styles.btnSubmit}
           />
         </form>
       ) : (
-        <p>
+        <p className={styles.maximumNote}>
           Ups, anda telah mencapai <b>jumlah maksimal catatan 30</b>, silahkan
           hapus beberapa untuk menambah catatan yang baru!
         </p>

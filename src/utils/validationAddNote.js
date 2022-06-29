@@ -16,7 +16,7 @@ export const titleValidation = (value) => {
 export const bodyTextValidation = (value) => {
   // Not Null
   if (value.length === 0 || value === '') {
-    return 'Isi tidak boleh kosong!';
+    return 'Isi Catatan tidak boleh kosong!';
   }
 
   return null;
