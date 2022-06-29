@@ -1,7 +1,10 @@
+import { ArchiveIcon, CollectionIcon } from '@heroicons/react/solid';
 import { useContext, useRef, useState } from 'react';
 
 import { NotesContext } from '../../context/NotesContext';
 import { PanelContext } from '../../context/PanelContext';
+
+import styles from './index.module.css';
 
 function TabList() {
   const { archiveNotes, activeNotes } = useContext(NotesContext);
@@ -55,7 +58,12 @@ function TabList() {
   };
 
   return (
-    <div role="tablist" aria-label="Tab Menu Catatan" onKeyDown={handleKeyDown}>
+    <div
+      role="tablist"
+      aria-label="Tab Menu Catatan"
+      onKeyDown={handleKeyDown}
+      className={styles.tablist}
+    >
       <button
         role="tab"
         aria-selected={panel === 'active'}
@@ -65,8 +73,10 @@ function TabList() {
         tabIndex="0"
         ref={activeMenuTab}
         onClick={() => setPanel('active')}
+        className={styles.buttonTab}
       >
-        <span>[Icon]</span> Aktif ({amountOfData.active})
+        <CollectionIcon className={styles.iconBtn} /> Aktif (
+        {amountOfData.active})
       </button>
       <button
         role="tab"
@@ -77,8 +87,10 @@ function TabList() {
         tabIndex="-1"
         ref={archiveMenuTab}
         onClick={() => setPanel('archive')}
+        className={styles.buttonTab}
       >
-        <span>Icon</span> Arisp ({amountOfData.archive})
+        <ArchiveIcon className={styles.iconBtn} /> Arsip ({amountOfData.archive}
+        )
       </button>
     </div>
   );

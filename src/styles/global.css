@@ -13,9 +13,10 @@
   --background-color: hsl(0,0%,9%);
   --surface-color: hsl(0,0%,15%);
   --overlay-color:hsla(0,0%,0%,70%);
-  --input-backgournd-color:hsl(0,0%,23%);
+  --input-background-color:hsl(0,0%,23%);
   --text-primary-color: hsl(0,0%,100%);
   --text-secondary-color: hsl(0,0%,72%);
+  --line-color:hsl(0, 0%, 32%);
 
   /* Dimensions */
   --maxWidth: 1280px;

@@ -6,13 +6,10 @@
 
 .main__heading {
   position:fixed;
-
   left: 0;
   right: 0;
-
   height: var(--mainHeadingHeightMobile);
   z-index:998;
-  
   background-color: var(--background-color);
 }
 
@@ -21,9 +18,7 @@
   margin:0 auto;
   max-width: var(--maxWidth);
   padding:0 1em;
-
   height: inherit;
-
   display: flex;
   flex-direction: column;
   justify-content:space-around;
