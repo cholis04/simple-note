@@ -1,4 +1,4 @@
-import { ClockIcon } from '@heroicons/react/solid';
+import { ClockIcon, TrashIcon } from '@heroicons/react/solid';
 import { useContext } from 'react';
 
 import { NotesContext } from '../../context/NotesContext';
@@ -40,12 +40,15 @@ function NoteCard({ note }) {
       </p>
       <hr className={styles.lineBreak} />
       <div className={styles.action}>
-        <button onClick={() => moveNote(note.id)}>
+        <button onClick={() => moveNote(note.id)} className={styles.btnMove}>
           {note.archived ? '← Aktifkan' : 'Arsipkan →'}
         </button>
 
-        <button onClick={() => deleteNote(note.id)}>
-          <span>[Icon] </span> Hapus
+        <button
+          onClick={() => deleteNote(note.id)}
+          className={styles.btnDelete}
+        >
+          <TrashIcon className={styles.iconBtn} /> Hapus
         </button>
       </div>
     </article>

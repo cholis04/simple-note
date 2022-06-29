@@ -44,3 +44,49 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.btnMove, .btnDelete {
+    border:none;
+    background: none;
+
+    font-weight: var(--fw-bold);
+    font-size: 1em;
+
+    transition: opacity 0.2s ease-in-out;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnMove {
+    color:var(--secondary-color)
+}
+
+.btnDelete {
+    color:var(--alert-color)
+}
+.btnMove:active, .btnDelete:active {
+    opacity: 0.7;
+}
+
+.iconBtn {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.2rem;
+}
+
+
+/* Desktop Responsive */
+/* Desktop Responsive */
+@media only screen and (min-width: 768px) {
+
+
+    @media (hover: hover) { /* when supported */
+        .btnMove:hover, .btnDelete:hover {
+            opacity: 0.7;
+            cursor:pointer;
+        }
+    }
+}
+   
