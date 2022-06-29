@@ -1,7 +1,7 @@
 .form{
     width: 100%;
     
-    padding: 1.2em 0;
+    padding: 0em 0;
     border-bottom:1px solid var(--line-color);
 }
 
@@ -18,13 +18,12 @@
 .textbox{
     border:none;
     width: 100%;
-    margin-left: 1em;
     padding:1em 1em;
     font-size: 1rem;
     font-weight: var(--fw-medium);
     color:var(--text-primary-color);
     background:none;
-    border-left: 1px solid var(--line-color);
+    outline: none;
 }
 .textbox::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: var(--text-secondary-color);
@@ -36,6 +35,16 @@
 /* Desktop */
 @media only screen and (min-width: 768px) {
     .form{
+        padding: 1.2em 0;
         max-width: 400px;
+    }
+
+    .textbox{
+        margin-left: 1em;
+        border-left: 1px solid var(--line-color);
+    }
+    .textbox:focus{
+        outline: auto;
+        outline-width: 0.5px;
     }
 }

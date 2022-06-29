@@ -1,0 +1,35 @@
+.boxEmpty {
+    padding-bottom: 5rem;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.text {
+    font-size:1rem;
+    text-align: center;
+    color: var(--text-secondary-color);
+    font-weight: var(--fw-medium);
+}
+
+.btnAdd {
+    background: none;
+    border: none;
+    font-size: inherit;
+    color:var(--secondary-color);
+    font-weight: var(--fw-bold);
+}
+
+/* Desktop Responsive */
+/* Desktop Responsive */
+@media only screen and (min-width: 768px) {
+
+
+    @media (hover: hover) { /* when supported */
+        .btnAdd:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+}
