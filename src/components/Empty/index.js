@@ -1,9 +1,15 @@
+import { useContext } from 'react';
+
+import { ModalContext } from '../../context/ModalContext';
+
 import EmptyInboxDesktop from '../../assets/images/Empty_Inbox_Outline_Desktop.png';
 import EmptyInboxMobile from '../../assets/images/Empty_Inbox_Outline_Mobile.png';
 
 import styles from './index.module.css';
 
-function Empty({ openModal }) {
+function Empty() {
+  const { openModal } = useContext(ModalContext);
+
   return (
     <div className={styles.boxEmpty}>
       <picture>

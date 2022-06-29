@@ -1,0 +1,46 @@
+.articleCard {
+    margin-bottom: var(--gutter);
+    background-color: var(--surface-color);
+
+    padding:2.2em 2em;
+    border-radius: 25px;
+}
+
+.title {
+    font-size: 1.3em;
+    font-weight: var(--fw-bold);
+}
+
+
+.dateInfo {
+    margin: 0.7rem auto;
+
+    font-size: 0.85em;
+    font-weight: var(--fw-reguler);
+    color:var(--text-secondary-color);
+}
+
+.iconTime {
+    width: 0.8rem;
+    height: 0.8rem;
+    margin-right: 0.1rem;
+}
+
+.lineBreak {
+    border:none;
+    border-bottom: 1px solid var(--input-background-color);
+}
+
+.bodyText{
+    margin: 1rem auto;
+    font-size: 1em;
+    font-weight: var(--fw-reguler);
+}
+
+.action{
+    margin-top: 1.6rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

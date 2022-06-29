@@ -1,11 +1,11 @@
 .masonryGrid {
     display: flex;
-    margin-left: -32px; /* gutter size offset */
+    margin-left: calc(var(--gutter) * -1); /* gutter size offset */
     width: auto;
 }
 
 .masonryColumn {
-    padding-left: 32px; /* gutter size */
+    padding-left: var(--gutter); /* gutter size */
     background-clip: padding-box;
 }
 
