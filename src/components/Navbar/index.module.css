@@ -19,7 +19,7 @@
 }
 
 .title {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: var(--fw-bold);
 }
 
@@ -33,7 +33,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--primay-color);
+    background-color: var(--primary-color);
     color:var(--text-primary-color)
 }
 
@@ -60,6 +60,11 @@
 /* Desktop Responsive */
 /* Desktop Responsive */
 @media only screen and (min-width: 768px) {
+
+    .title {
+        font-size: 1.5rem;
+    }
+
     .wrapper {
         padding:0 2em;
     }

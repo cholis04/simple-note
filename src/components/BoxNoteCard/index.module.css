@@ -1,0 +1,18 @@
+.masonryGrid {
+    display: flex;
+    margin-left: -32px; /* gutter size offset */
+    width: auto;
+}
+
+.masonryColumn {
+    padding-left: 32px; /* gutter size */
+    background-clip: padding-box;
+}
+
+/* Desktop */
+/* Desktop */
+@media only screen and (min-width: 768px) {
+    .masonryGrid {
+       margin-bottom: 10rem;
+    }
+} 

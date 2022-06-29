@@ -1,7 +1,6 @@
 .tablist {
     display: flex;
     align-items: center;
-    padding:1.2em 0;
     border-bottom:1px solid var(--line-color);
 }
 
@@ -34,6 +33,9 @@
 /* Desktop Responsive */
 /* Desktop Responsive */
 @media only screen and (min-width: 768px) {
+    .tablist {
+        padding:1.2em 0;
+    }
 
     .buttonTab {
         padding:1em 0;

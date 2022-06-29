@@ -5,7 +5,7 @@
 
 :root {
   /* Theme Color */
-  --primay-color: hsl(148,30%,46%);
+  --primary-color: hsl(148,30%,46%);
   --secondary-color: hsl(90,18%,64%);
   --tertiary-color: hsl(157,16%,28%);
 
@@ -22,7 +22,7 @@
   --maxWidth: 1280px;
   --midWidth:375px;
   --navHeight:80px;
-  --mainHeadingHeightMobile:180px;
+  --mainHeadingHeightMobile:120px;
   --mainHeadingHeightDesktop:100px;
 
   /* Font Weight */
@@ -42,7 +42,7 @@
 }
 
 body {
-  font-size: 16px;
+  font-size: 14px;
   min-width: var(--minWWidth);
   background-color: var(--background-color);
   color:var(--text-primary-color);
@@ -64,4 +64,7 @@ input,button,textarea{
 /* Desktop */
 /* Desktop */
 @media only screen and (min-width: 768px) {
+  body {
+    font-size: 16px;
+  }
 }
