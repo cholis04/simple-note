@@ -9,7 +9,8 @@ function SearchForm() {
   const { keyword, setKeyword } = useContext(NotesContext);
 
   const handleChange = (e) => {
-    setKeyword(e.target.value);
+    const value = e.target.value;
+    setKeyword(value.trimStart());
   };
 
   return (
