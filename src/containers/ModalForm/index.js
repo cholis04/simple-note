@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import Modal from 'react-modal';
 
 import { ModalContext } from '../../context/ModalContext';
-import { NotesContext } from '../../context/NotesContext';
+import { MaxNotes, NotesContext } from '../../context/NotesContext';
 import { PanelContext } from '../../context/PanelContext';
 
 import {
@@ -38,7 +38,7 @@ Modal.setAppElement('#modal-portal');
 const initialState = {
   title: {
     value: '',
-    maxChar: 60,
+    maxChar: 50,
     error: null,
   },
   bodyText: {
@@ -173,8 +173,8 @@ function ModalForm() {
         </form>
       ) : (
         <p className={styles.maximumNote}>
-          Ups, anda telah mencapai <b>jumlah maksimal catatan 30</b>, silahkan
-          hapus beberapa untuk menambah catatan yang baru!
+          Ups, anda telah mencapai <b>jumlah maksimal catatan {MaxNotes}</b>,
+          silahkan hapus beberapa untuk menambah catatan yang baru!
         </p>
       )}
     </Modal>
