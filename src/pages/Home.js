@@ -8,6 +8,7 @@ import ModalForm from '../containers/ModalForm';
 import Navbar from '../components/Navbar';
 import SearchForm from '../components/SearchForm';
 import TabPanel from '../components/TabPanel';
+import Footer from '../components/Footer';
 
 import styles from '../styles/home.module.css';
 
@@ -61,6 +62,7 @@ function Home() {
       </main>
 
       {/* Footer ============###======###=====###====###=== */}
+      <Footer />
 
       {/* Modal Dialog Form ============###======###=====###====###=== */}
       <ModalForm />

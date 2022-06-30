@@ -1,3 +1,12 @@
 .tabpanel {
     margin-top: 2rem;
+    margin-bottom: 2rem;
 }
+
+/* Desktop */
+/* Desktop */
+@media only screen and (min-width: 768px) {
+    .tabpanel{
+       margin-bottom: 5rem;
+    }
+} 

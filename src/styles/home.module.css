@@ -1,6 +1,5 @@
 /* Main */
 .main {
-  position:relative;
   margin-top: var(--navHeight);
 }
 
@@ -26,11 +25,8 @@
 }
 
 .main__notelist {
-  position: absolute;
   width: 100%;
-  left: 50%;
-  top:var(--mainHeadingHeightMobile);
-  transform: translateX(-50%);
+  padding-top:var(--mainHeadingHeightMobile);
 }
 
 .main__notelistWrapper {

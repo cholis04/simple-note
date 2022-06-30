@@ -8,11 +8,3 @@
     padding-left: var(--gutter); /* gutter size */
     background-clip: padding-box;
 }
-
-/* Desktop */
-/* Desktop */
-@media only screen and (min-width: 768px) {
-    .masonryGrid {
-       margin-bottom: 10rem;
-    }
-} 
