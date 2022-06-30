@@ -34,12 +34,14 @@ const NotesContextProvider = (props) => {
   // Add Note
   const addNote = (newTitle, newBodyText) => {
     if (availableNotes) {
+      const date = new Date();
+
       setNotes([
         {
-          id: new Date().getTime(),
+          id: date.getTime(),
           title: newTitle.trim(),
           body: newBodyText.trim(),
-          createdAt: new Date().toJSON(),
+          createdAt: date.toJSON(),
           archived: false,
         },
         ...notes,

@@ -3,6 +3,7 @@ import { useContext } from 'react';
 
 import { NotesContext } from '../../context/NotesContext';
 
+import { formattedAttributeTime } from '../../utils/formattedAttributeTime';
 import { showFormattedDate } from '../../utils/showFormattedDate';
 
 import MarkText from '../MarkText';
@@ -26,7 +27,7 @@ function NoteCard({ note }) {
       </h2>
       <p className={styles.dateInfo}>
         <ClockIcon className={styles.iconTime} />{' '}
-        <time dateTime={new Date(note.createdAt).toLocaleString()}>
+        <time dateTime={formattedAttributeTime(note.createdAt)}>
           {showFormattedDate(note.createdAt)}
         </time>
       </p>
