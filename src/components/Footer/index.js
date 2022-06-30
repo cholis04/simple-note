@@ -5,7 +5,7 @@ function Footer() {
     <footer className={styles.footer}>
       <div className={styles.wrapper}>
         <p className={styles.paragraph}>
-          Final Project “Membangun Aplikasi Notes Menggunakan React” from{' '}
+          Proyek Akhir “Membangun Aplikasi Notes Menggunakan React” dari{' '}
           <a
             className={styles.link}
             href="https://www.dicoding.com/"
@@ -14,7 +14,7 @@ function Footer() {
           >
             Dicoding Indonesia
           </a>
-          . Coded by{' '}
+          . Dibuat oleh{' '}
           <a
             className={styles.link}
             href="https://www.dicoding.com/users/cholis04"
