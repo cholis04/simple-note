@@ -4,8 +4,8 @@ import { getInitialData } from '../data';
 
 export const NotesContext = createContext();
 
+export const MaxNotes = 30;
 const LocalStorageName = 'simple-notes-XS89DF28SSD093SD';
-const MaxNotes = 30;
 
 const initialState = () => {
   const localData = localStorage.getItem(LocalStorageName);
