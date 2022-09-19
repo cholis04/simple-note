@@ -3,70 +3,48 @@
 /* Import Font from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
-:root {
-  /* Theme Color */
-  --primary-color: hsl(148,30%,46%);
-  --secondary-color: hsl(90,18%,64%);
-  --tertiary-color: hsl(157,16%,28%);
-
-  /* Element Color */
-  --background-color: hsl(0,0%,9%);
-  --surface-color: hsl(0,0%,15%);
-  --overlay-color:hsla(0,0%,0%,70%);
-  --input-background-color:hsl(0,0%,23%);
-  --text-primary-color: hsl(0,0%,100%);
-  --text-secondary-color: hsl(0,0%,72%);
-  --line-color:hsl(0, 0%, 32%);
-  --alert-color:hsl(0,94%,71%);
-
-  /* Dimensions */
-  --maxWidth: 1280px;
-  --midWidth:375px;
-  --navHeight:80px;
-  --mainHeadingHeightMobile:120px;
-  --mainHeadingHeightDesktop:100px;
-  --gutter:32px;
-
-  /* Font Weight */
-  --fw-light:300;
-  --fw-reguler:400;
-  --fw-medium:500;
-  --fw-semibold:600;
-  --fw-bold:700;
-
-}
-
+/* Import all css variables */
+@import url('./config.css');
 
 * {
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  font-size: 14px;
+  font-size: 0.875rem;
   min-width: var(--minWWidth);
   background-color: var(--background-color);
-  color:var(--text-primary-color);
+  color: var(--text-primary-color);
   font-family: 'Quicksand', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-p, h1,h2,h3,h4,h5,h6, input, textarea, a {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+textarea,
+a {
   line-height: 180%;
 }
 
-input,button,textarea{
+input,
+button,
+textarea {
   font-family: 'Quicksand', sans-serif;
 }
-
-
 
 /* Desktop */
 /* Desktop */
 @media only screen and (min-width: 768px) {
   body {
-    font-size: 16px;
+    font-size: 1rem;
   }
 }

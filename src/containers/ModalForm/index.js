@@ -1,9 +1,6 @@
 import { useContext, useState } from 'react';
-import Modal from 'react-modal';
 
-import { ModalContext } from '../../context/ModalContext';
 import { MaxNotes, NotesContext } from '../../context/NotesContext';
-import { PanelContext } from '../../context/PanelContext';
 
 import {
   bodyTextValidation,
@@ -11,29 +8,6 @@ import {
 } from '../../utils/validationAddNote';
 
 import styles from './index.module.css';
-
-const customStyles = {
-  overlay: {
-    backgroundColor: 'var(--overlay-color)',
-    zIndex: 999,
-  },
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    padding: '2em',
-    width: '90%',
-    maxWidth: '460px',
-    transform: 'translate(-50%, -50%)',
-    backgroundColor: 'var(--surface-color)',
-    border: 'none',
-    borderRadius: '25px',
-  },
-};
-
-Modal.setAppElement('#modal-portal');
 
 const initialState = {
   title: {
@@ -49,9 +23,7 @@ const initialState = {
 };
 
 function ModalForm() {
-  const { modalIsOpen, closeModal } = useContext(ModalContext);
   const { addNote, availableNotes } = useContext(NotesContext);
-  const { setPanel } = useContext(PanelContext);
 
   const [form, setForm] = useState(initialState);
 
@@ -96,21 +68,11 @@ function ModalForm() {
 
       // Clear form
       setForm(initialState);
-
-      // Switch to active panel
-      setPanel('active');
     }
-
-    closeModal();
   };
 
   return (
-    <Modal
-      isOpen={modalIsOpen}
-      onRequestClose={closeModal}
-      style={customStyles}
-      contentLabel="Example Modal"
-    >
+    <div>
       <h2 className={styles.title}>Catatan Baru</h2>
       <hr className={styles.lineBreak} />
 
@@ -177,7 +139,7 @@ function ModalForm() {
           silahkan hapus beberapa untuk menambah catatan yang baru!
         </p>
       )}
-    </Modal>
+    </div>
   );
 }
 

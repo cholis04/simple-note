@@ -10,7 +10,7 @@ import SearchForm from '../components/SearchForm';
 import TabPanel from '../components/TabPanel';
 import Footer from '../components/Footer';
 
-import styles from '../styles/home.module.css';
+import styles from '../styles/pages/home.module.css';
 
 function Home() {
   const { activeNotes, archiveNotes } = useContext(NotesContext);
