@@ -1,5 +1,4 @@
 import React from 'react';
-import Masonry from 'react-masonry-css';
 
 import NoteCard from '../NoteCard';
 
@@ -13,7 +12,7 @@ const breakpointColumnsObj = {
 
 function BoxNoteCard({ notes }) {
   return (
-    <Masonry
+    <div
       breakpointCols={breakpointColumnsObj}
       className={styles.masonryGrid}
       columnClassName={styles.masonryColumn}
@@ -21,7 +20,7 @@ function BoxNoteCard({ notes }) {
       {notes.map((note) => {
         return <NoteCard key={note.id} note={note} />;
       })}
-    </Masonry>
+    </div>
   );
 }
 
