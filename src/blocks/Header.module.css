@@ -21,6 +21,7 @@
 .brand {
   font-size: var(--fs-xl);
   font-weight: var(--fw-bold);
+  color: var(--text-focal-color);
 }
 
 .menu {

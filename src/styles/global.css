@@ -16,7 +16,7 @@ body {
   font-size: 0.875rem;
   min-width: var(--minWWidth);
   background-color: var(--background-color);
-  color: var(--text-focal-color);
+  color: var(--text-common-color);
   font-family: var(--font-quicksand);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

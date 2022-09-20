@@ -3,11 +3,11 @@ import { useEffect } from 'react';
 // import { NotesContext } from '../context/NotesContext';
 
 import Header from '../blocks/Header';
-import SearchBar from '../components/SearchBar';
 import Footer from '../blocks/Footer';
+import SearchBar from '../components/SearchBar';
+import EmptyList from '../components/EmptyList';
 
 import styles from '../styles/pages/Home.module.css';
-import EmptyList from '../components/EmptyList';
 
 function Home() {
   // const { activeNotes, archiveNotes } = useContext(NotesContext);
@@ -25,7 +25,7 @@ function Home() {
         {/* Main Heading */}
         <div className={styles.main__heading}>
           <div className={styles.main__headingWrapper}>
-            <h1>Daftar Catatan (0)</h1>
+            <h1 className={styles.main__title}>Daftar Catatan (0)</h1>
             <SearchBar />
           </div>
         </div>

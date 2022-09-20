@@ -25,6 +25,7 @@ function SearchBar() {
           value={keyword}
           onChange={handleChange}
           className={styles.textbox}
+          autoComplete="off"
         />
       </div>
     </form>
