@@ -54,10 +54,15 @@ img {
   max-width: 100%;
 }
 
-/* Desktop */
-/* Desktop */
+/* ================================================ */
+/* Tablet Responsive */
 @media only screen and (min-width: 768px) {
   body {
     font-size: 1rem;
   }
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+@media only screen and (min-width: 1024px) {
 }
