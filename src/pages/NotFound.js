@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 
 import styles from '../styles/pages/notfound.module.css';
 
+import PageNotFoundDesktop from '../assets/images/Page_Not_Found-Desktop.png';
+import PageNotFoundTablet from '../assets/images/Page_Not_Found-Tablet.png';
+import PageNotFoundMobile from '../assets/images/Page_Not_Found-Mobile.png';
+
 function NotFound() {
   useEffect(() => {
     document.title = 'Halaman tidak ditemukan!';
@@ -10,7 +14,11 @@ function NotFound() {
 
   return (
     <main className={styles.main}>
-      <p className={styles.notfound}>404</p>
+      <picture className={styles.boxImage}>
+        <source media="(min-width:768px)" srcSet={PageNotFoundDesktop} />
+        <source media="(min-width:520px)" srcSet={PageNotFoundTablet} />
+        <img src={PageNotFoundMobile} alt="" />
+      </picture>
       <h1 className={styles.title}>Ups, terjadi kesalahan!</h1>
       <p className={styles.paragraph}>
         Halaman yang anda cari tidak ditemukan. Silahkan kembali ke{' '}
