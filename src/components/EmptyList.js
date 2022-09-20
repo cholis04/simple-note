@@ -14,7 +14,9 @@ function Empty() {
       </picture>
       <p className={styles.text}>
         Catatan singkat tidak ditemukan,{' '}
-        <button className={styles.btnAdd}>Buat sekarang!</button>
+        <a href="/catatan/baru" className={styles.linkAdd}>
+          Buat sekarang!
+        </a>
       </p>
     </div>
   );

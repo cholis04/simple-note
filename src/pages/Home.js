@@ -36,7 +36,9 @@ function Home() {
           id="daftar-catatan"
           aria-label="Daftar Catatan"
         >
-          <EmptyList />
+          <div className={styles.main__notelistWrapper}>
+            <EmptyList />
+          </div>
         </section>
       </main>
       <Footer />

@@ -1,35 +1,43 @@
 .boxEmpty {
-    padding-bottom: 5rem;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  padding-bottom: 6em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .text {
-    font-size:1rem;
-    text-align: center;
-    color: var(--text-secondary-color);
-    font-weight: var(--fw-medium);
+  font-size: var(--fs-m);
+  text-align: center;
+  color: var(--text-common-color);
+  font-weight: var(--fw-medium);
 }
 
-.btnAdd {
-    background: none;
-    border: none;
-    font-size: inherit;
-    color:var(--secondary-color);
-    font-weight: var(--fw-bold);
+.linkAdd {
+  font-size: inherit;
+  color: var(--secondary-color);
+  font-weight: var(--fw-bold);
+  text-decoration: none;
 }
 
-/* Desktop Responsive */
-/* Desktop Responsive */
+/* ================================================ */
+/* Tablet Responsive */
 @media only screen and (min-width: 768px) {
+  .boxEmpty {
+    min-height: 70vh;
+    padding-bottom: 2rem;
+  }
 
-
-    @media (hover: hover) { /* when supported */
-        .btnAdd:hover {
-            cursor: pointer;
-            text-decoration: underline;
-        }
+  @media (hover: hover) {
+    /* when supported */
+    .linkAdd:hover {
+      cursor: pointer;
+      text-decoration: underline;
     }
+  }
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+@media only screen and (min-width: 1024px) {
 }

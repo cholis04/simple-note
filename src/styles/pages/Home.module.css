@@ -30,13 +30,13 @@
 
 .main__notelist {
   width: 100%;
-  /* padding-top: var(--mainHeadingHeightMobile); */
+  margin-top: 2rem;
 }
 
 .main__notelistWrapper {
   max-width: var(--maxWidth);
   margin: 0 auto;
-  padding: 0 1em;
+  padding: 0 1.625em;
 }
 
 /* ================================================ */
@@ -51,11 +51,6 @@
 
   .main__title {
     margin: 0;
-  }
-
-  .main__notelist {
-    display: block;
-    /* top: var(--mainHeadingHeightDesktop); */
   }
 
   .main__notelistWrapper {
