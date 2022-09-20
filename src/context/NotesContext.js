@@ -49,7 +49,7 @@ const NotesContextProvider = (props) => {
     }
   };
 
-  // Delete note by Id
+  // Delete Note by Id
   const deleteNote = (id) => {
     if (window.confirm('Hapus catatan ?')) {
       const deletedNotes = notes.filter((note) => note.id !== id);

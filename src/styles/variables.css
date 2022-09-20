@@ -1,0 +1,53 @@
+/* Global Variables */
+
+:root {
+  /* Theme Color */
+  --primary-color: hsl(148, 30%, 46%);
+  --secondary-color: hsl(90, 18%, 64%);
+  --tertiary-color: hsl(157, 16%, 28%);
+
+  /* Scheme Color */
+  --background-color: hsl(0, 0%, 9%);
+  --surface-color: hsl(0, 0%, 15%);
+  --field-color: hsl(0, 0%, 23%);
+  --line-color: hsl(0, 0%, 32%);
+
+  /* App Color */
+  --error-color: hsl(0, 85%, 70%);
+  --highlight-color: hsl(60, 100%, 50%);
+  --disabled-color: hsl(0, 0%, 32%);
+
+  /* Text Color */
+  --text-focal-color: hsl(0, 0%, 100%);
+  --text-common-color: hsl(0, 0%, 72%);
+
+  /* Shadow Effects */
+  --shadow-bottom: 0 4px 4px -4px hsla(0, 0%, 0%, 15%);
+  --shadow-top: 0 -4px 4px -4px hsla(0, 0%, 0%, 15%);
+
+  /* Font Weight */
+  --fw-light: 300;
+  --fw-reguler: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* Font Size */
+  --fs-xxl: 1.383rem;
+  --fs-xl: 1.215rem;
+  --fs-l: 1.138rem;
+  --fs-m: 1rem;
+  --fs-s: 0.878rem;
+  --fs-xs: 0.823rem;
+
+  /* Font Family */
+  --font-quicksand: 'Quicksand', sans-serif;
+
+  /* Dimensions */
+  --maxWidth: 1280px;
+  --midWidth: 375px;
+  --navHeight: 80px;
+  --mainHeadingHeightMobile: 120px;
+  --mainHeadingHeightDesktop: 100px;
+  --gutter: 32px;
+}

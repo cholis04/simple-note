@@ -6,7 +6,7 @@ import { NotesContext } from '../../context/NotesContext';
 import { formattedAttributeTime } from '../../utils/formattedAttributeTime';
 import { showFormattedDate } from '../../utils/showFormattedDate';
 
-import MarkText from '../MarkText';
+import MarkText from '../../elements/MarkText';
 
 import styles from './index.module.css';
 

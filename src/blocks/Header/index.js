@@ -2,7 +2,7 @@ import { PlusIcon } from '@heroicons/react/solid';
 
 import styles from './index.module.css';
 
-function Navbar() {
+function Header() {
   return (
     <nav className={styles.navbar}>
       <div className={styles.wrapper}>
@@ -20,4 +20,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default Header;

@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 /* Import all css variables */
-@import url('./config.css');
+@import url('./variables.css');
 
 * {
   margin: 0;
@@ -16,19 +16,23 @@ body {
   font-size: 0.875rem;
   min-width: var(--minWWidth);
   background-color: var(--background-color);
-  color: var(--text-primary-color);
-  font-family: 'Quicksand', sans-serif;
+  color: var(--text-focal-color);
+  font-family: var(--font-quicksand);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-p,
 h1,
 h2,
 h3,
 h4,
 h5,
-h6,
+h6 {
+  line-height: 160%;
+}
+
+p,
+span,
 input,
 textarea,
 a {
@@ -38,7 +42,12 @@ a {
 input,
 button,
 textarea {
-  font-family: 'Quicksand', sans-serif;
+  font-family: var(--font-quicksand);
+}
+
+img {
+  display: block;
+  max-width: 100%;
 }
 
 /* Desktop */
