@@ -1,13 +1,13 @@
 import { useContext, useState } from 'react';
 
-import { MaxNotes, NotesContext } from '../../context/NotesContext';
+import { MaxNotes, NotesContext } from '../context/NotesContext';
 
 import {
   bodyTextValidation,
   titleValidation,
-} from '../../utils/validationAddNote';
+} from '../utils/validationAddNote';
 
-import styles from './index.module.css';
+import styles from './ModalForm.module.css';
 
 const initialState = {
   title: {

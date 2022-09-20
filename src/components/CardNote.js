@@ -1,14 +1,14 @@
 import { ClockIcon, TrashIcon } from '@heroicons/react/solid';
 import { useContext } from 'react';
 
-import { NotesContext } from '../../context/NotesContext';
+import { NotesContext } from '../context/NotesContext';
 
-import { formattedAttributeTime } from '../../utils/formattedAttributeTime';
-import { showFormattedDate } from '../../utils/showFormattedDate';
+import { formattedAttributeTime } from '../utils/formattedAttributeTime';
+import { showFormattedDate } from '../utils/showFormattedDate';
 
-import MarkText from '../../elements/MarkText';
+import MarkText from '../elements/MarkText';
 
-import styles from './index.module.css';
+import styles from './CardNote.module.css';
 
 function NoteCard({ note }) {
   const { moveNote, deleteNote } = useContext(NotesContext);

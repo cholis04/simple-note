@@ -39,6 +39,10 @@ a {
   line-height: 180%;
 }
 
+a {
+  color: inherit;
+}
+
 input,
 button,
 textarea {

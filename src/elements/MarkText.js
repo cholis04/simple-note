@@ -1,3 +1,5 @@
+import styles from './MarkText.module.css';
+
 function MarkText({ text, keyword, regExpKeyword }) {
   if (keyword !== '') {
     const splitterText = '___{$#(!VMV!)#$}___';
@@ -14,7 +16,7 @@ function MarkText({ text, keyword, regExpKeyword }) {
         {split.map((word, index) => {
           if (word.toLowerCase() === keyword.toLowerCase())
             return (
-              <mark style={{ backgroundColor: 'yellow' }} key={index}>
+              <mark className={styles.mark} key={index}>
                 {word}
               </mark>
             );

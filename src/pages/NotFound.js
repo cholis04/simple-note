@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import styles from '../styles/pages/notfound.module.css';
+import styles from '../styles/pages/NotFound.module.css';
 
 import PageNotFoundDesktop from '../assets/images/Page_Not_Found-Desktop.png';
 import PageNotFoundTablet from '../assets/images/Page_Not_Found-Tablet.png';
@@ -15,8 +15,8 @@ function NotFound() {
   return (
     <main className={styles.main}>
       <picture className={styles.boxImage}>
-        <source media="(min-width:768px)" srcSet={PageNotFoundDesktop} />
-        <source media="(min-width:520px)" srcSet={PageNotFoundTablet} />
+        <source media="(min-width:960px)" srcSet={PageNotFoundDesktop} />
+        <source media="(min-width:480px)" srcSet={PageNotFoundTablet} />
         <img src={PageNotFoundMobile} alt="" />
       </picture>
       <h1 className={styles.title}>Ups, terjadi kesalahan!</h1>

@@ -1,11 +1,11 @@
 import { useContext } from 'react';
 import { SearchIcon } from '@heroicons/react/solid';
 
-import { NotesContext } from '../../context/NotesContext';
+import { NotesContext } from '../context/NotesContext';
 
-import styles from './index.module.css';
+import styles from './SearchBar.module.css';
 
-function SearchForm() {
+function SearchBar() {
   const { keyword, setKeyword } = useContext(NotesContext);
 
   const handleChange = (e) => {
@@ -31,4 +31,4 @@ function SearchForm() {
   );
 }
 
-export default SearchForm;
+export default SearchBar;

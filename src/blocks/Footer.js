@@ -1,11 +1,11 @@
-import styles from './index.module.css';
+import styles from './Footer.module.css';
 
 function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.wrapper}>
         <p className={styles.paragraph}>
-          Proyek Akhir “Membangun Aplikasi Notes Menggunakan React” dari{' '}
+          Proyek “Membangun Single Page Application menggunakan React” dari{' '}
           <a
             className={styles.link}
             href="https://www.dicoding.com/"
