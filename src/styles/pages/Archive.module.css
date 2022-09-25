@@ -1,0 +1,74 @@
+/* Main */
+.main {
+  margin-top: var(--navHeight);
+}
+
+.main__heading {
+  position: sticky;
+  top: var(--navHeight);
+  background-color: var(--background-color);
+  z-index: 998;
+}
+
+.main__headingWrapper {
+  margin: 0 auto;
+  max-width: var(--maxWidth);
+  padding: 0.5em 1.625em;
+
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main__title {
+  margin: 1rem auto;
+  font-size: var(--fs-xxl);
+  color: var(--text-focal-color);
+  font-weight: var(--fw-bold);
+}
+
+.main__notelist {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.main__notelistWrapper {
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  padding: 0 1.625em;
+}
+
+.main__noteBox {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+@media only screen and (min-width: 768px) {
+  .main__headingWrapper {
+    padding: 0.5em 2em;
+
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .main__title {
+    margin: 0;
+  }
+
+  .main__notelist {
+    padding-bottom: 2rem;
+  }
+
+  .main__notelistWrapper {
+    padding: 0 2em;
+  }
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+@media only screen and (min-width: 1024px) {
+}
