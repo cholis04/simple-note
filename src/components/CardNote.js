@@ -1,5 +1,6 @@
 import { ClockIcon, TrashIcon } from '@heroicons/react/solid';
-import { useContext } from 'react';
+import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 
 import { NotesContext } from '../context/NotesContext';
 
@@ -10,7 +11,7 @@ import MarkText from '../elements/MarkText';
 
 import styles from './CardNote.module.css';
 
-function NoteCard({ note }) {
+function CardNote({ note }) {
   const { moveNote, deleteNote } = useContext(NotesContext);
   const { keyword } = useContext(NotesContext);
 
@@ -19,11 +20,13 @@ function NoteCard({ note }) {
   return (
     <article id={note.id} className={styles.articleCard}>
       <h2 className={styles.title}>
-        <MarkText
-          keyword={keyword}
-          regExpKeyword={regExpKeyword}
-          text={note.title}
-        />
+        <a className={styles.titleUrl} href={`/catatan/${note.id}`}>
+          <MarkText
+            keyword={keyword}
+            regExpKeyword={regExpKeyword}
+            text={note.title}
+          />
+        </a>
       </h2>
       <p className={styles.dateInfo}>
         <ClockIcon className={styles.iconTime} />{' '}
@@ -31,15 +34,7 @@ function NoteCard({ note }) {
           {showFormattedDate(note.createdAt)}
         </time>
       </p>
-      <hr className={styles.lineBreak} />
-      <p className={styles.bodyText}>
-        <MarkText
-          keyword={keyword}
-          regExpKeyword={regExpKeyword}
-          text={note.body}
-        />
-      </p>
-      <hr className={styles.lineBreak} />
+      <p className={styles.bodyText}>{note.body}</p>
       <div className={styles.action}>
         <button onClick={() => moveNote(note.id)} className={styles.btnMove}>
           {note.archived ? '← Aktifkan' : 'Arsipkan →'}
@@ -56,4 +51,14 @@ function NoteCard({ note }) {
   );
 }
 
-export default NoteCard;
+CardNote.propTypes = {
+  note: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    createdAt: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired,
+    archived: PropTypes.bool.isRequired,
+  }),
+};
+
+export default CardNote;

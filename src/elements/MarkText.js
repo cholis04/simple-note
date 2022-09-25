@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import styles from './MarkText.module.css';
 
 function MarkText({ text, keyword, regExpKeyword }) {
@@ -28,5 +30,11 @@ function MarkText({ text, keyword, regExpKeyword }) {
 
   return <>{text}</>;
 }
+
+MarkText.propTypes = {
+  text: PropTypes.string,
+  keyword: PropTypes.string,
+  regExpKeyword: PropTypes.any.isRequired,
+};
 
 export default MarkText;

@@ -1,92 +1,122 @@
 .articleCard {
-    margin-bottom: var(--gutter);
-    background-color: var(--surface-color);
+  background-color: var(--surface-color);
 
-    padding:2.2em 2em;
-    border-radius: 25px;
+  padding: 2.2em 2em;
+  border-radius: 25px;
+
+  position: relative;
+  height: 280px;
 }
 
 .title {
-    font-size: 1.3em;
-    font-weight: var(--fw-bold);
+  font-size: 1.3em;
+  font-weight: var(--fw-bold);
+  color: var(--text-focal-color);
 }
 
+.titleUrl {
+  text-decoration: none;
+}
+
+.titleUrl:active {
+  opacity: 0.7;
+}
 
 .dateInfo {
-    margin: 0.7rem auto;
+  margin: 0.7rem auto;
 
-    font-size: 0.85em;
-    font-weight: var(--fw-reguler);
-    color:var(--text-secondary-color);
+  font-size: 0.85em;
+  font-weight: var(--fw-reguler);
+  color: var(--text-common-color);
 }
 
 .iconTime {
-    width: 0.8rem;
-    height: 0.8rem;
-    margin-right: 0.1rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-right: 0.1rem;
 }
 
-.lineBreak {
-    border:none;
-    border-bottom: 1px solid var(--input-background-color);
+.bodyText {
+  margin: 1rem auto;
+  font-size: 1em;
+  font-weight: var(--fw-reguler);
+  color: var(--text-focal-color);
+
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
-.bodyText{
-    margin: 1rem auto;
-    font-size: 1em;
-    font-weight: var(--fw-reguler);
+.action {
+  margin-top: 1.6rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0 2em;
+  bottom: 2.2em;
 }
 
-.action{
-    margin-top: 1.6rem;
+.btnMove,
+.btnDelete {
+  border: none;
+  background: none;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+  font-weight: var(--fw-bold);
+  font-size: 1em;
 
-.btnMove, .btnDelete {
-    border:none;
-    background: none;
+  transition: all 0.2s ease-in-out;
 
-    font-weight: var(--fw-bold);
-    font-size: 1em;
-
-    transition: opacity 0.2s ease-in-out;
-
-    display:flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .btnMove {
-    color:var(--secondary-color)
+  color: var(--secondary-color);
 }
 
 .btnDelete {
-    color:var(--alert-color)
+  color: var(--error-color);
 }
-.btnMove:active, .btnDelete:active {
-    opacity: 0.7;
+.btnMove:active,
+.btnDelete:active {
+  opacity: 0.7;
 }
 
 .iconBtn {
-    width: 1rem;
-    height: 1rem;
-    margin-right: 0.2rem;
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.2rem;
 }
 
-
-/* Desktop Responsive */
-/* Desktop Responsive */
+/* ================================================ */
+/* Tablet Responsive */
 @media only screen and (min-width: 768px) {
-
-
-    @media (hover: hover) { /* when supported */
-        .btnMove:hover, .btnDelete:hover {
-            opacity: 0.7;
-            cursor:pointer;
-        }
-    }
+  .articleCard {
+    height: 320px;
+  }
 }
-   
+
+/* ================================================ */
+/* Desktop Responsive */
+@media only screen and (min-width: 1024px) {
+  @media (hover: hover) {
+    /* when supported */
+    .btnMove:hover,
+    .btnDelete:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .titleUrl:hover {
+      text-decoration: underline;
+    }
+  }
+}

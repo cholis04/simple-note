@@ -39,6 +39,12 @@
   padding: 0 1.625em;
 }
 
+.main__noteBox {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
 /* ================================================ */
 /* Tablet Responsive */
 @media only screen and (min-width: 768px) {
@@ -51,6 +57,10 @@
 
   .main__title {
     margin: 0;
+  }
+
+  .main__notelist {
+    padding-bottom: 2rem;
   }
 
   .main__notelistWrapper {

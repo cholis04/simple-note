@@ -1,20 +1,22 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 
-// import { NotesContext } from '../context/NotesContext';
+import { NotesContext } from '../context/NotesContext';
 
 import Header from '../blocks/Header';
 import Footer from '../blocks/Footer';
+
 import SearchBar from '../components/SearchBar';
 import EmptyList from '../components/EmptyList';
+import CardNote from '../components/CardNote';
 
 import styles from '../styles/pages/Home.module.css';
 
 function Home() {
-  // const { activeNotes, archiveNotes } = useContext(NotesContext);
+  const { activeNotes } = useContext(NotesContext);
 
   // Title Document
   useEffect(() => {
-    document.title = 'Simple Notes';
+    document.title = 'Daftar Catatan';
   });
 
   // Render Component
@@ -25,7 +27,9 @@ function Home() {
         {/* Main Heading */}
         <div className={styles.main__heading}>
           <div className={styles.main__headingWrapper}>
-            <h1 className={styles.main__title}>Daftar Catatan (0)</h1>
+            <h1 className={styles.main__title}>
+              Daftar Catatan ({activeNotes.length})
+            </h1>
             <SearchBar />
           </div>
         </div>
@@ -37,7 +41,14 @@ function Home() {
           aria-label="Daftar Catatan"
         >
           <div className={styles.main__notelistWrapper}>
-            <EmptyList />
+            {activeNotes.length <= 0 && <EmptyList />}
+            {activeNotes.length >= 1 && (
+              <div className={styles.main__noteBox}>
+                {activeNotes.map((note) => (
+                  <CardNote key={note.id} note={note} />
+                ))}
+              </div>
+            )}
           </div>
         </section>
       </main>
