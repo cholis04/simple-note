@@ -22,6 +22,7 @@
   font-size: var(--fs-xl);
   font-weight: var(--fw-bold);
   color: var(--text-focal-color);
+  text-decoration: none;
 }
 
 .menu {
@@ -58,17 +59,20 @@
   .menuLastItem {
     display: inline-block;
   }
+}
 
+/* ================================================ */
+/* Desktop Responsive */
+@media only screen and (min-width: 1024px) {
   @media (hover: hover) {
     /* when supported */
 
     .link:hover {
       color: var(--text-focal-color);
     }
-  }
-}
 
-/* ================================================ */
-/* Desktop Responsive */
-@media only screen and (min-width: 1024px) {
+    .brand:hover {
+      text-decoration: underline;
+    }
+  }
 }

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import ButtonLabel from '../elements/ButtonLabel';
 import styles from './Header.module.css';
 
@@ -9,13 +11,15 @@ function Header() {
   return (
     <nav className={styles.navbar}>
       <div className={styles.wrapper}>
-        <p className={styles.brand}>Catatan Singkat</p>
+        <Link className={styles.brand} to="/">
+          Catatan Singkat
+        </Link>
 
         <ul className={styles.menu}>
           <li className={styles.menuItem}>
-            <a className={styles.link} href="/arsip">
+            <Link className={styles.link} to="/arsip">
               Arsip
-            </a>
+            </Link>
           </li>
           <li className={styles.menuLastItem}>
             <ButtonLabel
