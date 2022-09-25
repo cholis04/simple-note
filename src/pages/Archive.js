@@ -16,7 +16,7 @@ function Archive() {
 
   // Title Document
   useEffect(() => {
-    document.title = 'Daftar Catatan';
+    document.title = 'Daftar Arsip';
   });
 
   // Render Component
