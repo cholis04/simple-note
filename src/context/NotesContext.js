@@ -44,6 +44,11 @@ const NotesContextProvider = (props) => {
   const totalNotes = notes.length;
   const availableNotes = totalNotes < MaxNotes;
 
+  // Find Note by Id
+  const getNoteById = (id) => {
+    return notes.find((note) => note.id === id);
+  };
+
   // Add Note
   const addNote = (newTitle, newBodyText) => {
     if (availableNotes) {
@@ -95,6 +100,7 @@ const NotesContextProvider = (props) => {
       value={{
         keywordTitle,
         setKeywordTitle,
+        getNoteById,
         activeNotes,
         archiveNotes,
         availableNotes,

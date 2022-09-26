@@ -2,10 +2,11 @@ import { Routes, Route } from 'react-router-dom';
 
 import NotesContextProvider from './context/NotesContext';
 
+import NotFound from './blocks/NotFound';
+
 import Archive from './pages/Archive';
 import Home from './pages/Home';
 import Note from './pages/Note';
-import NotFound from './pages/NotFound';
 
 function App() {
   return (
