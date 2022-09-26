@@ -22,6 +22,11 @@ function Home() {
     document.title = 'Daftar Catatan';
   });
 
+  // Handle Add Button Click on Mobile
+  const onAddButtonClick = () => {
+    console.log('Hello');
+  };
+
   // Render Component
   return (
     <>
@@ -57,7 +62,7 @@ function Home() {
 
         {/* Float Button on Mobile Screen */}
         <div className={styles.mobileButtonFloat}>
-          <ButtonIcon label="Buat catatan baru">
+          <ButtonIcon label="Buat catatan baru" onClick={onAddButtonClick}>
             <PlusIcon />
           </ButtonIcon>
         </div>

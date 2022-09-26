@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import styles from './ButtonIcon.module.css';
 
-const ButtonIcon = ({ label, children }) => {
+const ButtonIcon = ({ label, onClick, children }) => {
   return (
-    <button aria-label={label} className={styles.buttonIcon}>
+    <button aria-label={label} className={styles.buttonIcon} onClick={onClick}>
       {children}
     </button>
   );
