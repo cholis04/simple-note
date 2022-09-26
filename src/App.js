@@ -8,15 +8,19 @@ import Archive from './pages/Archive';
 import Home from './pages/Home';
 import Note from './pages/Note';
 
+import ScrollToTop from './elements/ScrollToTop';
+
 function App() {
   return (
     <NotesContextProvider>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/arsip" element={<Archive />} />
-        <Route path="/catatan/:id" element={<Note />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <ScrollToTop>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/arsip" element={<Archive />} />
+          <Route path="/catatan/:id" element={<Note />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </ScrollToTop>
     </NotesContextProvider>
   );
 }
