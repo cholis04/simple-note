@@ -45,6 +45,6 @@
 
   /* Dimensions */
   --maxWidth: 1280px;
-  --midWidth: 375px;
+  --minWidth: 545px;
   --navHeight: 80px;
 }
