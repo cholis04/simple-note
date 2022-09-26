@@ -33,12 +33,14 @@ function Note() {
 
   // Handle Delete Note
   const onClickButtonDelete = (id) => {
-    if (note.archived) {
-      deleteNote(id);
-      navigate('/arsip');
-    } else {
-      deleteNote(id);
-      navigate('/');
+    if (window.confirm('Hapus catatan ?')) {
+      if (note.archived) {
+        deleteNote(id);
+        navigate('/arsip');
+      } else {
+        deleteNote(id);
+        navigate('/');
+      }
     }
   };
 

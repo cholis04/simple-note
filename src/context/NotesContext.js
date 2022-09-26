@@ -69,10 +69,8 @@ const NotesContextProvider = (props) => {
 
   // Delete Note by Id
   const deleteNote = (id) => {
-    if (window.confirm('Hapus catatan ?')) {
-      const deletedNotes = notes.filter((note) => note.id !== id);
-      setNotes(deletedNotes);
-    }
+    const deletedNotes = notes.filter((note) => note.id !== id);
+    setNotes(deletedNotes);
   };
 
   // Move Note Archived False or True by ID

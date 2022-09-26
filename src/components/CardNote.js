@@ -21,6 +21,13 @@ function CardNote({ note }) {
 
   const regExpKeyword = new RegExp(keywordTitle, 'gi');
 
+  // Handle Delete Note
+  const onClickButtonDelete = (id) => {
+    if (window.confirm('Hapus catatan ?')) {
+      deleteNote(id);
+    }
+  };
+
   return (
     <article id={note.id} className={styles.articleCard}>
       <h2 className={styles.title}>
@@ -53,7 +60,7 @@ function CardNote({ note }) {
         )}
         <ButtonLinkIcon
           icon={<TrashIcon />}
-          onClick={() => deleteNote(note.id)}
+          onClick={() => onClickButtonDelete(note.id)}
           label="Hapus"
           color="error"
           iconPosition="before"
