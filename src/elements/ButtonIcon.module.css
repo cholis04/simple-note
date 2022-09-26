@@ -1,0 +1,17 @@
+.buttonIcon {
+  width: 3.25rem;
+  height: 3.25rem;
+  padding: 0.5em;
+  border-radius: 50px;
+  border: none;
+
+  background-color: var(--primary-color);
+  color: var(--text-focal-color);
+
+  box-shadow: var(--shadow-bottom);
+}
+
+.buttonIcon:active {
+  background-color: var(--tertiary-color);
+  color: var(--secondary-color);
+}
