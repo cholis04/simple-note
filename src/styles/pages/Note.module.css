@@ -1,14 +1,123 @@
 /* Main */
 .main {
   margin-top: var(--navHeight);
+  padding: 2rem 1.625rem;
+}
+
+/* Detail  */
+
+.detail {
+  margin: 0 auto;
+  max-width: 768px;
+
+  min-height: 100vh;
+}
+
+.detail__action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btnMove,
+.btnDelete {
+  border: none;
+  background: none;
+
+  font-weight: var(--fw-bold);
+  font-size: 1em;
+
+  transition: all 0.2s ease-in-out;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnMove {
+  color: var(--secondary-color);
+}
+
+.btnDelete {
+  color: var(--error-color);
+}
+.btnMove:active,
+.btnDelete:active {
+  opacity: 0.7;
+}
+
+.iconBtn {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.2rem;
+}
+
+.detail__info {
+  margin-top: 2rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detail__infoDate {
+  display: flex;
+  align-items: center;
+
+  border: 1px solid blue;
+
+  font-size: var(--fs-xs);
+}
+
+.iconTime {
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-right: 0.4rem;
+}
+
+.detail__infoWordCount {
+  font-size: var(--fs-xs);
+}
+
+.detail__status {
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-s);
+  line-height: 1.8;
+}
+
+.detail__statusLabel {
+  color: var(--primary-color);
+}
+
+.titleNote {
+  margin: 2rem auto;
+  color: var(--text-focal-color);
+}
+
+.bodyNote {
+  font-size: var(--fs-l);
 }
 
 /* ================================================ */
 /* Tablet Responsive */
 @media only screen and (min-width: 768px) {
+  .main {
+    padding: 4rem 2rem;
+  }
+  .detail {
+    min-height: 65vh;
+  }
 }
 
 /* ================================================ */
 /* Desktop Responsive */
 @media only screen and (min-width: 1024px) {
+  @media (hover: hover) {
+    /* when supported */
+    .btnMove:hover,
+    .btnDelete:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
 }

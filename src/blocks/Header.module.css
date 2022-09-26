@@ -36,7 +36,7 @@
 }
 
 .menuItem {
-  margin-right: 1rem;
+  margin-right: 0;
 }
 
 .menuLastItem {
@@ -59,6 +59,10 @@
   .wrapper {
     padding: 0 2em;
   }
+  .menuItem {
+    margin-right: 1rem;
+  }
+
   .menuLastItem {
     display: inline-block;
   }
