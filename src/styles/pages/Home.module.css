@@ -45,6 +45,20 @@
   gap: 2rem;
 }
 
+.mobileButtonFloat {
+  position: sticky;
+  bottom: 2rem;
+
+  padding: 0 1.625em;
+
+  margin-top: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
 /* ================================================ */
 /* Tablet Responsive */
 @media only screen and (min-width: 768px) {
@@ -66,6 +80,10 @@
 
   .main__notelistWrapper {
     padding: 0 2em;
+  }
+
+  .mobileButtonFloat {
+    display: none;
   }
 }
 
