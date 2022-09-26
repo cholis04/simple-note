@@ -1,14 +1,12 @@
-import { ClockIcon, TrashIcon } from '@heroicons/react/solid';
+import { TrashIcon } from '@heroicons/react/solid';
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { NotesContext } from '../context/NotesContext';
 
-import { formattedAttributeTime } from '../utils/formattedAttributeTime';
-import { showFormattedDate } from '../utils/showFormattedDate';
-
 import MarkText from '../elements/MarkText';
+import InfoDate from '../elements/InfoDate';
 
 import styles from './CardNote.module.css';
 
@@ -29,12 +27,7 @@ function CardNote({ note }) {
           />
         </Link>
       </h2>
-      <p className={styles.dateInfo}>
-        <ClockIcon className={styles.iconTime} />{' '}
-        <time dateTime={formattedAttributeTime(note.createdAt)}>
-          {showFormattedDate(note.createdAt)}
-        </time>
-      </p>
+      <InfoDate time={note.createdAt} />
       <p className={styles.bodyText}>{note.body}</p>
       <div className={styles.action}>
         <button onClick={() => moveNote(note.id)} className={styles.btnMove}>

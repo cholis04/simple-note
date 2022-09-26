@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react';
-import { ClockIcon, TrashIcon } from '@heroicons/react/solid';
+import { TrashIcon } from '@heroicons/react/solid';
 import { useParams } from 'react-router-dom';
 
 import { NotesContext } from '../context/NotesContext';
@@ -8,9 +8,9 @@ import Header from '../blocks/Header';
 import Footer from '../blocks/Footer';
 import NotFound from '../blocks/NotFound';
 
+import InfoDate from '../elements/InfoDate';
+
 import styles from '../styles/pages/Note.module.css';
-import { formattedAttributeTime } from '../utils/formattedAttributeTime';
-import { showFormattedDate } from '../utils/showFormattedDate';
 
 function Note() {
   const { id } = useParams();
@@ -23,6 +23,7 @@ function Note() {
     if (note !== undefined) document.title = `Catatan - ${note?.title}`;
   });
 
+  // Count Word Function
   const countWords = (str) => {
     const arr = str.split(' ');
     return arr.filter((word) => word !== '').length;
@@ -56,12 +57,7 @@ function Note() {
             </button>
           </div>
           <div className={styles.detail__info}>
-            <div className={styles.detail__infoDate}>
-              <ClockIcon className={styles.iconTime} />{' '}
-              <time dateTime={formattedAttributeTime(note.createdAt)}>
-                {showFormattedDate(note.createdAt)}
-              </time>
-            </div>
+            <InfoDate time={note.createdAt} />
             <p className={styles.detail__status}>
               Status :{' '}
               <span className={styles.detail__statusLabel}>
