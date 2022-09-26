@@ -10,6 +10,8 @@ import NotFound from '../blocks/NotFound';
 
 import InfoDate from '../elements/InfoDate';
 
+import { countWords } from '../utils/countWord';
+
 import styles from '../styles/pages/Note.module.css';
 
 function Note() {
@@ -22,12 +24,6 @@ function Note() {
   useEffect(() => {
     if (note !== undefined) document.title = `Catatan - ${note?.title}`;
   });
-
-  // Count Word Function
-  const countWords = (str) => {
-    const arr = str.split(' ');
-    return arr.filter((word) => word !== '').length;
-  };
 
   // Render NofFound when note is undefinded
   if (note === undefined) {
