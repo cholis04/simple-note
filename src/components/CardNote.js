@@ -1,6 +1,7 @@
 import { ClockIcon, TrashIcon } from '@heroicons/react/solid';
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import { NotesContext } from '../context/NotesContext';
 
@@ -20,13 +21,13 @@ function CardNote({ note }) {
   return (
     <article id={note.id} className={styles.articleCard}>
       <h2 className={styles.title}>
-        <a className={styles.titleUrl} href={`/catatan/${note.id}`}>
+        <Link className={styles.titleUrl} to={`/catatan/${note.id}`}>
           <MarkText
             keyword={keywordTitle}
             regExpKeyword={regExpKeyword}
             text={note.title}
           />
-        </a>
+        </Link>
       </h2>
       <p className={styles.dateInfo}>
         <ClockIcon className={styles.iconTime} />{' '}
