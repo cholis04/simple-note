@@ -1,6 +1,10 @@
 import { useContext, useEffect } from 'react';
-import { TrashIcon } from '@heroicons/react/solid';
 import { useParams } from 'react-router-dom';
+import {
+  ArrowNarrowLeftIcon,
+  ArrowNarrowRightIcon,
+  TrashIcon,
+} from '@heroicons/react/solid';
 
 import { NotesContext } from '../context/NotesContext';
 
@@ -13,6 +17,7 @@ import InfoDate from '../elements/InfoDate';
 import { countWords } from '../utils/countWord';
 
 import styles from '../styles/pages/Note.module.css';
+import ButtonLinkIcon from '../elements/ButtonLinkIcon';
 
 function Note() {
   const { id } = useParams();
@@ -38,19 +43,29 @@ function Note() {
         {/* Note Detail */}
         <section className={styles.detail}>
           <div className={styles.detail__action}>
-            <button
-              onClick={() => moveNote(note.id)}
-              className={styles.btnMove}
-            >
-              {note.archived ? '← Aktifkan' : 'Arsipkan →'}
-            </button>
-
-            <button
+            {note.archived ? (
+              <ButtonLinkIcon
+                icon={<ArrowNarrowRightIcon />}
+                onClick={() => moveNote(note.id)}
+                label="Aktifkan"
+                color="secondary"
+              />
+            ) : (
+              <ButtonLinkIcon
+                icon={<ArrowNarrowLeftIcon />}
+                onClick={() => moveNote(note.id)}
+                label="Arsipkan"
+                color="secondary"
+                iconPosition="before"
+              />
+            )}
+            <ButtonLinkIcon
+              icon={<TrashIcon />}
               onClick={() => deleteNote(note.id)}
-              className={styles.btnDelete}
-            >
-              <TrashIcon className={styles.iconBtn} /> Hapus
-            </button>
+              label="Hapus"
+              color="error"
+              iconPosition="before"
+            />
           </div>
           <div className={styles.detail__info}>
             <InfoDate time={note.createdAt} />
