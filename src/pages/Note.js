@@ -45,18 +45,18 @@ function Note() {
           <div className={styles.detail__action}>
             {note.archived ? (
               <ButtonLinkIcon
-                icon={<ArrowNarrowRightIcon />}
+                icon={<ArrowNarrowLeftIcon />}
                 onClick={() => moveNote(note.id)}
                 label="Aktifkan"
                 color="secondary"
+                iconPosition="before"
               />
             ) : (
               <ButtonLinkIcon
-                icon={<ArrowNarrowLeftIcon />}
+                icon={<ArrowNarrowRightIcon />}
                 onClick={() => moveNote(note.id)}
                 label="Arsipkan"
                 color="secondary"
-                iconPosition="before"
               />
             )}
             <ButtonLinkIcon
