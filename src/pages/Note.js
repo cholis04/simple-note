@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import {
   ArrowNarrowLeftIcon,
   ArrowNarrowRightIcon,
@@ -21,6 +21,7 @@ import ButtonLinkIcon from '../elements/ButtonLinkIcon';
 
 function Note() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const { getNoteById, moveNote, deleteNote } = useContext(NotesContext);
 
   const note = getNoteById(Number(id));
@@ -29,6 +30,17 @@ function Note() {
   useEffect(() => {
     if (note !== undefined) document.title = `Catatan - ${note?.title}`;
   });
+
+  // Handle Delete Note
+  const onClickButtonDelete = (id) => {
+    if (note.archived) {
+      deleteNote(id);
+      navigate('/arsip');
+    } else {
+      deleteNote(id);
+      navigate('/');
+    }
+  };
 
   // Render NofFound when note is undefinded
   if (note === undefined) {
@@ -61,7 +73,7 @@ function Note() {
             )}
             <ButtonLinkIcon
               icon={<TrashIcon />}
-              onClick={() => deleteNote(note.id)}
+              onClick={() => onClickButtonDelete(note.id)}
               label="Hapus"
               color="error"
               iconPosition="before"
