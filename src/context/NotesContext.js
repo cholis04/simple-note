@@ -18,10 +18,8 @@ const NotesContextProvider = (props) => {
 
   const filteredNotes =
     keyword !== ''
-      ? notes.filter(
-          (note) =>
-            note.title.toLowerCase().includes(keyword.toLowerCase()) ||
-            note.body.toLowerCase().includes(keyword.toLowerCase()),
+      ? notes.filter((note) =>
+          note.title.toLowerCase().includes(keyword.toLowerCase()),
         )
       : notes;
 
