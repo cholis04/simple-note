@@ -1,4 +1,5 @@
 import { useEffect, useContext } from 'react';
+import { PlusIcon } from '@heroicons/react/solid';
 
 import { NotesContext } from '../context/NotesContext';
 
@@ -9,6 +10,8 @@ import SearchBar from '../components/SearchBar';
 import EmptyList from '../components/EmptyList';
 import CardNote from '../components/CardNote';
 
+import ButtonIcon from '../elements/ButtonIcon';
+
 import styles from '../styles/pages/Archive.module.css';
 
 function Archive() {
@@ -18,6 +21,11 @@ function Archive() {
   useEffect(() => {
     document.title = 'Daftar Arsip';
   });
+
+  // Handle Add Button Click on Mobile
+  const onAddButtonClick = () => {
+    console.log('Hello');
+  };
 
   // Render Component
   return (
@@ -51,6 +59,13 @@ function Archive() {
             )}
           </div>
         </section>
+
+        {/* Float Button on Mobile Screen */}
+        <div className={styles.mobileButtonFloat}>
+          <ButtonIcon label="Buat catatan baru" onClick={onAddButtonClick}>
+            <PlusIcon />
+          </ButtonIcon>
+        </div>
       </main>
       <Footer />
     </>
