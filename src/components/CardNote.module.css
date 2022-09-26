@@ -19,7 +19,7 @@
 }
 
 .titleUrl:active {
-  opacity: 0.7;
+  text-decoration: underline;
 }
 
 .dateInfo {
@@ -116,7 +116,7 @@
     }
 
     .titleUrl:hover {
-      text-decoration: underline;
+      color: var(--secondary-color);
     }
   }
 }

@@ -24,6 +24,9 @@
   color: var(--text-focal-color);
   text-decoration: none;
 }
+.brand:active {
+  text-decoration: underline;
+}
 
 .menu {
   list-style-type: none;
@@ -72,7 +75,7 @@
     }
 
     .brand:hover {
-      text-decoration: underline;
+      color: var(--secondary-color);
     }
   }
 }
