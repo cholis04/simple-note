@@ -1,0 +1,14 @@
+/* Main */
+.main {
+  margin-top: var(--navHeight);
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+@media only screen and (min-width: 768px) {
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+@media only screen and (min-width: 1024px) {
+}
