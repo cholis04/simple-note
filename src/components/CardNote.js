@@ -7,25 +7,16 @@ import { NotesContext } from '../context/NotesContext';
 import { formattedAttributeTime } from '../utils/formattedAttributeTime';
 import { showFormattedDate } from '../utils/showFormattedDate';
 
-import MarkText from '../elements/MarkText';
-
 import styles from './CardNote.module.css';
 
 function CardNote({ note }) {
   const { moveNote, deleteNote } = useContext(NotesContext);
-  const { keyword } = useContext(NotesContext);
-
-  const regExpKeyword = new RegExp(keyword, 'gi');
 
   return (
     <article id={note.id} className={styles.articleCard}>
       <h2 className={styles.title}>
         <a className={styles.titleUrl} href={`/catatan/${note.id}`}>
-          <MarkText
-            keyword={keyword}
-            regExpKeyword={regExpKeyword}
-            text={note.title}
-          />
+          {note.title}
         </a>
       </h2>
       <p className={styles.dateInfo}>

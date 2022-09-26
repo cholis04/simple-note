@@ -6,11 +6,11 @@ import { NotesContext } from '../context/NotesContext';
 import styles from './SearchBar.module.css';
 
 function SearchBar() {
-  const { keyword, setKeyword } = useContext(NotesContext);
+  const { keywordTitle, setKeywordTitle } = useContext(NotesContext);
 
   const handleChange = (e) => {
     const value = e.target.value;
-    setKeyword(value.trimStart());
+    setKeywordTitle(value.trimStart());
   };
 
   return (
@@ -20,9 +20,9 @@ function SearchBar() {
         <input
           name="cari-catatan"
           type="search"
-          placeholder="Cari catatan ... "
-          aria-label="Cari catatan"
-          value={keyword}
+          placeholder="Cari berdasarkan judul ... "
+          aria-label="Cari catatan berdasarkan judul"
+          value={keywordTitle}
           onChange={handleChange}
           className={styles.textbox}
           autoComplete="off"

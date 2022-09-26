@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import { getInitialData } from '../data';
 
@@ -14,12 +15,26 @@ const initialState = () => {
 
 const NotesContextProvider = (props) => {
   const [notes, setNotes] = useState(initialState());
-  const [keyword, setKeyword] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  // const [keyword, setKeyword] = useState('');
+
+  // Query Params
+  const keywordTitle = searchParams.get('judul') || '';
+
+  // Set Params
+  const setKeywordTitle = (newValue) => {
+    setSearchParams({ judul: newValue });
+
+    if (newValue === '') {
+      searchParams.delete('judul');
+      setSearchParams(searchParams);
+    }
+  };
 
   const filteredNotes =
-    keyword !== ''
+    keywordTitle !== null
       ? notes.filter((note) =>
-          note.title.toLowerCase().includes(keyword.toLowerCase()),
+          note.title.toLowerCase().includes(keywordTitle.toLowerCase()),
         )
       : notes;
 
@@ -78,8 +93,8 @@ const NotesContextProvider = (props) => {
   return (
     <NotesContext.Provider
       value={{
-        keyword,
-        setKeyword,
+        keywordTitle,
+        setKeywordTitle,
         activeNotes,
         archiveNotes,
         availableNotes,
