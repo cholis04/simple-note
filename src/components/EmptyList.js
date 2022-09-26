@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import EmptyInboxDesktop from '../assets/images/Empty_Inbox-Desktop.png';
 import EmptyInboxTablet from '../assets/images/Empty_Inbox-Tablet.png';
 import EmptyInboxMobile from '../assets/images/Empty_Inbox-Mobile.png';
@@ -14,9 +16,9 @@ function Empty() {
       </picture>
       <p className={styles.text}>
         Catatan singkat tidak ditemukan,{' '}
-        <a href="/catatan/baru" className={styles.linkAdd}>
+        <Link to="/catatan/baru" className={styles.linkAdd}>
           Buat sekarang!
-        </a>
+        </Link>
       </p>
     </div>
   );

@@ -1,4 +1,5 @@
 import { useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { PlusIcon } from '@heroicons/react/solid';
 
 import { NotesContext } from '../context/NotesContext';
@@ -15,6 +16,7 @@ import ButtonIcon from '../elements/ButtonIcon';
 import styles from '../styles/pages/Archive.module.css';
 
 function Archive() {
+  const navigate = useNavigate();
   const { archiveNotes } = useContext(NotesContext);
 
   // Title Document
@@ -22,9 +24,9 @@ function Archive() {
     document.title = 'Daftar Arsip';
   });
 
-  // Handle Add Button Click on Mobile
+  // Navigate Rounte on Button Click
   const onAddButtonClick = () => {
-    console.log('Hello');
+    navigate('/catatan/baru');
   };
 
   // Render Component
