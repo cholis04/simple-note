@@ -1,4 +1,8 @@
-import { TrashIcon } from '@heroicons/react/solid';
+import {
+  ArrowNarrowLeftIcon,
+  ArrowNarrowRightIcon,
+  TrashIcon,
+} from '@heroicons/react/solid';
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -9,6 +13,7 @@ import MarkText from '../elements/MarkText';
 import InfoDate from '../elements/InfoDate';
 
 import styles from './CardNote.module.css';
+import ButtonLinkIcon from '../elements/ButtonLinkIcon';
 
 function CardNote({ note }) {
   const { moveNote, deleteNote } = useContext(NotesContext);
@@ -30,16 +35,29 @@ function CardNote({ note }) {
       <InfoDate time={note.createdAt} />
       <p className={styles.bodyText}>{note.body}</p>
       <div className={styles.action}>
-        <button onClick={() => moveNote(note.id)} className={styles.btnMove}>
-          {note.archived ? '← Aktifkan' : 'Arsipkan →'}
-        </button>
-
-        <button
+        {note.archived ? (
+          <ButtonLinkIcon
+            icon={<ArrowNarrowLeftIcon />}
+            onClick={() => moveNote(note.id)}
+            label="Aktifkan"
+            color="secondary"
+            iconPosition="before"
+          />
+        ) : (
+          <ButtonLinkIcon
+            icon={<ArrowNarrowRightIcon />}
+            onClick={() => moveNote(note.id)}
+            label="Arsipkan"
+            color="secondary"
+          />
+        )}
+        <ButtonLinkIcon
+          icon={<TrashIcon />}
           onClick={() => deleteNote(note.id)}
-          className={styles.btnDelete}
-        >
-          <TrashIcon className={styles.iconBtn} /> Hapus
-        </button>
+          label="Hapus"
+          color="error"
+          iconPosition="before"
+        />
       </div>
     </article>
   );
