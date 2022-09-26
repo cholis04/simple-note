@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 
 import styles from './ButtonIcon.module.css';
 
-const ButtonIcon = ({ label, onClick, children }) => {
+const ButtonIcon = ({ label, onClick, icon }) => {
   return (
     <button aria-label={label} className={styles.buttonIcon} onClick={onClick}>
-      {children}
+      {icon}
     </button>
   );
 };
 
 ButtonIcon.propTypes = {
   label: PropTypes.string.isRequired,
+  icon: PropTypes.element.isRequired,
   onClick: PropTypes.func,
-  children: PropTypes.node.isRequired,
 };
 
 export default ButtonIcon;

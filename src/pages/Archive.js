@@ -62,9 +62,11 @@ function Archive() {
 
         {/* Float Button on Mobile Screen */}
         <div className={styles.mobileButtonFloat}>
-          <ButtonIcon label="Buat catatan baru" onClick={onAddButtonClick}>
-            <PlusIcon />
-          </ButtonIcon>
+          <ButtonIcon
+            icon={<PlusIcon />}
+            label="Buat catatan baru"
+            onClick={onAddButtonClick}
+          />
         </div>
       </main>
       <Footer />
