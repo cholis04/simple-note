@@ -13,6 +13,7 @@ const ButtonIcon = ({ label, onClick, children }) => {
 
 ButtonIcon.propTypes = {
   label: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
   children: PropTypes.node.isRequired,
 };
 
