@@ -1,142 +1,138 @@
 .title {
-    text-align: center;
+  text-align: center;
 
-    font-size: 1.2em;
-    font-weight: var(--fw-bold);
+  font-size: 1.2em;
+  font-weight: var(--fw-bold);
 
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
-.lineBreak{
-    border:none;
-    border-bottom:1px solid var(--line-color);
+.lineBreak {
+  border: none;
+  border-bottom: 1px solid var(--line-color);
 }
 
 .formNote {
-    margin-top: 1.6rem;
-    margin-bottom: 1.6rem;
+  margin-top: 1.6rem;
+  margin-bottom: 1.6rem;
 }
 
 .textInputGroup {
-    margin-bottom: 1.4rem;
+  margin-bottom: 1.4rem;
 }
 
 .headInputGroup {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
 }
 
 .label {
-    font-size: 1em;
-    font-weight: var(--fw-semibold);
+  font-size: 1em;
+  font-weight: var(--fw-semibold);
 }
 
 .char {
-    color:var(--text-secondary-color);
-    font-size: 0.8em;
-    font-weight: var(--fw-medium);
+  color: var(--text-secondary-color);
+  font-size: 0.8em;
+  font-weight: var(--fw-medium);
 }
 
 .char > b {
-    font-weight: var(--fw-semibold);
-    color:var(--secondary-color);
+  font-weight: var(--fw-semibold);
+  color: var(--secondary-color);
 }
 
 .textInput {
-    width: 100%;
-    padding:0.8em 1em;
-    border-radius: 25px;
+  width: 100%;
+  padding: 0.8em 1em;
+  border-radius: 25px;
 
-    border:none;
-    background-color: var(--input-background-color);
+  border: none;
+  background-color: var(--input-background-color);
 
-    font-size: 1em;
-    font-weight: var(--fw-reguler);
-    color:var(--text-primary-color);
+  font-size: 1em;
+  font-weight: var(--fw-reguler);
+  color: var(--text-primary-color);
 }
 .textInput::placeholder {
-    color:var(--text-secondary-color);
+  color: var(--text-secondary-color);
 }
 
 .textAreaInput {
-    width: 100%;
-    padding:0.8em 1em;
-    border-radius: 25px;
+  width: 100%;
+  padding: 0.8em 1em;
+  border-radius: 25px;
 
-    border:none;
-    background-color: var(--input-background-color);
+  border: none;
+  background-color: var(--input-background-color);
 
-    font-size: 1em;
-    font-weight: var(--fw-reguler);
-    color:var(--text-primary-color);
+  font-size: 1em;
+  font-weight: var(--fw-reguler);
+  color: var(--text-primary-color);
 
-    height: 120px;
-    resize: none;
+  height: 120px;
+  resize: none;
 }
-.textAreaInput::placeholder{
-    color:var(--text-secondary-color);
+.textAreaInput::placeholder {
+  color: var(--text-secondary-color);
 }
 
 .alert {
-    margin-top: 0.8rem;
-    font-size: 0.9em;
-    font-weight: var(--fw-medium);
-    color:var(--alert-color)
+  margin-top: 0.8rem;
+  font-size: 0.9em;
+  font-weight: var(--fw-medium);
+  color: var(--alert-color);
 }
 
 .btnSubmit {
-    font-size: 1em;
-    font-weight: var(--fw-bold);
-    padding:0.8em 1em;
-    width: 100%;
+  font-size: 1em;
+  font-weight: var(--fw-bold);
+  padding: 0.8em 1em;
+  width: 100%;
 
-    background-color: var(--primary-color);
-    color:var(--text-primary-color);
+  background-color: var(--primary-color);
+  color: var(--text-primary-color);
 
-    border:none;
-    border-radius: 25px;
+  border: none;
+  border-radius: 25px;
 }
 .btnSubmit:active {
-    background-color: var(--tertiary-color);
-    color:var(--text-secondary-color);
+  background-color: var(--tertiary-color);
+  color: var(--text-secondary-color);
 }
 
 .btnSubmit:disabled {
-    background-color: var(--line-color);
-    color:var(--text-secondary-color);
+  background-color: var(--line-color);
+  color: var(--text-secondary-color);
 }
 
 .maximumNote {
-    margin: 2rem auto;
-    font-size: 1em;
-    font-weight: var(--fw-reguler);
+  margin: 2rem auto;
+  font-size: 1em;
+  font-weight: var(--fw-reguler);
 }
 
 /* Desktop Responsive */
 /* Desktop Responsive */
 @media only screen and (min-width: 768px) {
+  .title {
+    font-size: 1.4em;
+  }
 
-    .title {
-        font-size: 1.4em;
+  @media (hover: hover) {
+    /* when supported */
+    .btnSubmit:hover {
+      background-color: var(--secondary-color);
+      color: var(--tertiary-color);
+      cursor: pointer;
     }
-    
 
-    @media (hover: hover) { /* when supported */
-        .btnSubmit:hover {
-            background-color: var(--secondary-color);
-            color:var(--tertiary-color);
-            cursor: pointer;
-        }
-
-        
-        .btnSubmit:disabled:hover {
-            background-color: var(--line-color);
-            color:var(--text-secondary-color);
-            cursor: not-allowed;
-        }
-
+    .btnSubmit:disabled:hover {
+      background-color: var(--line-color);
+      color: var(--text-secondary-color);
+      cursor: not-allowed;
     }
+  }
 }
-   

@@ -1,6 +1,77 @@
 /* Main */
 .main {
   margin-top: var(--navHeight);
+  padding: 0 1.625rem;
+}
+
+/* Note */
+.note {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.note__wrapper {
+  margin: 0 auto;
+  max-width: 768px;
+}
+
+.note__title {
+  font-size: var(--fs-xxl);
+  color: var(--text-focal-color);
+  font-weight: var(--fw-bold);
+  text-align: center;
+}
+
+.note__form {
+  margin-top: 2rem;
+}
+
+.noteInputGroup,
+.titleInputGroup {
+  margin-bottom: 2rem;
+}
+
+.titleInputGroup {
+  background-color: var(--surface-color);
+  padding: 2.4rem 2rem;
+  border-radius: 25px;
+  box-shadow: var(--shadow-bottom);
+}
+
+.headerNoteInputGroup {
+  position: sticky;
+  top: var(--navHeight);
+  background-color: var(--background-color);
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerTitleInputGroup {
+  margin-bottom: 1rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titleTextInput {
+  width: 100%;
+  padding: 0.5em 1.2em;
+  border-radius: 25px;
+
+  border: none;
+  background-color: var(--field-color);
+
+  font-size: var(--fs-m);
+  font-weight: var(--fw-reguler);
+  color: var(--text-focal-color);
+}
+.titleTextInput::placeholder {
+  color: var(--text-common-color);
 }
 
 /* ================================================ */

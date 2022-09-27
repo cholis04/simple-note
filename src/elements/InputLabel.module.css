@@ -1,0 +1,5 @@
+.inputLabel {
+  font-size: 1em;
+  font-weight: var(--fw-semibold);
+  color: var(--text-focal-color);
+}

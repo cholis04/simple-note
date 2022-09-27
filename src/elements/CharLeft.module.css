@@ -1,0 +1,10 @@
+.charLeft {
+  color: var(--text-common-color);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+}
+
+.charLeft > b {
+  font-weight: var(--fw-semibold);
+  color: var(--secondary-color);
+}
