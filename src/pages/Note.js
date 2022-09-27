@@ -85,9 +85,11 @@ function Note() {
             <InfoDate time={note.createdAt} />
             <p className={styles.detail__status}>
               Status :{' '}
-              <span className={styles.detail__statusLabel}>
-                {note.archived ? 'Arsip' : 'Aktif'}
-              </span>
+              {note.archived ? (
+                <span className={styles.detail__labelArchive}>Arsip</span>
+              ) : (
+                <span className={styles.detail__labelActive}>Aktif</span>
+              )}
             </p>
           </div>
           <h1 className={styles.titleNote}>{note.title}</h1>

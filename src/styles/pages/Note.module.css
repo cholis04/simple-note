@@ -52,8 +52,18 @@
   line-height: 1.8;
 }
 
-.detail__statusLabel {
-  color: var(--primary-color);
+.detail__labelActive {
+  display: inline-block;
+  padding: 0.2em 1.2em;
+  background-color: var(--primary-color);
+  color: var(--text-focal-color);
+}
+
+.detail__labelArchive {
+  display: inline-block;
+  padding: 0.2em 1.2em;
+  background-color: var(--surface-color);
+  color: var(--secondary-color);
 }
 
 .titleNote {
