@@ -41,6 +41,7 @@
 .headerNoteInputGroup {
   position: sticky;
   top: var(--navHeight);
+  z-index: 99;
   background-color: var(--background-color);
   padding: 1rem 0;
   margin-bottom: 1rem;
@@ -64,6 +65,7 @@
   border-radius: 25px;
 
   border: none;
+  outline: none;
   background-color: var(--field-color);
 
   font-size: var(--fs-m);
@@ -74,9 +76,49 @@
   color: var(--text-common-color);
 }
 
+.inputNote {
+  min-height: 360px;
+  width: 100%;
+  resize: none;
+  border: none;
+  outline: none;
+  color: var(--text-focal-color);
+  line-height: 1.8;
+  overflow: hidden;
+
+  font-size: var(--fs-m);
+  background: repeating-linear-gradient(
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0) 24.2px,
+    var(--line-color) 24.2px,
+    var(--line-color) 25.2px
+  );
+}
+
+.maximumNote {
+  margin: 6rem auto;
+  font-size: var(--fs-m);
+  font-weight: var(--fw-reguler);
+  color: var(--text-common-color);
+  text-align: center;
+}
+.maximumNote > b {
+  color: var(--error-color);
+}
+
 /* ================================================ */
 /* Tablet Responsive */
 @media only screen and (min-width: 768px) {
+  .inputNote {
+    min-height: 180px;
+    font-size: var(--fs-l);
+    background: repeating-linear-gradient(
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0) 31.7744px,
+      var(--line-color) 31.7744px,
+      var(--line-color) 32.7744px
+    );
+  }
 }
 
 /* ================================================ */

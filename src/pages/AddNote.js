@@ -42,12 +42,13 @@ function AddNote() {
   const validForm = !form.title.error && !form.bodyText.error;
   const emptyForm = form.title.value === '' || form.bodyText.value === '';
 
+  // Autosizing Height of TextArea
   const handleInputTextArea = useCallback((e) => {
     textAreaRef.current.style.height = `auto`;
-    console.log(e.target.scrollHeight);
     textAreaRef.current.style.height = `${e.target.scrollHeight}px`;
   }, []);
 
+  // Controlled Form on Change
   const handleChange = (e) => {
     let currentElement = e.target.name;
     let value = e.target.value;
@@ -65,6 +66,7 @@ function AddNote() {
     });
   };
 
+  // Validation Form
   const validateError = (field, value) => {
     switch (field) {
       case 'title':
@@ -76,6 +78,7 @@ function AddNote() {
     }
   };
 
+  // Add note when form is valid and not empty
   const handleSubmit = (e) => {
     e.preventDefault();
 
