@@ -14,14 +14,21 @@
 }
 
 .detail__action {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: center;
+}
+
+.detail__info {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.detail__info {
-  margin-top: 2rem;
-
+.detail__additionalInfo {
+  margin: 2rem auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -44,26 +51,6 @@
 
 .detail__infoWordCount {
   font-size: var(--fs-xs);
-}
-
-.detail__status {
-  font-weight: var(--fw-bold);
-  font-size: var(--fs-s);
-  line-height: 1.8;
-}
-
-.detail__labelActive {
-  display: inline-block;
-  padding: 0.2em 1.2em;
-  background-color: var(--primary-color);
-  color: var(--text-focal-color);
-}
-
-.detail__labelArchive {
-  display: inline-block;
-  padding: 0.2em 1.2em;
-  background-color: var(--surface-color);
-  color: var(--secondary-color);
 }
 
 .titleNote {

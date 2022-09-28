@@ -32,15 +32,25 @@ function Note() {
   });
 
   // Handle Delete Note
-  const onClickButtonDelete = (id) => {
+  const onClickButtonDelete = () => {
     if (window.confirm('Hapus catatan ?')) {
       if (note.archived) {
-        deleteNote(id);
+        deleteNote(note.id);
         navigate('/arsip');
       } else {
-        deleteNote(id);
+        deleteNote(note.id);
         navigate('/');
       }
+    }
+  };
+
+  // Handle Move Note
+  const onClickButtonMove = () => {
+    moveNote(note.id);
+    if (note.archived) {
+      window.alert('Catatan kembali diaktifkan!');
+    } else {
+      window.alert('Catatan diarsipkan!');
     }
   };
 
@@ -56,11 +66,12 @@ function Note() {
       <main className={styles.main}>
         {/* Note Detail */}
         <section className={styles.detail}>
-          <div className={styles.detail__action}>
+          <div className={styles.detail__info}>
+            <InfoDate time={note.createdAt} />
             {note.archived ? (
               <ButtonLinkIcon
                 icon={<ArrowNarrowLeftIcon />}
-                onClick={() => moveNote(note.id)}
+                onClick={onClickButtonMove}
                 label="Aktifkan"
                 color="secondary"
                 iconPosition="before"
@@ -68,36 +79,27 @@ function Note() {
             ) : (
               <ButtonLinkIcon
                 icon={<ArrowNarrowRightIcon />}
-                onClick={() => moveNote(note.id)}
+                onClick={onClickButtonMove}
                 label="Arsipkan"
                 color="secondary"
               />
             )}
+          </div>
+          <h1 className={styles.titleNote}>{note.title}</h1>
+          <p className={styles.bodyNote}>{note.body}</p>
+          <div className={styles.detail__additionalInfo}>
+            <p className={styles.detail__infoWordCount}>
+              Jumlah Kata : <strong>{countWords(note.body)}</strong>
+            </p>
+          </div>
+          <div className={styles.detail__action}>
             <ButtonLinkIcon
               icon={<TrashIcon />}
-              onClick={() => onClickButtonDelete(note.id)}
+              onClick={onClickButtonDelete}
               label="Hapus"
               color="error"
               iconPosition="before"
             />
-          </div>
-          <div className={styles.detail__info}>
-            <InfoDate time={note.createdAt} />
-            <p className={styles.detail__status}>
-              Status :{' '}
-              {note.archived ? (
-                <span className={styles.detail__labelArchive}>Arsip</span>
-              ) : (
-                <span className={styles.detail__labelActive}>Aktif</span>
-              )}
-            </p>
-          </div>
-          <h1 className={styles.titleNote}>{note.title}</h1>
-          <p className={styles.bodyNote}>{note.body}</p>
-          <div className={styles.detail__info}>
-            <p className={styles.detail__infoWordCount}>
-              Jumlah Kata : <strong>{countWords(note.body)}</strong>
-            </p>
           </div>
         </section>
       </main>
