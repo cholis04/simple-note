@@ -73,6 +73,15 @@
 
 .bodyNote {
   font-size: var(--fs-l);
+  color: var(--text-focal-color);
+  background: repeating-linear-gradient(
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0) 32px,
+    var(--line-color) 32px,
+    var(--line-color) 33px
+  );
+  line-height: 1.8;
+  border-bottom: 1px solid var(--line-color);
 }
 
 /* ================================================ */
