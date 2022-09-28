@@ -29,7 +29,7 @@ function Note() {
   // Title Document
   useEffect(() => {
     if (note !== undefined) document.title = `Catatan - ${note?.title}`;
-  });
+  }, [note]);
 
   // Handle Delete Note
   const onClickButtonDelete = () => {
