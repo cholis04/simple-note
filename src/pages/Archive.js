@@ -22,7 +22,7 @@ function Archive() {
   // Title Document
   useEffect(() => {
     document.title = 'Daftar Arsip';
-  });
+  }, []);
 
   // Navigate Rounte on Button Click
   const onAddButtonClick = () => {

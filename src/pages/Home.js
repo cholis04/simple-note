@@ -22,7 +22,7 @@ function Home() {
   // Title Document
   useEffect(() => {
     document.title = 'Daftar Catatan';
-  });
+  }, []);
 
   // Navigate Rounte on Button Click
   const onAddButtonClick = () => {
