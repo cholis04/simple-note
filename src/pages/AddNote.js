@@ -3,9 +3,6 @@ import { useNavigate } from 'react-router-dom';
 
 import { MaxNotes, NotesContext } from '../context/NotesContext';
 
-import Header from '../blocks/Header';
-import Footer from '../blocks/Footer';
-
 import CharLeft from '../elements/CharLeft';
 import InputLabel from '../elements/InputLabel';
 import InvalidMessage from '../elements/InvalidMessage';
@@ -17,6 +14,7 @@ import {
 } from '../utils/validationAddNote';
 
 import styles from '../styles/pages/AddNote.module.css';
+import ButtonLinkIcon from '../elements/ButtonLinkIcon';
 
 // Initial Form State
 const initialState = {
@@ -93,6 +91,11 @@ function AddNote() {
     }
   };
 
+  // Go Previous page when back button click
+  const handleCancel = () => {
+    navigate(-1);
+  };
+
   // Title Document | Focus on Textare first render
   useEffect(() => {
     document.title = 'Buat Catatan';
@@ -102,11 +105,18 @@ function AddNote() {
   // Render Component
   return (
     <>
-      <Header />
-      <main className={styles.main}>
+      <main>
         <section className={styles.note}>
           <div className={styles.note__wrapper}>
             <h1 className={styles.note__title}>Tambah Catatan</h1>
+
+            <div className={styles.note__headBar}>
+              <ButtonLinkIcon
+                label="Batal"
+                color="error"
+                onClick={handleCancel}
+              />
+            </div>
 
             {availableNotes ? (
               <form onSubmit={handleSubmit} className={styles.note__form}>
@@ -176,7 +186,6 @@ function AddNote() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   );
 }

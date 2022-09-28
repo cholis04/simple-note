@@ -1,8 +1,4 @@
 /* Main */
-.main {
-  margin-top: var(--navHeight);
-}
-
 .main__heading {
   position: sticky;
   top: var(--navHeight);
@@ -13,7 +9,7 @@
 .main__headingWrapper {
   margin: 0 auto;
   max-width: var(--maxWidth);
-  padding: 0.5em 1.625em;
+  padding: 0.5rem 1.625rem;
 
   display: flex;
   flex-direction: column-reverse;
@@ -34,9 +30,9 @@
 }
 
 .main__notelistWrapper {
+  padding: 0 1.625rem;
   max-width: var(--maxWidth);
   margin: 0 auto;
-  padding: 0 1.625em;
 }
 
 .main__noteBox {
@@ -47,11 +43,9 @@
 
 .mobileButtonFloat {
   position: sticky;
-  bottom: 2rem;
-
-  padding: 0 1.625em;
-
+  padding: 0 1.625rem;
   margin-top: 2rem;
+  bottom: 2rem;
 
   display: flex;
   flex-direction: column;

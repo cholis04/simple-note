@@ -63,43 +63,45 @@ function Note() {
   return (
     <>
       <Header />
-      <main className={styles.main}>
+      <main>
         {/* Note Detail */}
         <section className={styles.detail}>
-          <div className={styles.detail__info}>
-            <InfoDate time={note.createdAt} />
-            {note.archived ? (
+          <div className={styles.detail__wrapper}>
+            <div className={styles.detail__info}>
+              <InfoDate time={note.createdAt} />
+              {note.archived ? (
+                <ButtonLinkIcon
+                  icon={<ArrowNarrowLeftIcon />}
+                  onClick={onClickButtonMove}
+                  label="Aktifkan"
+                  color="secondary"
+                  iconPosition="before"
+                />
+              ) : (
+                <ButtonLinkIcon
+                  icon={<ArrowNarrowRightIcon />}
+                  onClick={onClickButtonMove}
+                  label="Arsipkan"
+                  color="secondary"
+                />
+              )}
+            </div>
+            <h1 className={styles.titleNote}>{note.title}</h1>
+            <p className={styles.bodyNote}>{note.body}</p>
+            <div className={styles.detail__additionalInfo}>
+              <p className={styles.detail__infoWordCount}>
+                Jumlah Kata : <strong>{countWords(note.body)}</strong>
+              </p>
+            </div>
+            <div className={styles.delete__wrapper}>
               <ButtonLinkIcon
-                icon={<ArrowNarrowLeftIcon />}
-                onClick={onClickButtonMove}
-                label="Aktifkan"
-                color="secondary"
+                icon={<TrashIcon />}
+                onClick={onClickButtonDelete}
+                label="Hapus"
+                color="error"
                 iconPosition="before"
               />
-            ) : (
-              <ButtonLinkIcon
-                icon={<ArrowNarrowRightIcon />}
-                onClick={onClickButtonMove}
-                label="Arsipkan"
-                color="secondary"
-              />
-            )}
-          </div>
-          <h1 className={styles.titleNote}>{note.title}</h1>
-          <p className={styles.bodyNote}>{note.body}</p>
-          <div className={styles.detail__additionalInfo}>
-            <p className={styles.detail__infoWordCount}>
-              Jumlah Kata : <strong>{countWords(note.body)}</strong>
-            </p>
-          </div>
-          <div className={styles.delete__wrapper}>
-            <ButtonLinkIcon
-              icon={<TrashIcon />}
-              onClick={onClickButtonDelete}
-              label="Hapus"
-              color="error"
-              iconPosition="before"
-            />
+            </div>
           </div>
         </section>
       </main>

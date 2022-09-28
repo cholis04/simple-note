@@ -1,25 +1,13 @@
-/* Main */
-.main {
-  margin-top: var(--navHeight);
-  padding: 2rem 1.625rem;
-}
-
-/* Detail  */
+/* Main Detail  */
 
 .detail {
-  margin: 0 auto;
-  max-width: 768px;
-
   min-height: 100vh;
 }
 
-.delete__wrapper {
-  margin-top: 4rem;
-  margin-bottom: 2rem;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  align-items: center;
+.detail__wrapper {
+  margin: 0 auto;
+  max-width: 768px;
+  padding: 2rem 1.625rem;
 }
 
 .detail__info {
@@ -72,14 +60,24 @@
   white-space: pre-wrap;
 }
 
+.delete__wrapper {
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
 /* ================================================ */
 /* Tablet Responsive */
 @media only screen and (min-width: 768px) {
-  .main {
-    padding: 4rem 2rem;
-  }
   .detail {
-    min-height: 65vh;
+    min-height: 60vh;
+  }
+
+  .detail__wrapper {
+    padding: 4rem 2rem;
   }
 
   .bodyNote {

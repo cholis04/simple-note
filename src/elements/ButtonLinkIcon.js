@@ -6,7 +6,7 @@ import styles from './ButtonLinkIcon.module.css';
 const ButtonLinkIcon = ({
   label,
   color,
-  icon,
+  icon = undefined,
   onClick,
   iconPosition = 'after',
 }) => {
@@ -15,6 +15,16 @@ const ButtonLinkIcon = ({
     if (cl === 'secondary') return styles.secondary;
     return styles.primary;
   };
+
+  if (icon !== undefined)
+    return (
+      <button
+        onClick={onClick}
+        className={`${styles.button} ${resolveColor(color)}`}
+      >
+        {icon} {label}
+      </button>
+    );
 
   return (
     <button
@@ -37,7 +47,7 @@ const ButtonLinkIcon = ({
 ButtonLinkIcon.propTypes = {
   label: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
-  icon: PropTypes.element.isRequired,
+  icon: PropTypes.element,
   onClick: PropTypes.func,
   iconPosition: PropTypes.oneOf(['after', 'before']),
 };

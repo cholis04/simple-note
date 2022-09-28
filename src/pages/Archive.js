@@ -33,7 +33,7 @@ function Archive() {
   return (
     <>
       <Header />
-      <main className={styles.main}>
+      <main>
         {/* Main Heading */}
         <div className={styles.main__heading}>
           <div className={styles.main__headingWrapper}>
