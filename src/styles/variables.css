@@ -33,12 +33,12 @@
   --fw-bold: 700;
 
   /* Font Size */
-  --fs-xxl: 1.383rem;
-  --fs-xl: 1.215rem;
-  --fs-l: 1.138rem;
-  --fs-m: 1rem;
-  --fs-s: 0.878rem;
-  --fs-xs: 0.823rem;
+  --fs-xxl: 1.383em;
+  --fs-xl: 1.215em;
+  --fs-l: 1.138em;
+  --fs-m: 1em;
+  --fs-s: 0.878em;
+  --fs-xs: 0.823em;
 
   /* Font Family */
   --font-quicksand: 'Quicksand', sans-serif;
