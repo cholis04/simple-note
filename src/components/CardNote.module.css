@@ -9,7 +9,7 @@
 }
 
 .title {
-  font-size: 1.3em;
+  font-size: var(--fs-xl);
   margin-bottom: 1rem;
   font-weight: var(--fw-bold);
   color: var(--text-focal-color);
@@ -26,7 +26,7 @@
 .dateInfo {
   margin: 0.7rem auto;
 
-  font-size: 0.85em;
+  font-size: var(--fs-xs);
   font-weight: var(--fw-reguler);
   color: var(--text-common-color);
 }
@@ -39,7 +39,7 @@
 
 .bodyText {
   margin: 1rem auto;
-  font-size: 1em;
+  font-size: var(--fs-m);
   font-weight: var(--fw-reguler);
   color: var(--text-focal-color);
 
@@ -64,39 +64,6 @@
   bottom: 2.2em;
 }
 
-.btnMove,
-.btnDelete {
-  border: none;
-  background: none;
-
-  font-weight: var(--fw-bold);
-  font-size: 1em;
-
-  transition: all 0.2s ease-in-out;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.btnMove {
-  color: var(--secondary-color);
-}
-
-.btnDelete {
-  color: var(--error-color);
-}
-.btnMove:active,
-.btnDelete:active {
-  opacity: 0.7;
-}
-
-.iconBtn {
-  width: 1rem;
-  height: 1rem;
-  margin-right: 0.2rem;
-}
-
 /* ================================================ */
 /* Tablet Responsive */
 @media only screen and (min-width: 768px) {
@@ -108,16 +75,4 @@
 /* ================================================ */
 /* Desktop Responsive */
 @media only screen and (min-width: 1024px) {
-  @media (hover: hover) {
-    /* when supported */
-    .btnMove:hover,
-    .btnDelete:hover {
-      text-decoration: underline;
-      cursor: pointer;
-    }
-
-    .titleUrl:hover {
-      color: var(--secondary-color);
-    }
-  }
 }
