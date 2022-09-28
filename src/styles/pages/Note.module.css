@@ -72,16 +72,15 @@
 }
 
 .bodyNote {
-  font-size: var(--fs-l);
+  font-size: var(--fs-m);
   color: var(--text-focal-color);
+  line-height: 1.8;
   background: repeating-linear-gradient(
     rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0) 32px,
-    var(--line-color) 32px,
-    var(--line-color) 33px
+    rgba(0, 0, 0, 0) 24.2px,
+    var(--line-color) 24.2px,
+    var(--line-color) 25.2px
   );
-  line-height: 1.8;
-  border-bottom: 1px solid var(--line-color);
 }
 
 /* ================================================ */
@@ -92,6 +91,16 @@
   }
   .detail {
     min-height: 65vh;
+  }
+
+  .bodyNote {
+    background: repeating-linear-gradient(
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0) 31.7744px,
+      var(--line-color) 31.7744px,
+      var(--line-color) 32.7744px
+    );
+    font-size: var(--fs-l);
   }
 }
 
