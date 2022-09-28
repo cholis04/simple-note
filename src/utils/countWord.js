@@ -1,4 +1,3 @@
 export const countWords = (str) => {
-  const arr = str.split(' ');
-  return arr.filter((word) => word !== '').length;
+  return (str.match(/[a-zA-Z0-9]+/g) || []).length;
 };
