@@ -92,7 +92,7 @@ function Note() {
               Jumlah Kata : <strong>{countWords(note.body)}</strong>
             </p>
           </div>
-          <div className={styles.detail__action}>
+          <div className={styles.delete__wrapper}>
             <ButtonLinkIcon
               icon={<TrashIcon />}
               onClick={onClickButtonDelete}

@@ -13,10 +13,11 @@
   min-height: 100vh;
 }
 
-.detail__action {
+.delete__wrapper {
+  margin-top: 4rem;
   margin-bottom: 2rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 2rem;
   align-items: center;
 }
