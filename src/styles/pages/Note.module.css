@@ -68,6 +68,7 @@
     var(--line-color) 24.2px,
     var(--line-color) 25.2px
   );
+  white-space: pre-wrap;
 }
 
 /* ================================================ */
