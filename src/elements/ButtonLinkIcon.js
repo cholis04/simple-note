@@ -16,13 +16,13 @@ const ButtonLinkIcon = ({
     return styles.primary;
   };
 
-  if (icon !== undefined)
+  if (icon === undefined)
     return (
       <button
         onClick={onClick}
         className={`${styles.button} ${resolveColor(color)}`}
       >
-        {icon} {label}
+        {label}
       </button>
     );
 
