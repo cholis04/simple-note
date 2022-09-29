@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState, useRef, useCallback } from 'react';
+import { useContext, useEffect, useState, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { MaxNotes, NotesContext } from '../context/NotesContext';
@@ -41,25 +41,16 @@ function AddNote() {
   const validForm = !form.title.error && !form.bodyText.error;
   const emptyForm = form.title.value === '' || form.bodyText.value === '';
 
-  // Autosizing Height of TextArea
-  const handleInputTextArea = useCallback((e) => {
-    textAreaRef.current.style.height = `auto`;
-    textAreaRef.current.style.height = `${e.target.scrollHeight}px`;
-  }, []);
-
   // Controlled Form on Change
-  const handleChange = (e) => {
-    let currentElement = e.target.name;
-    let value = e.target.value;
-
+  const handleChange = (currentElement, currentValue) => {
     setForm({
       ...form,
       [currentElement]: {
         ...form[currentElement],
-        value: value.slice(0, form[currentElement].maxChar),
+        value: currentValue.slice(0, form[currentElement].maxChar),
         error: validateError(
           currentElement,
-          value.slice(0, form[currentElement].maxChar),
+          currentValue.slice(0, form[currentElement].maxChar),
         ),
       },
     });
@@ -125,23 +116,26 @@ function AddNote() {
                 {/* Note Input Group */}
                 <div className={styles.noteInputGroup}>
                   <div className={styles.headerNoteInputGroup}>
-                    <InputLabel idfor="bodyText" text="Isi Catatan" />
+                    <InputLabel id="labelTextArea" text="Isi Catatan" />
                     <CharLeft
                       num={form.bodyText.maxChar - form.bodyText.value.length}
                     />
                   </div>
-                  <textarea
+                  <div
+                    role="textbox"
+                    contentEditable={true}
+                    suppressContentEditableWarning={true}
                     id="bodyText"
                     className={styles.inputNote}
-                    placeholder="Tulis Catatanmu disini!"
-                    name="bodyText"
-                    value={form.bodyText.value}
-                    onChange={handleChange}
-                    onInput={handleInputTextArea}
+                    onInput={(e) =>
+                      handleChange(e.target.id, e.target.innerText)
+                    }
+                    data-placeholder="Tulis Catatanmu disini!"
+                    aria-labelledby="labelTextArea"
                     ref={textAreaRef}
-                  ></textarea>
+                    _dangerouslysetinnerhtml={form.bodyText.value}
+                  />
 
-                  <p contentEditable={true}>Hello</p>
                   {form.bodyText.error && (
                     <InvalidMessage errorText={form.bodyText.error} />
                   )}
@@ -160,10 +154,9 @@ function AddNote() {
                     id="title"
                     className={styles.titleTextInput}
                     placeholder="Apa judul yang ingin ditulis?"
-                    name="title"
                     autoComplete="off"
                     value={form.title.value}
-                    onChange={handleChange}
+                    onChange={(e) => handleChange(e.target.id, e.target.value)}
                   />
                   {form.title.error && (
                     <InvalidMessage errorText={form.title.error} />

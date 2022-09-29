@@ -83,12 +83,11 @@
 .inputNote {
   min-height: 180px;
   width: 100%;
-  resize: none;
   border: none;
   outline: none;
   color: var(--text-focal-color);
   line-height: 1.8;
-  overflow: hidden;
+  cursor: text;
 
   font-size: var(--fs-m);
   background: repeating-linear-gradient(
@@ -97,6 +96,11 @@
     var(--line-color) 24.2px,
     var(--line-color) 25.2px
   );
+}
+
+.inputNote:empty:before {
+  content: attr(data-placeholder);
+  color: var(--text-common-color);
 }
 
 .maximumNote {
