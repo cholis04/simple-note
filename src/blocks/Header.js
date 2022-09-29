@@ -1,14 +1,19 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 import ButtonLabel from '../elements/ButtonLabel';
 import styles from './Header.module.css';
 
 function Header() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   // Navigate Rounte on Button Click
   const handleClick = () => {
-    navigate('/catatan/baru');
+    navigate('/catatan/baru', {
+      state: {
+        from: location.pathname,
+      },
+    });
   };
 
   return (

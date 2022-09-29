@@ -1,5 +1,5 @@
 import { useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { PlusIcon } from '@heroicons/react/solid';
 
 import { NotesContext } from '../context/NotesContext';
@@ -17,6 +17,8 @@ import styles from '../styles/pages/Home.module.css';
 
 function Home() {
   const navigate = useNavigate();
+  const location = useLocation();
+
   const { activeNotes } = useContext(NotesContext);
 
   // Title Document
@@ -26,7 +28,11 @@ function Home() {
 
   // Navigate Rounte on Button Click
   const onAddButtonClick = () => {
-    navigate('/catatan/baru');
+    navigate('/catatan/baru', {
+      state: {
+        from: location.pathname,
+      },
+    });
   };
 
   // Render Component

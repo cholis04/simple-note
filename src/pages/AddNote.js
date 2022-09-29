@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState, useRef, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { MaxNotes, NotesContext } from '../context/NotesContext';
 
@@ -36,6 +36,7 @@ function AddNote() {
   const textAreaRef = useRef(null);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const validForm = !form.title.error && !form.bodyText.error;
   const emptyForm = form.title.value === '' || form.bodyText.value === '';
@@ -93,7 +94,8 @@ function AddNote() {
 
   // Go Previous page when back button click
   const handleCancel = () => {
-    navigate(-1);
+    if (location.state?.from !== undefined) navigate(-1);
+    navigate('/');
   };
 
   // Title Document | Focus on Textare first render
