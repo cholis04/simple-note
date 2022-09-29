@@ -85,6 +85,7 @@
 
   word-break: break-all;
 
+  border: none;
   outline: none;
   color: var(--text-focal-color);
   line-height: 1.8;
