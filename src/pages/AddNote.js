@@ -141,6 +141,7 @@ function AddNote() {
                     ref={textAreaRef}
                   ></textarea>
 
+                  <p contentEditable={true}>Hello</p>
                   {form.bodyText.error && (
                     <InvalidMessage errorText={form.bodyText.error} />
                   )}

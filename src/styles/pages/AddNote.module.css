@@ -44,12 +44,7 @@
 }
 
 .noteInputGroup {
-  /* padding: 1rem 0; */
-
   background-color: var(--background-color);
-  /* position: sticky;
-  top: var(--navHeight);
-  z-index: 99; */
 }
 
 .headerNoteInputGroup {
