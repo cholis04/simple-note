@@ -127,13 +127,12 @@ function AddNote() {
                     suppressContentEditableWarning={true}
                     id="bodyText"
                     className={styles.inputNote}
-                    onInput={(e) =>
-                      handleChange(e.target.id, e.target.innerText)
-                    }
+                    onInput={(e) => {
+                      handleChange(e.target.id, e.target.textContent);
+                    }}
                     data-placeholder="Tulis Catatanmu disini!"
                     aria-labelledby="labelTextArea"
                     ref={textAreaRef}
-                    _dangerouslysetinnerhtml={form.bodyText.value}
                   />
 
                   {form.bodyText.error && (
