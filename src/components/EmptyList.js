@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import EmptyInboxDesktop from '../assets/images/Empty_Inbox-Desktop.png';
 import EmptyInboxTablet from '../assets/images/Empty_Inbox-Tablet.png';
@@ -7,6 +7,8 @@ import EmptyInboxMobile from '../assets/images/Empty_Inbox-Mobile.png';
 import styles from './EmptyList.module.css';
 
 function Empty() {
+  const location = useLocation();
+
   return (
     <div className={styles.boxEmpty}>
       <picture>
@@ -16,7 +18,13 @@ function Empty() {
       </picture>
       <p className={styles.text}>
         Catatan singkat tidak ditemukan,{' '}
-        <Link to="/catatan/baru" className={styles.linkAdd}>
+        <Link
+          to="/catatan/baru"
+          className={styles.linkAdd}
+          state={{
+            from: location.pathname,
+          }}
+        >
           Buat sekarang!
         </Link>
       </p>
