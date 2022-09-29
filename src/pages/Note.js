@@ -13,11 +13,11 @@ import Footer from '../blocks/Footer';
 import NotFound from '../blocks/NotFound';
 
 import InfoDate from '../elements/InfoDate';
+import ButtonLinkIcon from '../elements/ButtonLinkIcon';
 
 import { countWords } from '../utils/countWord';
 
 import styles from '../styles/pages/Note.module.css';
-import ButtonLinkIcon from '../elements/ButtonLinkIcon';
 
 function Note() {
   const { id } = useParams();
@@ -54,7 +54,7 @@ function Note() {
     }
   };
 
-  // Render NofFound when note is undefinded
+  // Render NofFound when note is undefined
   if (note === undefined) {
     return <NotFound />;
   }
