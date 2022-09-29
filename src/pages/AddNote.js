@@ -7,6 +7,7 @@ import CharLeft from '../elements/CharLeft';
 import InputLabel from '../elements/InputLabel';
 import InvalidMessage from '../elements/InvalidMessage';
 import ButtonLabel from '../elements/ButtonLabel';
+import ButtonLinkIcon from '../elements/ButtonLinkIcon';
 
 import {
   bodyTextValidation,
@@ -14,7 +15,6 @@ import {
 } from '../utils/validationAddNote';
 
 import styles from '../styles/pages/AddNote.module.css';
-import ButtonLinkIcon from '../elements/ButtonLinkIcon';
 
 // Initial Form State
 const initialState = {
