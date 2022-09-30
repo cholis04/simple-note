@@ -63,14 +63,14 @@ function AddNote() {
 
   // Handle Div ContentEditable
   const handleDivTextInput = (e) => {
-    const value = e.target.textContent;
+    const value = e.target.innerText;
     const element = e.target.id;
     const maxChar = form[element].maxChar;
 
     updateForm(element, value);
 
     if (value.length > maxChar) {
-      textAreaRef.current.textContent = value.slice(0, maxChar);
+      textAreaRef.current.innerText = value.slice(0, maxChar);
       textAreaRef.current.blur();
 
       // ============ Set Caret Cursor on Last Char ---------------- //
