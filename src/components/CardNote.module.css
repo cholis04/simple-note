@@ -42,6 +42,7 @@
   font-size: var(--fs-m);
   font-weight: var(--fw-reguler);
   color: var(--text-focal-color);
+  word-break: break-all;
 
   display: -webkit-box;
   overflow: hidden;

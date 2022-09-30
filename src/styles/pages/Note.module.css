@@ -58,6 +58,7 @@
     var(--line-color) 25.2px
   );
   white-space: pre-wrap;
+  word-break: break-all;
 }
 
 .delete__wrapper {

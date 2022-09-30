@@ -91,7 +91,7 @@
   line-height: 1.8;
   cursor: text;
 
-  font-size: 1rem;
+  font-size: 14px; /* Manually, to disable Incerase font */
   background: repeating-linear-gradient(
     rgba(0, 0, 0, 0),
     rgba(0, 0, 0, 0) 24.2px,
@@ -129,7 +129,7 @@
   }
 
   .inputNote {
-    font-size: 1.138rem;
+    font-size: 18.208px; /* Manually, to disable Incerase font */
     background: repeating-linear-gradient(
       rgba(0, 0, 0, 0),
       rgba(0, 0, 0, 0) 31.7744px,
