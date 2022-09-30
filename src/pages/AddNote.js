@@ -42,18 +42,62 @@ function AddNote() {
   const emptyForm = form.title.value === '' || form.bodyText.value === '';
 
   // Controlled Form on Change
-  const handleChange = (currentElement, currentValue) => {
+  const updateForm = (currentElement, currentValue) => {
+    const maxChar = form[currentElement].maxChar;
+    const sliceValue = currentValue.slice(0, maxChar);
+
     setForm({
       ...form,
       [currentElement]: {
         ...form[currentElement],
-        value: currentValue.slice(0, form[currentElement].maxChar),
-        error: validateError(
-          currentElement,
-          currentValue.slice(0, form[currentElement].maxChar),
-        ),
+        value: sliceValue,
+        error: validateError(currentElement, sliceValue),
       },
     });
+  };
+
+  // Handle Input Text on Change
+  const handleInputTextChange = (e) => {
+    updateForm(e.target.id, e.target.value);
+  };
+
+  // Handle Div ContentEditable
+  const handleDivTextInput = (e) => {
+    const value = e.target.textContent;
+    const element = e.target.id;
+    const maxChar = form[element].maxChar;
+
+    updateForm(element, value);
+
+    if (value.length > maxChar) {
+      textAreaRef.current.textContent = value.slice(0, maxChar);
+      textAreaRef.current.blur();
+
+      // ============ Set Caret Cursor on Last Char ---------------- //
+
+      // Creates range object
+      const setpos = document.createRange();
+
+      // Creates object for selection
+      const set = window.getSelection();
+
+      // Set start position of range
+      setpos.setStart(textAreaRef.current.childNodes[0], maxChar);
+
+      // Collapse range within its boundary points
+      // Returns boolean
+      setpos.collapse(true);
+
+      // Remove all ranges set
+      set.removeAllRanges();
+
+      // Add range with respect to range object.
+      set.addRange(setpos);
+
+      // Set cursor on focus
+      textAreaRef.current.focus();
+      // ============ Set Caret Cursor on Last Char ---------------- //
+    }
   };
 
   // Validation Form
@@ -127,9 +171,7 @@ function AddNote() {
                     suppressContentEditableWarning={true}
                     id="bodyText"
                     className={styles.inputNote}
-                    onInput={(e) => {
-                      handleChange(e.target.id, e.target.textContent);
-                    }}
+                    onInput={handleDivTextInput}
                     data-placeholder="Tulis Catatanmu disini!"
                     aria-labelledby="labelTextArea"
                     ref={textAreaRef}
@@ -155,7 +197,7 @@ function AddNote() {
                     placeholder="Apa judul yang ingin ditulis?"
                     autoComplete="off"
                     value={form.title.value}
-                    onChange={(e) => handleChange(e.target.id, e.target.value)}
+                    onChange={handleInputTextChange}
                   />
                   {form.title.error && (
                     <InvalidMessage errorText={form.title.error} />
