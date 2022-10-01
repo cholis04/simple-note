@@ -1,0 +1,26 @@
+.titleTextInput {
+  width: 100%;
+  padding: 0.5em 1.2em;
+  border-radius: 25px;
+
+  border: none;
+  outline: none;
+  background-color: var(--field-color);
+
+  font-size: var(--fs-m);
+  font-weight: var(--fw-reguler);
+  color: var(--text-focal-color);
+}
+.titleTextInput::placeholder {
+  color: var(--text-common-color);
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+@media only screen and (min-width: 768px) {
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+@media only screen and (min-width: 1024px) {
+}
