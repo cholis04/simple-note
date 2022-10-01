@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 
 import styles from './InputLabel.module.css';
 
-const InputLabel = ({ id, idfor, text }) => {
+const InputLabel = ({ idfor, text }) => {
   return (
-    <label id={id} className={styles.inputLabel} htmlFor={idfor}>
+    <label className={styles.inputLabel} htmlFor={idfor}>
       {text} :{' '}
     </label>
   );

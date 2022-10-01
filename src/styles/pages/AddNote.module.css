@@ -81,23 +81,36 @@
 }
 
 .inputNote {
-  min-height: 180px;
+  min-height: 320px;
 
-  word-break: break-all;
-
-  border: none;
   outline: none;
+  border: 2px dashed var(--line-color);
+  border-radius: 15px;
+
+  width: 100%;
+  resize: none;
+  padding: 1.2em;
+
+  font-size: var(--fs-m);
+  font-weight: var(--fw-reguler);
   color: var(--text-focal-color);
   line-height: 1.8;
-  cursor: text;
 
-  font-size: 14px; /* Manually, to disable Incerase font */
-  background: repeating-linear-gradient(
+  background-color: var(--background-color);
+
+  /* font-size: 14px; Manually, to disable Incerase font */
+  /* background: repeating-linear-gradient(
     rgba(0, 0, 0, 0),
     rgba(0, 0, 0, 0) 24.2px,
     var(--line-color) 24.2px,
     var(--line-color) 25.2px
-  );
+    ); */
+
+  transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.inputNote:focus {
+  border: 2px dashed var(--primary-color);
 }
 
 .inputNote:empty:before {
@@ -129,13 +142,15 @@
   }
 
   .inputNote {
-    font-size: 18.208px; /* Manually, to disable Incerase font */
-    background: repeating-linear-gradient(
+    min-height: 480px;
+
+    /* font-size: 18.208px; Manually, to disable Incerase font */
+    /* background: repeating-linear-gradient(
       rgba(0, 0, 0, 0),
       rgba(0, 0, 0, 0) 31.7744px,
       var(--line-color) 31.7744px,
       var(--line-color) 32.7744px
-    );
+    ); */
   }
 }
 
