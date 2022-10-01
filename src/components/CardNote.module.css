@@ -4,8 +4,7 @@
   padding: 2.2em 2em;
   border-radius: 25px;
 
-  position: relative;
-  height: 280px;
+  height: auto;
 }
 
 .title {
@@ -56,20 +55,23 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  position: absolute;
-  width: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 0 2em;
-  bottom: 2.2em;
 }
 
 /* ================================================ */
 /* Tablet Responsive */
 @media only screen and (min-width: 768px) {
   .articleCard {
+    position: relative;
     height: 320px;
+  }
+
+  .action {
+    position: absolute;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0 2em;
+    bottom: 2.2em;
   }
 }
 
