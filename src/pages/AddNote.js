@@ -3,6 +3,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import { MaxNotes, NotesContext } from '../context/NotesContext';
 
+import Header from '../blocks/Header';
+import Footer from '../blocks/Footer';
+
 import CharLeft from '../elements/CharLeft';
 import InputLabel from '../elements/InputLabel';
 import InvalidMessage from '../elements/InvalidMessage';
@@ -46,70 +49,21 @@ function AddNote() {
     const maxChar = form[currentElement].maxChar;
     const sliceValue = currentValue.slice(0, maxChar);
 
-    setForm({
-      ...form,
-      [currentElement]: {
-        ...form[currentElement],
-        value: sliceValue,
-        error: validateError(currentElement, sliceValue),
-      },
+    setForm((prevForm) => {
+      return {
+        ...prevForm,
+        [currentElement]: {
+          ...prevForm[currentElement],
+          value: sliceValue,
+          error: validateError(currentElement, sliceValue),
+        },
+      };
     });
   };
 
   // Handle Input Text on Change
   const handleInputTextChange = (e) => {
     updateForm(e.target.id, e.target.value);
-  };
-
-  // Handle Div ContentEditable
-  const handleDivTextInput = (e) => {
-    const value = e.target.innerText;
-    const element = e.target.id;
-    const maxChar = form[element].maxChar;
-
-    updateForm(element, value);
-
-    if (value.length > maxChar) {
-      textAreaRef.current.innerText = value.slice(0, maxChar);
-      textAreaRef.current.blur();
-
-      // ============ Set Caret Cursor on Last Char ---------------- //
-
-      // Creates range object
-      const setpos = document.createRange();
-
-      // Creates object for selection
-      const set = window.getSelection();
-
-      // Set start position of range
-      setpos.setStart(textAreaRef.current.childNodes[0], maxChar);
-
-      // Collapse range within its boundary points
-      // Returns boolean
-      setpos.collapse(true);
-
-      // Remove all ranges set
-      set.removeAllRanges();
-
-      // Add range with respect to range object.
-      set.addRange(setpos);
-
-      // Set cursor on focus
-      textAreaRef.current.focus();
-      // ============ Set Caret Cursor on Last Char ---------------- //
-    }
-  };
-
-  // Handle paste on contentEditable Div
-  const handleDivTextPaste = (e) => {
-    // cancel paste
-    e.preventDefault();
-
-    // get text representation of clipboard
-    const text = (e.originalEvent || e).clipboardData.getData('text/plain');
-
-    // insert text manually
-    document.execCommand('insertHTML', false, text);
   };
 
   // Validation Form
@@ -154,6 +108,7 @@ function AddNote() {
   // Render Component
   return (
     <>
+      <Header />
       <main>
         <section className={styles.note}>
           <div className={styles.note__wrapper}>
@@ -172,23 +127,20 @@ function AddNote() {
                 {/* Note Input Group */}
                 <div className={styles.noteInputGroup}>
                   <div className={styles.headerNoteInputGroup}>
-                    <InputLabel id="labelTextArea" text="Isi Catatan" />
+                    <InputLabel idfor="bodyText" text="Isi Catatan" />
                     <CharLeft
                       num={form.bodyText.maxChar - form.bodyText.value.length}
                     />
                   </div>
-                  <div
-                    role="textbox"
-                    contentEditable={true}
-                    suppressContentEditableWarning={true}
+                  <textarea
                     id="bodyText"
                     className={styles.inputNote}
-                    onInput={handleDivTextInput}
-                    onPaste={handleDivTextPaste}
-                    data-placeholder="Tulis Catatanmu disini!"
+                    onChange={handleInputTextChange}
+                    value={form.bodyText.value}
+                    placeholder="Tulis Catatanmu disini!"
                     aria-labelledby="labelTextArea"
                     ref={textAreaRef}
-                  />
+                  ></textarea>
 
                   {form.bodyText.error && (
                     <InvalidMessage errorText={form.bodyText.error} />
@@ -212,6 +164,7 @@ function AddNote() {
                     value={form.title.value}
                     onChange={handleInputTextChange}
                   />
+
                   {form.title.error && (
                     <InvalidMessage errorText={form.title.error} />
                   )}
@@ -236,6 +189,7 @@ function AddNote() {
           </div>
         </section>
       </main>
+      <Footer />
     </>
   );
 }
