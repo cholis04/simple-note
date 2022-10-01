@@ -1,11 +1,11 @@
+import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import {
   ArrowNarrowLeftIcon,
   ArrowNarrowRightIcon,
   TrashIcon,
 } from '@heroicons/react/solid';
-import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import { NotesContext } from '../context/NotesContext';
 
