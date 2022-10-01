@@ -1,4 +1,10 @@
-import { createContext, useEffect, useState } from 'react';
+import {
+  createContext,
+  useEffect,
+  useState,
+  useMemo,
+  useCallback,
+} from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { getInitialData } from '../data';
@@ -22,14 +28,17 @@ const NotesContextProvider = (props) => {
   const keywordTitle = searchParams.get('judul') || '';
 
   // Set Params
-  const setKeywordTitle = (newValue) => {
-    setSearchParams({ judul: newValue });
+  const setKeywordTitle = useCallback(
+    (newValue) => {
+      setSearchParams({ judul: newValue });
 
-    if (newValue === '') {
-      searchParams.delete('judul');
-      setSearchParams(searchParams);
-    }
-  };
+      if (newValue === '') {
+        searchParams.delete('judul');
+        setSearchParams(searchParams);
+      }
+    },
+    [searchParams, setSearchParams],
+  );
 
   const filteredNotes =
     keywordTitle !== null
@@ -45,48 +54,85 @@ const NotesContextProvider = (props) => {
   const availableNotes = totalNotes < MaxNotes;
 
   // Find Note by Id
-  const getNoteById = (id) => {
-    return notes.find((note) => note.id === id);
-  };
+  const getNoteById = useCallback(
+    (id) => {
+      return notes.find((note) => note.id === id);
+    },
+    [notes],
+  );
 
   // Add Note
-  const addNote = (newTitle, newBodyText) => {
-    if (availableNotes) {
-      const date = new Date();
+  const addNote = useCallback(
+    (newTitle, newBodyText) => {
+      if (availableNotes) {
+        const date = new Date();
 
-      setNotes([
-        {
-          id: date.getTime(),
-          title: newTitle.trim(),
-          body: newBodyText.trim(),
-          createdAt: date.toJSON(),
-          archived: false,
-        },
-        ...notes,
-      ]);
-    }
-  };
+        setNotes([
+          {
+            id: date.getTime(),
+            title: newTitle.trim(),
+            body: newBodyText.trim(),
+            createdAt: date.toJSON(),
+            archived: false,
+          },
+          ...notes,
+        ]);
+      }
+    },
+    [availableNotes, notes],
+  );
 
   // Delete Note by Id
-  const deleteNote = (id) => {
-    const deletedNotes = notes.filter((note) => note.id !== id);
-    setNotes(deletedNotes);
-  };
+  const deleteNote = useCallback(
+    (id) => {
+      const deletedNotes = notes.filter((note) => note.id !== id);
+      setNotes(deletedNotes);
+    },
+    [notes],
+  );
 
   // Move Note Archived False or True by ID
-  const moveNote = (id) => {
-    const filteredNotes = notes.map((note) => {
-      if (note.id === id) {
-        return {
-          ...note,
-          archived: !note.archived,
-        };
-      }
+  const moveNote = useCallback(
+    (id) => {
+      const filteredNotes = notes.map((note) => {
+        if (note.id === id) {
+          return {
+            ...note,
+            archived: !note.archived,
+          };
+        }
 
-      return note;
-    });
-    setNotes(filteredNotes);
-  };
+        return note;
+      });
+      setNotes(filteredNotes);
+    },
+    [notes],
+  );
+
+  // Context Value
+  const contextValue = useMemo(() => {
+    return {
+      keywordTitle,
+      setKeywordTitle,
+      getNoteById,
+      activeNotes,
+      archiveNotes,
+      availableNotes,
+      addNote,
+      moveNote,
+      deleteNote,
+    };
+  }, [
+    keywordTitle,
+    setKeywordTitle,
+    getNoteById,
+    activeNotes,
+    archiveNotes,
+    availableNotes,
+    addNote,
+    moveNote,
+    deleteNote,
+  ]);
 
   // Sync with Local Storage
   useEffect(() => {
@@ -94,19 +140,7 @@ const NotesContextProvider = (props) => {
   }, [notes]);
 
   return (
-    <NotesContext.Provider
-      value={{
-        keywordTitle,
-        setKeywordTitle,
-        getNoteById,
-        activeNotes,
-        archiveNotes,
-        availableNotes,
-        addNote,
-        moveNote,
-        deleteNote,
-      }}
-    >
+    <NotesContext.Provider value={contextValue}>
       {props.children}
     </NotesContext.Provider>
   );
