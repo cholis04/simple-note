@@ -100,6 +100,18 @@ function AddNote() {
     }
   };
 
+  // Handle paste on contentEditable Div
+  const handleDivTextPaste = (e) => {
+    // cancel paste
+    e.preventDefault();
+
+    // get text representation of clipboard
+    const text = (e.originalEvent || e).clipboardData.getData('text/plain');
+
+    // insert text manually
+    document.execCommand('insertHTML', false, text);
+  };
+
   // Validation Form
   const validateError = (field, value) => {
     switch (field) {
@@ -172,6 +184,7 @@ function AddNote() {
                     id="bodyText"
                     className={styles.inputNote}
                     onInput={handleDivTextInput}
+                    onPaste={handleDivTextPaste}
                     data-placeholder="Tulis Catatanmu disini!"
                     aria-labelledby="labelTextArea"
                     ref={textAreaRef}
