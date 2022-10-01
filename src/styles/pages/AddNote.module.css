@@ -63,61 +63,6 @@
   align-items: center;
 }
 
-.titleTextInput {
-  width: 100%;
-  padding: 0.5em 1.2em;
-  border-radius: 25px;
-
-  border: none;
-  outline: none;
-  background-color: var(--field-color);
-
-  font-size: var(--fs-m);
-  font-weight: var(--fw-reguler);
-  color: var(--text-focal-color);
-}
-.titleTextInput::placeholder {
-  color: var(--text-common-color);
-}
-
-.inputNote {
-  min-height: 320px;
-
-  outline: none;
-  border: 2px dashed var(--line-color);
-  border-radius: 15px;
-
-  width: 100%;
-  resize: none;
-  padding: 1.2em;
-
-  font-size: var(--fs-m);
-  font-weight: var(--fw-reguler);
-  color: var(--text-focal-color);
-  line-height: 1.8;
-
-  background-color: var(--background-color);
-
-  /* font-size: 14px; Manually, to disable Incerase font */
-  /* background: repeating-linear-gradient(
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0) 24.2px,
-    var(--line-color) 24.2px,
-    var(--line-color) 25.2px
-    ); */
-
-  transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-
-.inputNote:focus {
-  border: 2px dashed var(--primary-color);
-}
-
-.inputNote:empty:before {
-  content: attr(data-placeholder);
-  color: var(--text-common-color);
-}
-
 .maximumNote {
   margin: 6rem auto;
   font-size: var(--fs-m);
@@ -139,18 +84,6 @@
 
   .note__wrapper {
     padding: 0 2rem;
-  }
-
-  .inputNote {
-    min-height: 480px;
-
-    /* font-size: 18.208px; Manually, to disable Incerase font */
-    /* background: repeating-linear-gradient(
-      rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 0) 31.7744px,
-      var(--line-color) 31.7744px,
-      var(--line-color) 32.7744px
-    ); */
   }
 }
 

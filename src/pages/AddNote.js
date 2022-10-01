@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState, useRef } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { MaxNotes, NotesContext } from '../context/NotesContext';
@@ -6,11 +6,13 @@ import { MaxNotes, NotesContext } from '../context/NotesContext';
 import Header from '../blocks/Header';
 import Footer from '../blocks/Footer';
 
-import CharLeft from '../elements/CharLeft';
+import ButtonLinkIcon from '../elements/ButtonLinkIcon';
 import InputLabel from '../elements/InputLabel';
+import CharLeft from '../elements/CharLeft';
+import InputText from '../elements/InputText';
+import InputTextArea from '../elements/InputTextArea';
 import InvalidMessage from '../elements/InvalidMessage';
 import ButtonLabel from '../elements/ButtonLabel';
-import ButtonLinkIcon from '../elements/ButtonLinkIcon';
 
 import {
   bodyTextValidation,
@@ -36,7 +38,6 @@ const initialState = {
 function AddNote() {
   const [form, setForm] = useState(initialState);
   const { addNote, availableNotes } = useContext(NotesContext);
-  const textAreaRef = useRef(null);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -62,7 +63,7 @@ function AddNote() {
   };
 
   // Handle Input Text on Change
-  const handleInputTextChange = (e) => {
+  const handleInputChange = (e) => {
     updateForm(e.target.id, e.target.value);
   };
 
@@ -102,7 +103,6 @@ function AddNote() {
   // Title Document | Focus on Textare first render
   useEffect(() => {
     document.title = 'Buat Catatan';
-    textAreaRef.current.focus();
   }, []);
 
   // Render Component
@@ -132,15 +132,13 @@ function AddNote() {
                       num={form.bodyText.maxChar - form.bodyText.value.length}
                     />
                   </div>
-                  <textarea
+                  <InputTextArea
                     id="bodyText"
-                    className={styles.inputNote}
-                    onChange={handleInputTextChange}
+                    placeholder="Tulis catatanmu disini!"
                     value={form.bodyText.value}
-                    placeholder="Tulis Catatanmu disini!"
-                    aria-labelledby="labelTextArea"
-                    ref={textAreaRef}
-                  ></textarea>
+                    onChange={handleInputChange}
+                    autoFocus={true}
+                  />
 
                   {form.bodyText.error && (
                     <InvalidMessage errorText={form.bodyText.error} />
@@ -155,14 +153,11 @@ function AddNote() {
                       num={form.title.maxChar - form.title.value.length}
                     />
                   </div>
-                  <input
-                    type="text"
+                  <InputText
                     id="title"
-                    className={styles.titleTextInput}
                     placeholder="Apa judul yang ingin ditulis?"
-                    autoComplete="off"
                     value={form.title.value}
-                    onChange={handleInputTextChange}
+                    onChange={handleInputChange}
                   />
 
                   {form.title.error && (

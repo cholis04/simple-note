@@ -6,7 +6,7 @@ import styles from './ButtonLinkIcon.module.css';
 const ButtonLinkIcon = ({
   label,
   color,
-  icon = undefined,
+  icon,
   onClick,
   iconPosition = 'after',
 }) => {

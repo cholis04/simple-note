@@ -2,13 +2,7 @@ import PropTypes from 'prop-types';
 
 import styles from './ButtonLabel.module.css';
 
-const ButtonLabel = ({
-  label,
-  title,
-  fullWidth = false,
-  onClick,
-  disabled = false,
-}) => {
+const ButtonLabel = ({ label, title, fullWidth, onClick, disabled }) => {
   return (
     <button
       className={styles.buttonLabel}
