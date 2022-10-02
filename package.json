@@ -42,5 +42,12 @@
   "devDependencies": {
     "eslint-config-prettier": "^8.5.0",
     "prettier": "2.7.1"
+  },
+  "author": {
+    "name": "cholis04"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cholis04/simple-note.git"
   }
 }
