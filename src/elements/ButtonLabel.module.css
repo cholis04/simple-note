@@ -28,6 +28,11 @@
 /* ================================================ */
 /* Tablet Responsive */
 @media only screen and (min-width: 768px) {
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+@media only screen and (min-width: 1024px) {
   @media (hover: hover) {
     /* when supported */
     .buttonLabel:hover {
@@ -42,9 +47,4 @@
       cursor: not-allowed;
     }
   }
-}
-
-/* ================================================ */
-/* Desktop Responsive */
-@media only screen and (min-width: 1024px) {
 }

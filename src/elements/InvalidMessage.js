@@ -4,7 +4,7 @@ import styles from './InvalidMessage.module.css';
 
 const InvalidMessage = ({ errorText }) => {
   return (
-    <p role="alert" className={styles.invalid}>
+    <p role="alert" className={styles.invalidMessage}>
       *{errorText}
     </p>
   );

@@ -13,7 +13,7 @@ const InputTextArea = ({ id, placeholder, value, onChange, autoFocus }) => {
   return (
     <textarea
       id={id}
-      className={styles.inputNote}
+      className={styles.inputTextArea}
       value={value}
       onChange={onChange}
       placeholder={placeholder}

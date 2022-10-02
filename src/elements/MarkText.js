@@ -18,7 +18,7 @@ function MarkText({ text, keyword, regExpKeyword }) {
         {split.map((word, index) => {
           if (word.toLowerCase() === keyword.toLowerCase())
             return (
-              <mark className={styles.mark} key={index}>
+              <mark className={styles.markText} key={index}>
                 {word}
               </mark>
             );

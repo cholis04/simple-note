@@ -1,4 +1,4 @@
-.titleTextInput {
+.inputText {
   width: 100%;
   padding: 0.5em 1.2em;
   border-radius: 25px;
@@ -11,7 +11,7 @@
   font-weight: var(--fw-reguler);
   color: var(--text-focal-color);
 }
-.titleTextInput::placeholder {
+.inputText::placeholder {
   color: var(--text-common-color);
 }
 

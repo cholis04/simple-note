@@ -69,7 +69,7 @@ function Archive() {
         </section>
 
         {/* Float Button on Mobile Screen */}
-        <div className={styles.mobileButtonFloat}>
+        <div className={styles.main__buttonFloat}>
           <ButtonIcon
             icon={<PlusIcon />}
             label="Buat catatan baru"

@@ -1,3 +1,13 @@
-.mark {
+.markText {
   background-color: var(--highlight-color);
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+@media only screen and (min-width: 768px) {
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+@media only screen and (min-width: 1024px) {
 }

@@ -1,6 +1,6 @@
 import { useRoutes } from 'react-router-dom';
 
-import NotFound from './blocks/NotFound';
+import NotFound from './components/NotFound';
 
 import Archive from './pages/Archive';
 import Home from './pages/Home';

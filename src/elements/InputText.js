@@ -7,7 +7,7 @@ const InputText = ({ id, placeholder, value, onChange }) => {
     <input
       type="text"
       id={id}
-      className={styles.titleTextInput}
+      className={styles.inputText}
       placeholder={placeholder}
       autoComplete="off"
       value={value}
