@@ -20,7 +20,7 @@ const ButtonLinkIcon = ({
     return (
       <button
         onClick={onClick}
-        className={`${styles.button} ${resolveColor(color)}`}
+        className={`${styles.buttonLinkIcon} ${resolveColor(color)}`}
       >
         {label}
       </button>
@@ -29,7 +29,7 @@ const ButtonLinkIcon = ({
   return (
     <button
       onClick={onClick}
-      className={`${styles.button} ${resolveColor(color)}`}
+      className={`${styles.buttonLinkIcon} ${resolveColor(color)}`}
     >
       {iconPosition === 'after' ? (
         <>

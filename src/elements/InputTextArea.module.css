@@ -1,4 +1,4 @@
-.inputNote {
+.inputTextArea {
   min-height: 320px;
 
   outline: none;
@@ -27,19 +27,18 @@
   transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-.inputNote:focus {
+.inputTextArea:focus {
   border: 2px dashed var(--primary-color);
 }
 
-.inputNote:empty:before {
-  content: attr(data-placeholder);
+.inputTextArea::placeholder {
   color: var(--text-common-color);
 }
 
 /* ================================================ */
 /* Tablet Responsive */
 @media only screen and (min-width: 768px) {
-  .inputNote {
+  .inputTextArea {
     min-height: 480px;
 
     /* font-size: 18.208px; Manually, to disable Incerase font */

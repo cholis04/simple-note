@@ -41,7 +41,7 @@
   gap: 2rem;
 }
 
-.mobileButtonFloat {
+.main__buttonFloat {
   position: sticky;
   padding: 0 1.625rem;
   margin-top: 2rem;
@@ -76,7 +76,7 @@
     padding: 0 2em;
   }
 
-  .mobileButtonFloat {
+  .main__buttonFloat {
     display: none;
   }
 }

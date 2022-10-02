@@ -31,46 +31,37 @@
   margin-top: 2rem;
 }
 
-.noteInputGroup,
-.titleInputGroup {
+.input__group {
   margin-bottom: 2rem;
 }
 
-.titleInputGroup {
+.input__header {
+  margin-bottom: 1rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text__group {
   background-color: var(--surface-color);
   padding: 2.4rem 2rem;
   border-radius: 25px;
   box-shadow: var(--shadow-bottom);
 }
 
-.noteInputGroup {
+.textarea__group {
   background-color: var(--background-color);
 }
 
-.headerNoteInputGroup {
-  margin-bottom: 1rem;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.headerTitleInputGroup {
-  margin-bottom: 1rem;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.maximumNote {
+.note__formLimit {
   margin: 6rem auto;
   font-size: var(--fs-m);
   font-weight: var(--fw-reguler);
   color: var(--text-common-color);
   text-align: center;
 }
-.maximumNote > b {
+.note__formLimit > b {
   color: var(--error-color);
 }
 

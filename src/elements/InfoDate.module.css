@@ -1,4 +1,4 @@
-.wrapper {
+.infoDate {
   display: flex;
   align-items: center;
 
@@ -10,4 +10,14 @@
   width: 0.8rem;
   height: 0.8rem;
   margin-right: 0.4rem;
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+@media only screen and (min-width: 768px) {
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+@media only screen and (min-width: 1024px) {
 }

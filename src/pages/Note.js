@@ -10,7 +10,8 @@ import { NotesContext } from '../context/NotesContext';
 
 import Header from '../blocks/Header';
 import Footer from '../blocks/Footer';
-import NotFound from '../blocks/NotFound';
+
+import NotFound from '../components/NotFound';
 
 import InfoDate from '../elements/InfoDate';
 import ButtonLinkIcon from '../elements/ButtonLinkIcon';
@@ -86,14 +87,14 @@ function Note() {
                 />
               )}
             </div>
-            <h1 className={styles.titleNote}>{note.title}</h1>
-            <p className={styles.bodyNote}>{note.body}</p>
+            <h1 className={styles.detail__titleNote}>{note.title}</h1>
+            <p className={styles.detail__bodyNote}>{note.body}</p>
             <div className={styles.detail__additionalInfo}>
               <p className={styles.detail__infoWordCount}>
                 Jumlah Kata : <strong>{countWords(note.body)}</strong>
               </p>
             </div>
-            <div className={styles.delete__wrapper}>
+            <div className={styles.detail__action}>
               <ButtonLinkIcon
                 icon={<TrashIcon />}
                 onClick={onClickButtonDelete}

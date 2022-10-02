@@ -9,7 +9,7 @@ import styles from './InfoDate.module.css';
 
 const InfoDate = ({ time }) => {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.infoDate}>
       <ClockIcon className={styles.iconTime} />{' '}
       <time dateTime={formattedAttributeTime(time)}>
         {showFormattedDate(time)}

@@ -124,9 +124,11 @@ function AddNote() {
 
             {availableNotes ? (
               <form onSubmit={handleSubmit} className={styles.note__form}>
-                {/* Note Input Group */}
-                <div className={styles.noteInputGroup}>
-                  <div className={styles.headerNoteInputGroup}>
+                {/* TextArea Input Group */}
+                <div
+                  className={`${styles.input__group} ${styles.textarea__group}`}
+                >
+                  <div className={styles.input__header}>
                     <InputLabel idfor="bodyText" text="Isi Catatan" />
                     <CharLeft
                       num={form.bodyText.maxChar - form.bodyText.value.length}
@@ -146,8 +148,8 @@ function AddNote() {
                 </div>
 
                 {/* Title Input Group */}
-                <div className={styles.titleInputGroup}>
-                  <div className={styles.headerTitleInputGroup}>
+                <div className={`${styles.input__group} ${styles.text__group}`}>
+                  <div className={styles.input__header}>
                     <InputLabel idfor="title" text="Judul" />
                     <CharLeft
                       num={form.title.maxChar - form.title.value.length}
@@ -165,17 +167,15 @@ function AddNote() {
                   )}
                 </div>
 
-                {/* Action Button */}
-                <div className={styles.buttonWrapper}>
-                  <ButtonLabel
-                    label="Tambahkan"
-                    fullWidth={true}
-                    disabled={!validForm || emptyForm}
-                  />
-                </div>
+                {/* Submit Button */}
+                <ButtonLabel
+                  label="Tambahkan"
+                  fullWidth={true}
+                  disabled={!validForm || emptyForm}
+                />
               </form>
             ) : (
-              <p className={styles.maximumNote}>
+              <p className={styles.note__formLimit}>
                 Maaf ✋, anda telah mencapai{' '}
                 <b>Jumlah Maksimal {MaxNotes} Catatan</b>. <br />
                 Silahkan hapus beberapa untuk menambah catatan yang baru!

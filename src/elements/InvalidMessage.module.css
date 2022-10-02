@@ -1,6 +1,16 @@
-.invalid {
+.invalidMessage {
   margin-top: 0.8rem;
   font-size: var(--fs-s);
   font-weight: var(--fw-medium);
   color: var(--error-color);
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+@media only screen and (min-width: 768px) {
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+@media only screen and (min-width: 1024px) {
 }
