@@ -1,0 +1,46 @@
+.toggleTheme {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+
+  font-size: var(--fs-m);
+  font-weight: var(--fw-bold);
+  color: var(--text-common-color);
+
+  background: none;
+  border: none;
+
+  transition: all 0.2s ease-in-out;
+}
+
+.toggleTheme > .label {
+  display: none;
+}
+
+.toggleTheme > svg {
+  margin-top: -0.2rem;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+@media only screen and (min-width: 768px) {
+  .toggleTheme > .label {
+    display: inline;
+  }
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+@media only screen and (min-width: 1024px) {
+  @media (hover: hover) {
+    /* when supported */
+
+    .toggleTheme:hover {
+      opacity: 0.6;
+      cursor: pointer;
+    }
+  }
+}

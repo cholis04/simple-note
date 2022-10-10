@@ -1,8 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
 
-import EmptyInboxDesktop from '../assets/images/Empty_Inbox-Desktop.png';
-import EmptyInboxTablet from '../assets/images/Empty_Inbox-Tablet.png';
-import EmptyInboxMobile from '../assets/images/Empty_Inbox-Mobile.png';
+import EmptyInboxDesktop from '../assets/pictures/dark/Empty_Inbox-Desktop.png';
+import EmptyInboxTablet from '../assets/pictures/dark/Empty_Inbox-Tablet.png';
+import EmptyInboxMobile from '../assets/pictures/dark/Empty_Inbox-Mobile.png';
 
 import styles from './EmptyList.module.css';
 

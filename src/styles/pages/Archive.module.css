@@ -27,6 +27,7 @@
 .main__notelist {
   width: 100%;
   margin-top: 0;
+  padding-bottom: 2rem;
 }
 
 .main__notelistWrapper {
@@ -42,10 +43,10 @@
 }
 
 .main__buttonFloat {
-  position: sticky;
-  padding: 0 1.625rem;
-  margin-top: 2rem;
+  position: fixed;
   bottom: 2rem;
+  right: 1.625rem;
+  z-index: 98;
 
   display: flex;
   flex-direction: column;
@@ -69,18 +70,22 @@
 
   .main__notelist {
     margin-top: 2rem;
-    padding-bottom: 2rem;
   }
 
   .main__notelistWrapper {
     padding: 0 2em;
   }
+
   .main__buttonFloat {
-    display: none;
+    position: sticky;
+    padding-right: 2rem;
   }
 }
 
 /* ================================================ */
 /* Desktop Responsive */
 @media only screen and (min-width: 1024px) {
+  .main__buttonFloat {
+    display: none;
+  }
 }

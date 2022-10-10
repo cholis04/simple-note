@@ -11,7 +11,7 @@
   font-weight: var(--fw-bold);
   line-height: 180%;
   background-color: var(--primary-color);
-  color: var(--text-focal-color);
+  color: var(--text-onprimary-color);
   transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 

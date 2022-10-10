@@ -3,8 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import { MaxNotes, NotesContext } from '../context/NotesContext';
 
-import Header from '../blocks/Header';
-import Footer from '../blocks/Footer';
+import MemberLayout from '../layouts/MemberLayout';
 
 import ButtonLinkIcon from '../elements/ButtonLinkIcon';
 import InputLabel from '../elements/InputLabel';
@@ -107,85 +106,81 @@ function AddNote() {
 
   // Render Component
   return (
-    <>
-      <Header />
-      <main>
-        <section className={styles.note}>
-          <div className={styles.note__wrapper}>
-            <h1 className={styles.note__title}>Tambah Catatan</h1>
+    <MemberLayout>
+      <section className={styles.note}>
+        <div className={styles.note__wrapper}>
+          <h1 className={styles.note__title}>Tambah Catatan</h1>
 
-            <div className={styles.note__headBar}>
-              <ButtonLinkIcon
-                label="Batal"
-                color="error"
-                onClick={handleCancel}
-              />
-            </div>
-
-            {availableNotes ? (
-              <form onSubmit={handleSubmit} className={styles.note__form}>
-                {/* TextArea Input Group */}
-                <div
-                  className={`${styles.input__group} ${styles.textarea__group}`}
-                >
-                  <div className={styles.input__header}>
-                    <InputLabel idfor="bodyText" text="Isi Catatan" />
-                    <CharLeft
-                      num={form.bodyText.maxChar - form.bodyText.value.length}
-                    />
-                  </div>
-                  <InputTextArea
-                    id="bodyText"
-                    placeholder="Tulis catatanmu disini!"
-                    value={form.bodyText.value}
-                    onChange={handleInputChange}
-                    autoFocus={true}
-                  />
-
-                  {form.bodyText.error && (
-                    <InvalidMessage errorText={form.bodyText.error} />
-                  )}
-                </div>
-
-                {/* Title Input Group */}
-                <div className={`${styles.input__group} ${styles.text__group}`}>
-                  <div className={styles.input__header}>
-                    <InputLabel idfor="title" text="Judul" />
-                    <CharLeft
-                      num={form.title.maxChar - form.title.value.length}
-                    />
-                  </div>
-                  <InputText
-                    id="title"
-                    placeholder="Apa judul yang ingin ditulis?"
-                    value={form.title.value}
-                    onChange={handleInputChange}
-                  />
-
-                  {form.title.error && (
-                    <InvalidMessage errorText={form.title.error} />
-                  )}
-                </div>
-
-                {/* Submit Button */}
-                <ButtonLabel
-                  label="Tambahkan"
-                  fullWidth={true}
-                  disabled={!validForm || emptyForm}
-                />
-              </form>
-            ) : (
-              <p className={styles.note__formLimit}>
-                Maaf ✋, anda telah mencapai{' '}
-                <b>Jumlah Maksimal {MaxNotes} Catatan</b>. <br />
-                Silahkan hapus beberapa untuk menambah catatan yang baru!
-              </p>
-            )}
+          <div className={styles.note__headBar}>
+            <ButtonLinkIcon
+              label="Batal"
+              color="error"
+              onClick={handleCancel}
+            />
           </div>
-        </section>
-      </main>
-      <Footer />
-    </>
+
+          {availableNotes ? (
+            <form onSubmit={handleSubmit} className={styles.note__form}>
+              {/* TextArea Input Group */}
+              <div
+                className={`${styles.input__group} ${styles.textarea__group}`}
+              >
+                <div className={styles.input__header}>
+                  <InputLabel idfor="bodyText" text="Isi Catatan" />
+                  <CharLeft
+                    num={form.bodyText.maxChar - form.bodyText.value.length}
+                  />
+                </div>
+                <InputTextArea
+                  id="bodyText"
+                  placeholder="Tulis catatanmu disini!"
+                  value={form.bodyText.value}
+                  onChange={handleInputChange}
+                  autoFocus={true}
+                />
+
+                {form.bodyText.error && (
+                  <InvalidMessage errorText={form.bodyText.error} />
+                )}
+              </div>
+
+              {/* Title Input Group */}
+              <div className={`${styles.input__group} ${styles.text__group}`}>
+                <div className={styles.input__header}>
+                  <InputLabel idfor="title" text="Judul" />
+                  <CharLeft
+                    num={form.title.maxChar - form.title.value.length}
+                  />
+                </div>
+                <InputText
+                  id="title"
+                  placeholder="Apa judul yang ingin ditulis?"
+                  value={form.title.value}
+                  onChange={handleInputChange}
+                />
+
+                {form.title.error && (
+                  <InvalidMessage errorText={form.title.error} />
+                )}
+              </div>
+
+              {/* Submit Button */}
+              <ButtonLabel
+                label="Tambahkan"
+                fullWidth={true}
+                disabled={!validForm || emptyForm}
+              />
+            </form>
+          ) : (
+            <p className={styles.note__formLimit}>
+              Maaf ✋, anda telah mencapai{' '}
+              <b>Jumlah Maksimal {MaxNotes} Catatan</b>. <br />
+              Silahkan hapus beberapa untuk menambah catatan yang baru!
+            </p>
+          )}
+        </div>
+      </section>
+    </MemberLayout>
   );
 }
 

@@ -8,8 +8,7 @@ import {
 
 import { NotesContext } from '../context/NotesContext';
 
-import Header from '../blocks/Header';
-import Footer from '../blocks/Footer';
+import MemberLayout from '../layouts/MemberLayout';
 
 import NotFound from '../components/NotFound';
 
@@ -62,52 +61,48 @@ function Note() {
 
   // Render Component
   return (
-    <>
-      <Header />
-      <main>
-        {/* Note Detail */}
-        <section className={styles.detail}>
-          <div className={styles.detail__wrapper}>
-            <div className={styles.detail__info}>
-              <InfoDate time={note.createdAt} />
-              {note.archived ? (
-                <ButtonLinkIcon
-                  icon={<ArrowNarrowLeftIcon />}
-                  onClick={onClickButtonMove}
-                  label="Aktifkan"
-                  color="secondary"
-                  iconPosition="before"
-                />
-              ) : (
-                <ButtonLinkIcon
-                  icon={<ArrowNarrowRightIcon />}
-                  onClick={onClickButtonMove}
-                  label="Arsipkan"
-                  color="secondary"
-                />
-              )}
-            </div>
-            <h1 className={styles.detail__titleNote}>{note.title}</h1>
-            <p className={styles.detail__bodyNote}>{note.body}</p>
-            <div className={styles.detail__additionalInfo}>
-              <p className={styles.detail__infoWordCount}>
-                Jumlah Kata : <strong>{countWords(note.body)}</strong>
-              </p>
-            </div>
-            <div className={styles.detail__action}>
+    <MemberLayout>
+      {/* Note Detail */}
+      <section className={styles.detail}>
+        <div className={styles.detail__wrapper}>
+          <div className={styles.detail__info}>
+            <InfoDate time={note.createdAt} />
+            {note.archived ? (
               <ButtonLinkIcon
-                icon={<TrashIcon />}
-                onClick={onClickButtonDelete}
-                label="Hapus"
-                color="error"
+                icon={<ArrowNarrowLeftIcon />}
+                onClick={onClickButtonMove}
+                label="Aktifkan"
+                color="secondary"
                 iconPosition="before"
               />
-            </div>
+            ) : (
+              <ButtonLinkIcon
+                icon={<ArrowNarrowRightIcon />}
+                onClick={onClickButtonMove}
+                label="Arsipkan"
+                color="secondary"
+              />
+            )}
           </div>
-        </section>
-      </main>
-      <Footer />
-    </>
+          <h1 className={styles.detail__titleNote}>{note.title}</h1>
+          <p className={styles.detail__bodyNote}>{note.body}</p>
+          <div className={styles.detail__additionalInfo}>
+            <p className={styles.detail__infoWordCount}>
+              Jumlah Kata : <strong>{countWords(note.body)}</strong>
+            </p>
+          </div>
+          <div className={styles.detail__action}>
+            <ButtonLinkIcon
+              icon={<TrashIcon />}
+              onClick={onClickButtonDelete}
+              label="Hapus"
+              color="error"
+              iconPosition="before"
+            />
+          </div>
+        </div>
+      </section>
+    </MemberLayout>
   );
 }
 

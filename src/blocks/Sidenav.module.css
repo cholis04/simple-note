@@ -1,0 +1,86 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+
+  width: 100%;
+  height: 100vh;
+
+  background-color: var(--overlay-color);
+}
+
+.navContent {
+  width: 75%;
+  max-width: 420px;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: var(--surface-color);
+  padding: 2rem 1.625rem 2rem 1.625rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.navHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.title {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  color: var(--text-focal-color);
+}
+
+.contentInformation {
+  display: block;
+}
+
+.menu {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.menuLink {
+  text-decoration: none;
+
+  color: var(--text-common-color);
+  font-size: var(--fs-xxl);
+  font-weight: var(--fw-medium);
+}
+
+.menuLink:active {
+  text-decoration: underline;
+}
+
+.lastMenuLink {
+  color: var(--error-color);
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+@media only screen and (min-width: 768px) {
+  .navContent {
+    padding: 2rem 1.625rem 2rem 2rem;
+  }
+  .contentInformation {
+    display: none;
+  }
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+@media only screen and (min-width: 1024px) {
+  .overlay {
+    display: none;
+  }
+
+  @media (hover: hover) {
+    /* when supported */
+  }
+}

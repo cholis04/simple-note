@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 import styles from './NotFound.module.css';
 
-import PageNotFoundDesktop from '../assets/images/Page_Not_Found-Desktop.png';
-import PageNotFoundTablet from '../assets/images/Page_Not_Found-Tablet.png';
-import PageNotFoundMobile from '../assets/images/Page_Not_Found-Mobile.png';
+import PageNotFoundDesktop from '../assets/pictures/dark/Page_Not_Found-Desktop.png';
+import PageNotFoundTablet from '../assets/pictures/dark/Page_Not_Found-Tablet.png';
+import PageNotFoundMobile from '../assets/pictures/dark/Page_Not_Found-Mobile.png';
 
 function NotFound() {
   useEffect(() => {

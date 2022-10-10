@@ -1,5 +1,6 @@
 .articleCard {
   background-color: var(--surface-color);
+  box-shadow: var(--shadow-bottom);
 
   padding: 2.2em 2em;
   border-radius: 25px;

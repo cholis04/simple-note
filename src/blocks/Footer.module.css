@@ -1,4 +1,5 @@
 .footer {
+  display: none;
   margin-top: 2rem;
   padding: 3em 0;
   border-top: 1px solid var(--line-color);
@@ -6,48 +7,27 @@
 
 .wrapper {
   margin: 0 auto;
+  padding: 0 1.625em;
   max-width: var(--maxWidth);
-}
-
-.paragraph {
-  text-align: center;
-
-  padding: 0 2em;
-  font-size: 1em;
-  font-weight: var(--fw-reguler);
-  color: var(--text-common-color);
-}
-
-.link {
-  text-decoration: none;
-
-  font-size: 1em;
-  font-weight: var(--fw-semibold);
-  color: var(--secondary-color);
-}
-
-.link:active {
-  text-decoration: underline;
-  color: var(--primary-color) !important;
 }
 
 /* ================================================ */
 /* Tablet Responsive */
 @media only screen and (min-width: 768px) {
   .footer {
-    padding: 4em 0;
+    display: block;
+    padding: 2em 0;
   }
 
   @media (hover: hover) {
     /* when supported */
-    .link:hover {
-      text-decoration: underline;
-      color: var(--text-focal-color);
-    }
   }
 }
 
 /* ================================================ */
 /* Desktop Responsive */
 @media only screen and (min-width: 1024px) {
+  .footer {
+    padding: 4em 0;
+  }
 }

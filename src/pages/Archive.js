@@ -4,8 +4,7 @@ import { PlusIcon } from '@heroicons/react/solid';
 
 import { NotesContext } from '../context/NotesContext';
 
-import Header from '../blocks/Header';
-import Footer from '../blocks/Footer';
+import MemberLayout from '../layouts/MemberLayout';
 
 import SearchBar from '../components/SearchBar';
 import EmptyList from '../components/EmptyList';
@@ -37,48 +36,44 @@ function Archive() {
 
   // Render Component
   return (
-    <>
-      <Header />
-      <main>
-        {/* Main Heading */}
-        <div className={styles.main__heading}>
-          <div className={styles.main__headingWrapper}>
-            <h1 className={styles.main__title}>
-              Daftar Arsip ({archiveNotes.length})
-            </h1>
-            <SearchBar />
-          </div>
+    <MemberLayout>
+      {/* Main Heading */}
+      <div className={styles.main__heading}>
+        <div className={styles.main__headingWrapper}>
+          <h1 className={styles.main__title}>
+            Daftar Arsip ({archiveNotes.length})
+          </h1>
+          <SearchBar />
         </div>
+      </div>
 
-        {/* Note List */}
-        <section
-          className={styles.main__notelist}
-          id="daftar-arsip"
-          aria-label="Daftar Arsip"
-        >
-          <div className={styles.main__notelistWrapper}>
-            {archiveNotes.length <= 0 && <EmptyList />}
-            {archiveNotes.length >= 1 && (
-              <div className={styles.main__noteBox}>
-                {archiveNotes.map((note) => (
-                  <CardNote key={note.id} note={note} />
-                ))}
-              </div>
-            )}
-          </div>
-        </section>
-
-        {/* Float Button on Mobile Screen */}
-        <div className={styles.main__buttonFloat}>
-          <ButtonIcon
-            icon={<PlusIcon />}
-            label="Buat catatan baru"
-            onClick={onAddButtonClick}
-          />
+      {/* Note List */}
+      <section
+        className={styles.main__notelist}
+        id="daftar-arsip"
+        aria-label="Daftar Arsip"
+      >
+        <div className={styles.main__notelistWrapper}>
+          {archiveNotes.length <= 0 && <EmptyList />}
+          {archiveNotes.length >= 1 && (
+            <div className={styles.main__noteBox}>
+              {archiveNotes.map((note) => (
+                <CardNote key={note.id} note={note} />
+              ))}
+            </div>
+          )}
         </div>
-      </main>
-      <Footer />
-    </>
+      </section>
+
+      {/* Float Button on Mobile Screen */}
+      <div className={styles.main__buttonFloat}>
+        <ButtonIcon
+          icon={<PlusIcon />}
+          label="Buat catatan baru"
+          onClick={onAddButtonClick}
+        />
+      </div>
+    </MemberLayout>
   );
 }
 

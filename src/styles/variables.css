@@ -1,30 +1,6 @@
 /* Global Variables */
 
 :root {
-  /* Theme Color */
-  --primary-color: hsl(148, 30%, 46%);
-  --secondary-color: hsl(90, 18%, 64%);
-  --tertiary-color: hsl(157, 16%, 28%);
-
-  /* Scheme Color */
-  --background-color: hsl(0, 0%, 9%);
-  --surface-color: hsl(0, 0%, 15%);
-  --field-color: hsl(0, 0%, 23%);
-  --line-color: hsl(0, 0%, 30%);
-
-  /* App Color */
-  --error-color: hsl(0, 85%, 70%);
-  --highlight-color: hsl(60, 100%, 50%);
-  --disabled-color: hsl(0, 0%, 32%);
-
-  /* Text Color */
-  --text-focal-color: hsl(0, 0%, 100%);
-  --text-common-color: hsl(0, 0%, 72%);
-
-  /* Shadow Effects */
-  --shadow-bottom: 0 4px 4px -4px hsla(0, 0%, 0%, 15%);
-  --shadow-top: 0 -4px 4px -4px hsla(0, 0%, 0%, 15%);
-
   /* Font Weight */
   --fw-light: 300;
   --fw-reguler: 400;
@@ -40,6 +16,10 @@
   --fs-s: 0.878em;
   --fs-xs: 0.823em;
 
+  /* Shadow Effects */
+  --shadow-bottom: 0 4px 15px -4px hsla(0, 0%, 0%, 10%);
+  --shadow-top: 0 -4px 15px -4px hsla(0, 0%, 0%, 10%);
+
   /* Font Family */
   --font-quicksand: 'Quicksand', sans-serif;
 
@@ -48,3 +28,58 @@
   --minWidth: 375px;
   --navHeight: 80px;
 }
+
+/* Dark Mode */
+[data-theme='dark'] {
+  /* Theme Color */
+  --primary-color: hsl(148, 30%, 46%);
+  --secondary-color: hsl(90, 18%, 64%);
+  --tertiary-color: hsl(157, 16%, 28%);
+
+  /* Scheme Color */
+  --background-color: hsl(0, 0%, 9%);
+  --overlay-color: hsla(0, 0%, 0%, 0.6);
+  --surface-color: hsl(0, 0%, 15%);
+  --field-color: hsl(0, 0%, 23%);
+  --line-color: hsl(0, 0%, 30%);
+
+  /* App Color */
+  --success-color: hsl(148, 45%, 61%);
+  --error-color: hsl(0, 85%, 70%);
+  --highlight-color: hsl(60, 100%, 50%);
+  --disabled-color: hsl(0, 0%, 32%);
+
+  /* Text Color */
+  --text-focal-color: hsl(0, 0%, 100%);
+  --text-common-color: hsl(0, 0%, 72%);
+  --text-onprimary-color: hsl(0, 0%, 100%);
+}
+
+/* Light Mode */
+[data-theme='light'] {
+  /* Theme Color */
+  --primary-color: hsl(148, 67%, 48%);
+  --secondary-color: hsl(90, 60%, 44%);
+  --tertiary-color: hsl(155, 24%, 18%);
+
+  /* Scheme Color */
+  --background-color: hsl(0, 0%, 94%);
+  --overlay-color: hsla(0, 0%, 49%, 0.7);
+  --surface-color: hsl(0, 0%, 100%);
+  --field-color: hsl(0, 0%, 96%);
+  --line-color: hsl(0, 0%, 71%);
+
+  /* App Color */
+  --success-color: hsl(148, 46%, 47%);
+  --error-color: hsl(0, 86%, 53%);
+  --highlight-color: hsl(60, 100%, 47%);
+  --disabled-color: hsl(0, 0%, 79%);
+
+  /* Text Color */
+  --text-focal-color: hsl(0, 0%, 15%);
+  --text-common-color: hsl(0, 0%, 36%);
+  --text-onprimary-color: hsl(0, 0%, 100%);
+}
+
+/* const rootElement = document.documentElement; */
+/* document.documentElement.setAttribute('data-theme', this.state.theme); */
