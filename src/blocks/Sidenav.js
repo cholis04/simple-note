@@ -1,13 +1,19 @@
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
+import { ModeContext } from '../context/ModeContext';
 
 import FooterText from '../elements/FooterText';
 
 import styles from './Sidenav.module.css';
 
 import LogoDark from '../assets/icons/logo-dark.png';
+import LogoLight from '../assets/icons/logo-light.png';
 
 function Sidenav({ toggleSidenav }) {
+  const { mode } = useContext(ModeContext);
+
   // Handle Close Overlay
   const handleClose = (e) => {
     if (e.target.id === 'overlay-aside') {
@@ -19,7 +25,7 @@ function Sidenav({ toggleSidenav }) {
     <aside className={styles.overlay} id="overlay-aside" onClick={handleClose}>
       <nav className={styles.navContent}>
         <div className={styles.navHeader}>
-          <img src={LogoDark} alt="" />
+          <img src={mode === 'dark' ? LogoDark : LogoLight} alt="" />
           <span className={styles.title}>Catatan Singkat</span>
         </div>
         <div className={styles.contentInformation}>

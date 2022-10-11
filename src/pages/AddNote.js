@@ -44,6 +44,18 @@ function AddNote() {
   const validForm = !form.title.error && !form.bodyText.error;
   const emptyForm = form.title.value === '' || form.bodyText.value === '';
 
+  // Validation Form
+  const validateError = (field, value) => {
+    switch (field) {
+      case 'title':
+        return titleValidation(value);
+      case 'bodyText':
+        return bodyTextValidation(value);
+      default:
+        break;
+    }
+  };
+
   // Controlled Form on Change
   const updateForm = (currentElement, currentValue) => {
     const maxChar = form[currentElement].maxChar;
@@ -64,18 +76,6 @@ function AddNote() {
   // Handle Input Text on Change
   const handleInputChange = (e) => {
     updateForm(e.target.id, e.target.value);
-  };
-
-  // Validation Form
-  const validateError = (field, value) => {
-    switch (field) {
-      case 'title':
-        return titleValidation(value);
-      case 'bodyText':
-        return bodyTextValidation(value);
-      default:
-        break;
-    }
   };
 
   // Add note when form is valid and not empty

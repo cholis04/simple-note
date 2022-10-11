@@ -33,11 +33,7 @@ function Header({ toggleSidenav }) {
       <div className={styles.wrapper}>
         <div className={styles.personalization}>
           <div className={styles.account}>
-            {mode === 'dark' ? (
-              <img src={LogoDark} alt="" />
-            ) : (
-              <img src={LogoLight} alt="" />
-            )}{' '}
+            <img src={mode === 'dark' ? LogoDark : LogoLight} alt="" />{' '}
             <span
               className={styles.accountName}
               title="Nico Robin Extended Name Version"
