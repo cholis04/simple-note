@@ -80,6 +80,3 @@
   --text-common-color: hsl(0, 0%, 36%);
   --text-onprimary-color: hsl(0, 0%, 100%);
 }
-
-/* const rootElement = document.documentElement; */
-/* document.documentElement.setAttribute('data-theme', this.state.theme); */

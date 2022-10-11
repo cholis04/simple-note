@@ -1,6 +1,9 @@
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { LogoutIcon, MenuAlt3Icon } from '@heroicons/react/solid';
+
+import { ModeContext } from '../context/ModeContext';
 
 import ButtonLabel from '../elements/ButtonLabel';
 import ToggleTheme from '../elements/ToggleTheme';
@@ -9,8 +12,10 @@ import ToggleLocale from '../elements/ToggleLocale';
 import styles from './Header.module.css';
 
 import LogoDark from '../assets/icons/logo-dark.png';
+import LogoLight from '../assets/icons/logo-light.png';
 
 function Header({ toggleSidenav }) {
+  const { mode } = useContext(ModeContext);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -28,7 +33,11 @@ function Header({ toggleSidenav }) {
       <div className={styles.wrapper}>
         <div className={styles.personalization}>
           <div className={styles.account}>
-            <img src={LogoDark} alt="" />{' '}
+            {mode === 'dark' ? (
+              <img src={LogoDark} alt="" />
+            ) : (
+              <img src={LogoLight} alt="" />
+            )}{' '}
             <span
               className={styles.accountName}
               title="Nico Robin Extended Name Version"

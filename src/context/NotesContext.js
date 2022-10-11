@@ -16,11 +16,11 @@ const LocalStorageName = 'simple-notes-XS89DF28SSD093SD';
 
 const initialState = () => {
   const localData = localStorage.getItem(LocalStorageName);
-  return localData ? JSON.parse(localData) : getInitialData;
+  return localData ? JSON.parse(localData) : getInitialData();
 };
 
 const NotesContextProvider = (props) => {
-  const [notes, setNotes] = useState(initialState());
+  const [notes, setNotes] = useState(() => initialState());
   const [searchParams, setSearchParams] = useSearchParams();
   // const [keyword, setKeyword] = useState('');
 
