@@ -9,7 +9,11 @@ const ToggleTheme = () => {
   const { mode, toggleMode } = useContext(ModeContext);
 
   return (
-    <button className={styles.toggleTheme} onClick={toggleMode}>
+    <button
+      className={styles.toggleTheme}
+      onClick={toggleMode}
+      title={mode === 'dark' ? 'Ubah ke mode terang' : 'Ubah ke mode gelap'}
+    >
       {mode === 'dark' ? (
         <>
           <MoonIcon /> <span className={styles.label}>Gelap</span>
