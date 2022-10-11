@@ -20,6 +20,10 @@
 /* ================================================ */
 /* Tablet Responsive */
 @media only screen and (min-width: 768px) {
+  .paragraph {
+    text-align: center;
+  }
+
   @media (hover: hover) {
     /* when supported */
     .link:hover {
@@ -32,7 +36,4 @@
 /* ================================================ */
 /* Desktop Responsive */
 @media only screen and (min-width: 1024px) {
-  .paragraph {
-    text-align: center;
-  }
 }
