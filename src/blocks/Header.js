@@ -6,7 +6,7 @@ import { LogoutIcon, MenuAlt3Icon } from '@heroicons/react/solid';
 import { ModeContext } from '../context/ModeContext';
 
 import ButtonLabel from '../elements/ButtonLabel';
-import ToggleTheme from '../elements/ToggleTheme';
+import ToggleMode from '../elements/ToggleMode';
 import ToggleLocale from '../elements/ToggleLocale';
 
 import styles from './Header.module.css';
@@ -46,7 +46,7 @@ function Header({ toggleSidenav }) {
             </span>
           </div>
           <div className={styles.settings}>
-            <ToggleTheme />
+            <ToggleMode />
             <ToggleLocale />
           </div>
         </div>

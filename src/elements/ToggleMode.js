@@ -3,14 +3,14 @@ import { MoonIcon, SunIcon } from '@heroicons/react/solid';
 
 import { ModeContext } from '../context/ModeContext';
 
-import styles from './ToggleTheme.module.css';
+import styles from './ToggleMode.module.css';
 
-const ToggleTheme = () => {
+const ToggleMode = () => {
   const { mode, toggleMode } = useContext(ModeContext);
 
   return (
     <button
-      className={styles.toggleTheme}
+      className={styles.toggleMode}
       onClick={toggleMode}
       title={mode === 'dark' ? 'Ubah ke mode terang' : 'Ubah ke mode gelap'}
     >
@@ -27,4 +27,4 @@ const ToggleTheme = () => {
   );
 };
 
-export default ToggleTheme;
+export default ToggleMode;
