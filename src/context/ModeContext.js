@@ -34,9 +34,9 @@ const ModeContextProvider = (props) => {
     // Sync with Local Storage
     localStorage.setItem(LocalStorageName, JSON.stringify(mode));
 
-    // Update HTML data-theme attribute
+    // Update HTML data-mode attribute
     const rootElement = document.documentElement;
-    rootElement.setAttribute('data-theme', mode);
+    rootElement.setAttribute('data-mode', mode);
   }, [mode]);
 
   return (
