@@ -20,6 +20,8 @@ import {
 
 import styles from '../styles/pages/AddNote.module.css';
 
+import { locale } from '../locale/AddNote.locale';
+
 // Initial Form State
 const initialState = {
   title: {
@@ -35,6 +37,7 @@ const initialState = {
 };
 
 function AddNote() {
+  const lang = 'en';
   const [form, setForm] = useState(initialState);
   const { addNote, availableNotes } = useContext(NotesContext);
 
@@ -101,7 +104,7 @@ function AddNote() {
 
   // Title Document | Focus on Textare first render
   useEffect(() => {
-    document.title = 'Buat Catatan';
+    document.title = locale[lang].pageTitle;
   }, []);
 
   // Render Component
@@ -109,11 +112,11 @@ function AddNote() {
     <MemberLayout>
       <section className={styles.note}>
         <div className={styles.note__wrapper}>
-          <h1 className={styles.note__title}>Tambah Catatan</h1>
+          <h1 className={styles.note__title}>{locale[lang].headingText}</h1>
 
           <div className={styles.note__headBar}>
             <ButtonLinkIcon
-              label="Batal"
+              label={locale[lang].links.cancel}
               color="error"
               onClick={handleCancel}
             />
@@ -126,14 +129,17 @@ function AddNote() {
                 className={`${styles.input__group} ${styles.textarea__group}`}
               >
                 <div className={styles.input__header}>
-                  <InputLabel idfor="bodyText" text="Isi Catatan" />
+                  <InputLabel
+                    idfor="bodyText"
+                    text={locale[lang].bodyField.label}
+                  />
                   <CharLeft
                     num={form.bodyText.maxChar - form.bodyText.value.length}
                   />
                 </div>
                 <InputTextArea
                   id="bodyText"
-                  placeholder="Tulis catatanmu disini!"
+                  placeholder={locale[lang].bodyField.placeholder}
                   value={form.bodyText.value}
                   onChange={handleInputChange}
                   autoFocus={true}
@@ -147,14 +153,17 @@ function AddNote() {
               {/* Title Input Group */}
               <div className={`${styles.input__group} ${styles.text__group}`}>
                 <div className={styles.input__header}>
-                  <InputLabel idfor="title" text="Judul" />
+                  <InputLabel
+                    idfor="title"
+                    text={locale[lang].titleField.label}
+                  />
                   <CharLeft
                     num={form.title.maxChar - form.title.value.length}
                   />
                 </div>
                 <InputText
                   id="title"
-                  placeholder="Apa judul yang ingin ditulis?"
+                  placeholder={locale[lang].titleField.placeholder}
                   value={form.title.value}
                   onChange={handleInputChange}
                 />
@@ -166,7 +175,7 @@ function AddNote() {
 
               {/* Submit Button */}
               <ButtonLabel
-                label="Tambahkan"
+                label={locale[lang].submitButton}
                 fullWidth={true}
                 disabled={!validForm || emptyForm}
               />

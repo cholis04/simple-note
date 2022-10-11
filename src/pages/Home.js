@@ -1,6 +1,4 @@
 import { useEffect, useContext } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { PlusIcon } from '@heroicons/react/solid';
 
 import { NotesContext } from '../context/NotesContext';
 
@@ -9,30 +7,21 @@ import MemberLayout from '../layouts/MemberLayout';
 import SearchBar from '../components/SearchBar';
 import EmptyList from '../components/EmptyList';
 import CardNote from '../components/CardNote';
-
-import ButtonIcon from '../elements/ButtonIcon';
+import ActionFloat from '../components/ActionFloat';
 
 import styles from '../styles/pages/Home.module.css';
 
+import { locale } from '../locale/Home.locale';
+
 function Home() {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const lang = 'en';
 
   const { activeNotes } = useContext(NotesContext);
 
   // Title Document
   useEffect(() => {
-    document.title = 'Daftar Catatan';
+    document.title = locale[lang].pageTitle;
   }, []);
-
-  // Navigate Rounte on Button Click
-  const onAddButtonClick = () => {
-    navigate('/catatan/baru', {
-      state: {
-        from: location.pathname,
-      },
-    });
-  };
 
   // Render Component
   return (
@@ -41,7 +30,7 @@ function Home() {
       <div className={styles.main__heading}>
         <div className={styles.main__headingWrapper}>
           <h1 className={styles.main__title}>
-            Daftar Catatan ({activeNotes.length})
+            {locale[lang].headingText} ({activeNotes.length})
           </h1>
           <SearchBar />
         </div>
@@ -50,8 +39,7 @@ function Home() {
       {/* Note List */}
       <section
         className={styles.main__notelist}
-        id="daftar-catatan"
-        aria-label="Daftar Catatan"
+        aria-label={locale[lang].headingText}
       >
         <div className={styles.main__notelistWrapper}>
           {activeNotes.length <= 0 && <EmptyList />}
@@ -66,13 +54,7 @@ function Home() {
       </section>
 
       {/* Float Button on Mobile Screen */}
-      <div className={styles.main__buttonFloat}>
-        <ButtonIcon
-          icon={<PlusIcon />}
-          label="Buat catatan baru"
-          onClick={onAddButtonClick}
-        />
-      </div>
+      <ActionFloat />
     </MemberLayout>
   );
 }

@@ -14,7 +14,10 @@ import styles from './Header.module.css';
 import LogoDark from '../assets/icons/logo-dark.png';
 import LogoLight from '../assets/icons/logo-light.png';
 
+import { locale } from './Header.locale';
+
 function Header({ toggleSidenav }) {
+  const lang = 'en';
   const { mode } = useContext(ModeContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -38,7 +41,7 @@ function Header({ toggleSidenav }) {
               className={styles.accountName}
               title="Nico Robin Extended Name Version"
             >
-              Hai, Nico Robin Extended Name Version
+              {locale[lang].greeting}, Nico Robin Extended Name Version
             </span>
           </div>
           <div className={styles.settings}>
@@ -50,27 +53,23 @@ function Header({ toggleSidenav }) {
         <ul className={styles.menu}>
           <li className={styles.menuItem}>
             <Link className={styles.link} to="/">
-              Catatan
+              {locale[lang].links.allNote}
             </Link>
           </li>
           <li className={styles.menuItem}>
             <Link className={styles.link} to="/arsip">
-              Arsip
+              {locale[lang].links.archiveList}
             </Link>
           </li>
           <li className={styles.menuItem}>
-            <ButtonLabel
-              label="Buat Catatan"
-              title="Membuat catatan baru"
-              onClick={handleClick}
-            />
+            <ButtonLabel label={locale[lang].links.new} onClick={handleClick} />
           </li>
           <li className={styles.menuItem}>
             <Link
               className={styles.link}
               to="/keluar"
-              aria-label="Keluar"
-              title="Keluar"
+              aria-label={locale[lang].links.logout}
+              title={locale[lang].links.logout}
             >
               <LogoutIcon />
             </Link>
@@ -79,7 +78,7 @@ function Header({ toggleSidenav }) {
 
         <button
           className={styles.menuToggle}
-          aria-label="Buka Menu"
+          aria-label={locale[lang].menuToggle}
           onClick={toggleSidenav}
         >
           <MenuAlt3Icon />

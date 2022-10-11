@@ -5,22 +5,30 @@ import { ModeContext } from '../context/ModeContext';
 
 import styles from './ToggleMode.module.css';
 
+import { locale } from './ToggleMode.locale';
+
 const ToggleMode = () => {
+  const lang = 'en';
   const { mode, toggleMode } = useContext(ModeContext);
 
   return (
     <button
       className={styles.toggleMode}
       onClick={toggleMode}
-      title={mode === 'dark' ? 'Ubah ke mode terang' : 'Ubah ke mode gelap'}
+      title={mode === 'dark' ? locale[lang].lightTitle : locale[lang].darkTitle}
+      aria-label={
+        mode === 'dark' ? locale[lang].lightTitle : locale[lang].darkTitle
+      }
     >
       {mode === 'dark' ? (
         <>
-          <MoonIcon /> <span className={styles.label}>Gelap</span>
+          <MoonIcon />{' '}
+          <span className={styles.label}>{locale[lang].darkLabel}</span>
         </>
       ) : (
         <>
-          <SunIcon /> <span className={styles.label}>Terang</span>
+          <SunIcon />{' '}
+          <span className={styles.label}>{locale[lang].lightLabel}</span>
         </>
       )}
     </button>

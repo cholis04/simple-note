@@ -12,12 +12,15 @@ import LightNotFoundMobile from '../assets/pictures/light/Page_Not_Found-Mobile.
 
 import styles from './NotFound.module.css';
 
+import { locale } from './NotFound.locale';
+
 function NotFound() {
+  const lang = 'en';
   const { mode } = useContext(ModeContext);
 
   // Set Title
   useEffect(() => {
-    document.title = 'Halaman tidak ditemukan!';
+    document.title = locale[lang].pageTitle;
   });
 
   return (
@@ -36,11 +39,11 @@ function NotFound() {
           alt=""
         />
       </picture>
-      <h1 className={styles.title}>Ups, terjadi kesalahan!</h1>
+      <h1 className={styles.title}>{locale[lang].headingText}</h1>
       <p className={styles.paragraph}>
-        Halaman yang anda cari tidak ditemukan. Silahkan kembali ke{' '}
+        {locale[lang].paragraphText}{' '}
         <Link className={styles.link} to="/">
-          halaman utama
+          {locale[lang].LinkText}
         </Link>
         .
       </p>

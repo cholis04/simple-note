@@ -1,9 +1,13 @@
 import styles from './FooterText.module.css';
 
+import { locale } from './FooterText.locale';
+
 const FooterText = () => {
+  const lang = 'en';
+
   return (
     <p className={styles.paragraph}>
-      Proyek “Membangun Single Page Application menggunakan React” dari{' '}
+      {locale[lang].projectTitle}{' '}
       <a
         className={styles.link}
         href="https://www.dicoding.com/"
@@ -12,7 +16,7 @@ const FooterText = () => {
       >
         Dicoding Indonesia
       </a>
-      . Dibuat oleh{' '}
+      . {locale[lang].madeBy}{' '}
       <a
         className={styles.link}
         href="https://www.dicoding.com/users/cholis04"

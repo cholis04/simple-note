@@ -15,7 +15,10 @@ import InfoDate from '../elements/InfoDate';
 import styles from './CardNote.module.css';
 import ButtonLinkIcon from '../elements/ButtonLinkIcon';
 
+import { locale } from './CardNote.locale';
+
 function CardNote({ note }) {
+  const lang = 'en';
   const { moveNote, deleteNote } = useContext(NotesContext);
   const { keywordTitle } = useContext(NotesContext);
 
@@ -23,7 +26,7 @@ function CardNote({ note }) {
 
   // Handle Delete Note
   const onClickButtonDelete = (id) => {
-    if (window.confirm('Hapus catatan ?')) {
+    if (window.confirm(locale[lang].confirmDelete)) {
       deleteNote(id);
     }
   };
@@ -46,7 +49,7 @@ function CardNote({ note }) {
           <ButtonLinkIcon
             icon={<ArrowNarrowLeftIcon />}
             onClick={() => moveNote(note.id)}
-            label="Aktifkan"
+            label={locale[lang].action.activate}
             color="secondary"
             iconPosition="before"
           />
@@ -54,14 +57,14 @@ function CardNote({ note }) {
           <ButtonLinkIcon
             icon={<ArrowNarrowRightIcon />}
             onClick={() => moveNote(note.id)}
-            label="Arsipkan"
+            label={locale[lang].action.archive}
             color="secondary"
           />
         )}
         <ButtonLinkIcon
           icon={<TrashIcon />}
           onClick={() => onClickButtonDelete(note.id)}
-          label="Hapus"
+          label={locale[lang].action.delete}
           color="error"
           iconPosition="before"
         />

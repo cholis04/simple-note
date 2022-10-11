@@ -19,7 +19,10 @@ import { countWords } from '../utils/countWord';
 
 import styles from '../styles/pages/Note.module.css';
 
+import { locale } from '../locale/Note.locale';
+
 function Note() {
+  const lang = 'en';
   const { id } = useParams();
   const navigate = useNavigate();
   const { getNoteById, moveNote, deleteNote } = useContext(NotesContext);
@@ -28,12 +31,13 @@ function Note() {
 
   // Title Document
   useEffect(() => {
-    if (note !== undefined) document.title = `Catatan - ${note?.title}`;
+    if (note !== undefined)
+      document.title = `${locale[lang].pageTitle} ${note?.title}`;
   }, [note]);
 
   // Handle Delete Note
   const onClickButtonDelete = () => {
-    if (window.confirm('Hapus catatan ?')) {
+    if (window.confirm(locale[lang].confirmDelete)) {
       if (note.archived) {
         deleteNote(note.id);
         navigate('/arsip');
@@ -48,9 +52,9 @@ function Note() {
   const onClickButtonMove = () => {
     moveNote(note.id);
     if (note.archived) {
-      window.alert('Catatan kembali diaktifkan!');
+      window.alert(locale[lang].notifActive);
     } else {
-      window.alert('Catatan diarsipkan!');
+      window.alert(locale[lang].notifArchived);
     }
   };
 
@@ -71,7 +75,7 @@ function Note() {
               <ButtonLinkIcon
                 icon={<ArrowNarrowLeftIcon />}
                 onClick={onClickButtonMove}
-                label="Aktifkan"
+                label={locale[lang].links.activate}
                 color="secondary"
                 iconPosition="before"
               />
@@ -79,7 +83,7 @@ function Note() {
               <ButtonLinkIcon
                 icon={<ArrowNarrowRightIcon />}
                 onClick={onClickButtonMove}
-                label="Arsipkan"
+                label={locale[lang].links.archive}
                 color="secondary"
               />
             )}
@@ -88,14 +92,15 @@ function Note() {
           <p className={styles.detail__bodyNote}>{note.body}</p>
           <div className={styles.detail__additionalInfo}>
             <p className={styles.detail__infoWordCount}>
-              Jumlah Kata : <strong>{countWords(note.body)}</strong>
+              {locale[lang].numberOfWords} :{' '}
+              <strong>{countWords(note.body)}</strong>
             </p>
           </div>
           <div className={styles.detail__action}>
             <ButtonLinkIcon
               icon={<TrashIcon />}
               onClick={onClickButtonDelete}
-              label="Hapus"
+              label={locale[lang].links.delete}
               color="error"
               iconPosition="before"
             />

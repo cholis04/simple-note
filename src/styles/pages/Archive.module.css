@@ -42,18 +42,6 @@
   gap: 2rem;
 }
 
-.main__buttonFloat {
-  position: fixed;
-  bottom: 2rem;
-  right: 1.625rem;
-  z-index: 98;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-end;
-}
-
 /* ================================================ */
 /* Tablet Responsive */
 @media only screen and (min-width: 768px) {
@@ -75,17 +63,9 @@
   .main__notelistWrapper {
     padding: 0 2em;
   }
-
-  .main__buttonFloat {
-    position: sticky;
-    padding-right: 2rem;
-  }
 }
 
 /* ================================================ */
 /* Desktop Responsive */
 @media only screen and (min-width: 1024px) {
-  .main__buttonFloat {
-    display: none;
-  }
 }

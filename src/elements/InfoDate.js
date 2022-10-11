@@ -6,7 +6,11 @@ import { formattedAttributeTime } from '../utils/formattedAttributeTime';
 
 import styles from './InfoDate.module.css';
 
+import { locale } from './InfoDate.locale';
+
 const InfoDate = ({ time }) => {
+  const lang = 'en';
+
   const showFormattedDate = (date) => {
     const options = {
       weekday: 'long',
@@ -14,7 +18,7 @@ const InfoDate = ({ time }) => {
       month: 'long',
       day: 'numeric',
     };
-    return new Date(date).toLocaleDateString('id-ID', options);
+    return new Date(date).toLocaleDateString(locale[lang].codeLang, options);
   };
 
   return (

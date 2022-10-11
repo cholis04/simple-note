@@ -12,7 +12,10 @@ import LightEmptyInboxMobile from '../assets/pictures/light/Empty_Inbox-Mobile.p
 
 import styles from './EmptyList.module.css';
 
+import { locale } from './EmptyList.locale';
+
 function Empty() {
+  const lang = 'en';
   const { mode } = useContext(ModeContext);
   const location = useLocation();
 
@@ -37,7 +40,7 @@ function Empty() {
         />
       </picture>
       <p className={styles.text}>
-        Catatan singkat tidak ditemukan,{' '}
+        {locale[lang].notification},{' '}
         <Link
           to="/catatan/baru"
           className={styles.linkAdd}
@@ -45,7 +48,7 @@ function Empty() {
             from: location.pathname,
           }}
         >
-          Buat sekarang!
+          {locale[lang].cta}
         </Link>
       </p>
     </div>

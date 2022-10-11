@@ -1,0 +1,28 @@
+.actionFloat {
+  position: fixed;
+  bottom: 2rem;
+  right: 1.625rem;
+  z-index: 98;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+@media only screen and (min-width: 768px) {
+  .actionFloat {
+    position: sticky;
+    padding-right: 2rem;
+  }
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+@media only screen and (min-width: 1024px) {
+  .actionFloat {
+    display: none;
+  }
+}

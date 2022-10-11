@@ -11,7 +11,10 @@ import styles from './Sidenav.module.css';
 import LogoDark from '../assets/icons/logo-dark.png';
 import LogoLight from '../assets/icons/logo-light.png';
 
+import { locale } from './Sidenav.locale';
+
 function Sidenav({ toggleSidenav }) {
+  const lang = 'en';
   const { mode } = useContext(ModeContext);
 
   // Handle Close Overlay
@@ -26,7 +29,7 @@ function Sidenav({ toggleSidenav }) {
       <nav className={styles.navContent}>
         <div className={styles.navHeader}>
           <img src={mode === 'dark' ? LogoDark : LogoLight} alt="" />
-          <span className={styles.title}>Catatan Singkat</span>
+          <span className={styles.title}>{locale[lang].title}</span>
         </div>
         <div className={styles.contentInformation}>
           <FooterText />
@@ -34,25 +37,25 @@ function Sidenav({ toggleSidenav }) {
         <ul className={styles.menu}>
           <li>
             <Link to="/catatan/baru" className={styles.menuLink}>
-              Tambah
+              {locale[lang].links.add}
             </Link>
           </li>
           <li>
             <Link to="/" className={styles.menuLink}>
-              Semua Catatan
+              {locale[lang].links.allNote}
             </Link>
           </li>
           <li>
             <Link to="/arsip" className={styles.menuLink}>
-              Daftar Arsip
+              {locale[lang].links.archiveList}
             </Link>
           </li>
           <li>
             <Link
-              to="keluar"
+              to="/keluar"
               className={`${styles.menuLink} ${styles.lastMenuLink}`}
             >
-              Keluar
+              {locale[lang].links.logout}
             </Link>
           </li>
         </ul>
