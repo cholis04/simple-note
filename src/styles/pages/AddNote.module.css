@@ -32,6 +32,8 @@
 }
 
 .input__group {
+  display: grid;
+  row-gap: 0.5rem;
   margin-bottom: 2rem;
 }
 
@@ -81,4 +83,7 @@
 /* ================================================ */
 /* Desktop Responsive */
 @media only screen and (min-width: 1024px) {
+  @media (hover: hover) {
+    /* when supported */
+  }
 }

@@ -1,9 +1,3 @@
-.invalidMessage {
-  font-size: var(--fs-s);
-  font-weight: var(--fw-medium);
-  color: var(--error-color);
-}
-
 /* ================================================ */
 /* Tablet Responsive */
 @media only screen and (min-width: 768px) {
@@ -12,4 +6,7 @@
 /* ================================================ */
 /* Desktop Responsive */
 @media only screen and (min-width: 1024px) {
+  @media (hover: hover) {
+    /* when supported */
+  }
 }

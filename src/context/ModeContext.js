@@ -15,7 +15,7 @@ const LocalStorageName = 'mode-KS89DK29084H9XC';
 // Initialize State
 const initialState = () => {
   const localData = localStorage.getItem(LocalStorageName);
-  return localData ? JSON.parse(localData) : getColorScheme();
+  return localData ? localData : getColorScheme();
 };
 
 const ModeContextProvider = (props) => {
@@ -32,7 +32,7 @@ const ModeContextProvider = (props) => {
 
   useEffect(() => {
     // Sync with Local Storage
-    localStorage.setItem(LocalStorageName, JSON.stringify(mode));
+    localStorage.setItem(LocalStorageName, mode);
 
     // Update HTML data-mode attribute
     const rootElement = document.documentElement;

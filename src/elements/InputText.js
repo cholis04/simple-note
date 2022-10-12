@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 
 import styles from './InputText.module.css';
 
-const InputText = ({ id, placeholder, value, onChange }) => {
+const InputText = ({ id, placeholder, value, onChange, type }) => {
   return (
     <input
-      type="text"
+      type={type}
       id={id}
       className={styles.inputText}
       placeholder={placeholder}
@@ -18,6 +18,7 @@ const InputText = ({ id, placeholder, value, onChange }) => {
 
 InputText.propTypes = {
   id: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(['text', 'password']).isRequired,
   placeholder: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,

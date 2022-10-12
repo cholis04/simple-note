@@ -168,6 +168,7 @@ function AddNote() {
                   id="title"
                   placeholder={locale[lang].titleField.placeholder}
                   value={form.title.value}
+                  type="text"
                   onChange={handleInputChange}
                 />
 

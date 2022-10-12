@@ -13,7 +13,7 @@ const LocalStorageName = 'lang-KSKSI8D7892KS983';
 // Initialize State
 const initialState = () => {
   const localData = localStorage.getItem(LocalStorageName);
-  return localData ? JSON.parse(localData) : 'id';
+  return localData ? localData : 'id';
 };
 
 const LanguageContextProvider = (props) => {
@@ -33,7 +33,7 @@ const LanguageContextProvider = (props) => {
 
   useEffect(() => {
     // Sync with Local Storage
-    localStorage.setItem(LocalStorageName, JSON.stringify(lang));
+    localStorage.setItem(LocalStorageName, lang);
 
     // Update HTML lang attribute
     const rootElement = document.documentElement;

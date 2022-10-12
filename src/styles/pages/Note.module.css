@@ -94,4 +94,7 @@
 /* ================================================ */
 /* Desktop Responsive */
 @media only screen and (min-width: 1024px) {
+  @media (hover: hover) {
+    /* when supported */
+  }
 }
