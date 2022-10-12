@@ -1,7 +1,7 @@
 /* Main */
 .main__heading {
   position: sticky;
-  top: var(--navHeight);
+  top: var(--navHeightMobile);
   background-color: var(--background-color);
   z-index: 998;
 }
@@ -45,6 +45,10 @@
 /* ================================================ */
 /* Tablet Responsive */
 @media only screen and (min-width: 768px) {
+  .main__heading {
+    top: var(--navHeight);
+  }
+
   .main__headingWrapper {
     padding: 0.5em 2em;
 

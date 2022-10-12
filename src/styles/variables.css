@@ -27,6 +27,7 @@
   --maxWidth: 1280px;
   --minWidth: 375px;
   --navHeight: 80px;
+  --navHeightMobile: 70px;
 }
 
 /* Dark Mode */

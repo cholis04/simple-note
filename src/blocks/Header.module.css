@@ -11,7 +11,7 @@
 .wrapper {
   margin: 0 auto;
   padding: 0 1.625em;
-  height: var(--navHeight);
+  height: var(--navHeightMobile);
   max-width: var(--maxWidth);
   display: flex;
   justify-content: space-between;
@@ -93,6 +93,7 @@
 @media only screen and (min-width: 768px) {
   .wrapper {
     padding: 0 2em;
+    height: var(--navHeight);
   }
 
   .accountName {
