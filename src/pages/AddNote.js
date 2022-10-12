@@ -1,13 +1,14 @@
 import { useContext, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+import { LanguageContext } from '../context/LanguageContext';
 import { MaxNotes, NotesContext } from '../context/NotesContext';
 
 import MemberLayout from '../layouts/MemberLayout';
 
 import ButtonLinkIcon from '../elements/ButtonLinkIcon';
 import InputLabel from '../elements/InputLabel';
-import CharLeft from '../elements/CharLeft';
+import RemainingChar from '../elements/RemainingChar';
 import InputText from '../elements/InputText';
 import InputTextArea from '../elements/InputTextArea';
 import InvalidMessage from '../elements/InvalidMessage';
@@ -37,7 +38,7 @@ const initialState = {
 };
 
 function AddNote() {
-  const lang = 'en';
+  const { lang } = useContext(LanguageContext);
   const [form, setForm] = useState(initialState);
   const { addNote, availableNotes } = useContext(NotesContext);
 
@@ -105,7 +106,7 @@ function AddNote() {
   // Title Document | Focus on Textare first render
   useEffect(() => {
     document.title = locale[lang].pageTitle;
-  }, []);
+  }, [lang]);
 
   // Render Component
   return (
@@ -133,7 +134,7 @@ function AddNote() {
                     idfor="bodyText"
                     text={locale[lang].bodyField.label}
                   />
-                  <CharLeft
+                  <RemainingChar
                     num={form.bodyText.maxChar - form.bodyText.value.length}
                   />
                 </div>
@@ -146,7 +147,9 @@ function AddNote() {
                 />
 
                 {form.bodyText.error && (
-                  <InvalidMessage errorText={form.bodyText.error} />
+                  <InvalidMessage
+                    errorText={locale[lang].validation[form.bodyText.error]}
+                  />
                 )}
               </div>
 
@@ -157,7 +160,7 @@ function AddNote() {
                     idfor="title"
                     text={locale[lang].titleField.label}
                   />
-                  <CharLeft
+                  <RemainingChar
                     num={form.title.maxChar - form.title.value.length}
                   />
                 </div>
@@ -169,7 +172,9 @@ function AddNote() {
                 />
 
                 {form.title.error && (
-                  <InvalidMessage errorText={form.title.error} />
+                  <InvalidMessage
+                    errorText={locale[lang].validation[form.title.error]}
+                  />
                 )}
               </div>
 

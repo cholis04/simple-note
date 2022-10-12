@@ -1,5 +1,6 @@
 import { useEffect, useContext } from 'react';
 
+import { LanguageContext } from '../context/LanguageContext';
 import { NotesContext } from '../context/NotesContext';
 
 import MemberLayout from '../layouts/MemberLayout';
@@ -14,13 +15,13 @@ import styles from '../styles/pages/Archive.module.css';
 import { locale } from '../locale/Archive.locale';
 
 function Archive() {
-  const lang = 'en';
+  const { lang } = useContext(LanguageContext);
   const { archiveNotes } = useContext(NotesContext);
 
   // Title Document
   useEffect(() => {
     document.title = locale[lang].pageTitle;
-  }, []);
+  }, [lang]);
 
   // Render Component
   return (

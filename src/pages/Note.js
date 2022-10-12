@@ -6,6 +6,7 @@ import {
   TrashIcon,
 } from '@heroicons/react/solid';
 
+import { LanguageContext } from '../context/LanguageContext';
 import { NotesContext } from '../context/NotesContext';
 
 import MemberLayout from '../layouts/MemberLayout';
@@ -22,10 +23,10 @@ import styles from '../styles/pages/Note.module.css';
 import { locale } from '../locale/Note.locale';
 
 function Note() {
-  const lang = 'en';
+  const { lang } = useContext(LanguageContext);
+  const { getNoteById, moveNote, deleteNote } = useContext(NotesContext);
   const { id } = useParams();
   const navigate = useNavigate();
-  const { getNoteById, moveNote, deleteNote } = useContext(NotesContext);
 
   const note = getNoteById(Number(id));
 
@@ -33,7 +34,7 @@ function Note() {
   useEffect(() => {
     if (note !== undefined)
       document.title = `${locale[lang].pageTitle} ${note?.title}`;
-  }, [note]);
+  }, [note, lang]);
 
   // Handle Delete Note
   const onClickButtonDelete = () => {

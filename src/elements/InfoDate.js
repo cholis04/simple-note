@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { ClockIcon } from '@heroicons/react/solid';
+
+import { LanguageContext } from '../context/LanguageContext';
 
 import { formattedAttributeTime } from '../utils/formattedAttributeTime';
 
@@ -9,7 +11,7 @@ import styles from './InfoDate.module.css';
 import { locale } from './InfoDate.locale';
 
 const InfoDate = ({ time }) => {
-  const lang = 'en';
+  const { lang } = useContext(LanguageContext);
 
   const showFormattedDate = (date) => {
     const options = {

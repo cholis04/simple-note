@@ -1,6 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+import { LanguageContext } from '../context/LanguageContext';
 import { ModeContext } from '../context/ModeContext';
 
 import DarkNotFoundDesktop from '../assets/pictures/dark/Page_Not_Found-Desktop.png';
@@ -15,13 +16,13 @@ import styles from './NotFound.module.css';
 import { locale } from './NotFound.locale';
 
 function NotFound() {
-  const lang = 'en';
+  const { lang } = useContext(LanguageContext);
   const { mode } = useContext(ModeContext);
 
   // Set Title
   useEffect(() => {
     document.title = locale[lang].pageTitle;
-  });
+  }, [lang]);
 
   return (
     <main className={styles.main}>

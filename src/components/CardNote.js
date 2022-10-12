@@ -7,6 +7,7 @@ import {
   TrashIcon,
 } from '@heroicons/react/solid';
 
+import { LanguageContext } from '../context/LanguageContext';
 import { NotesContext } from '../context/NotesContext';
 
 import MarkText from '../elements/MarkText';
@@ -18,7 +19,7 @@ import ButtonLinkIcon from '../elements/ButtonLinkIcon';
 import { locale } from './CardNote.locale';
 
 function CardNote({ note }) {
-  const lang = 'en';
+  const { lang } = useContext(LanguageContext);
   const { moveNote, deleteNote } = useContext(NotesContext);
   const { keywordTitle } = useContext(NotesContext);
 

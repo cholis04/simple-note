@@ -14,6 +14,11 @@ export const locale = {
       placeholder: 'Apa judulnya?',
     },
     submitButton: 'Tambahkan',
+    validation: {
+      required: 'Tidak boleh kosong!',
+      onlyWord: 'Hanya huruf dan angka!',
+      minOneWord: 'Minimal 1 kata',
+    },
   },
   en: {
     pageTitle: 'New Note',
@@ -30,5 +35,10 @@ export const locale = {
       placeholder: 'What is the title?',
     },
     submitButton: 'Add',
+    validation: {
+      required: 'Can not be empty!',
+      onlyWord: 'Only letters and numbers!',
+      minOneWord: 'At least 1 word',
+    },
   },
 };

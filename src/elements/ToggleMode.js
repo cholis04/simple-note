@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { MoonIcon, SunIcon } from '@heroicons/react/solid';
 
+import { LanguageContext } from '../context/LanguageContext';
 import { ModeContext } from '../context/ModeContext';
 
 import styles from './ToggleMode.module.css';
@@ -8,7 +9,7 @@ import styles from './ToggleMode.module.css';
 import { locale } from './ToggleMode.locale';
 
 const ToggleMode = () => {
-  const lang = 'en';
+  const { lang } = useContext(LanguageContext);
   const { mode, toggleMode } = useContext(ModeContext);
 
   return (

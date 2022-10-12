@@ -4,16 +4,19 @@ import ModeContextProvider from './context/ModeContext';
 import Router from './Router';
 
 import ScrollToTop from './elements/ScrollToTop';
+import LanguageContextProvider from './context/LanguageContext';
 
 function App() {
   return (
-    <ModeContextProvider>
-      <NotesContextProvider>
-        <ScrollToTop>
-          <Router />
-        </ScrollToTop>
-      </NotesContextProvider>
-    </ModeContextProvider>
+    <LanguageContextProvider>
+      <ModeContextProvider>
+        <NotesContextProvider>
+          <ScrollToTop>
+            <Router />
+          </ScrollToTop>
+        </NotesContextProvider>
+      </ModeContextProvider>
+    </LanguageContextProvider>
   );
 }
 

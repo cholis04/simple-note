@@ -1,4 +1,4 @@
-.toggleLocale {
+.toggleLanguage {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,7 +14,7 @@
   transition: all 0.2s ease-in-out;
 }
 
-.toggleLocale > svg {
+.toggleLanguage > svg {
   display: none;
   margin-top: -0.2rem;
   width: 1.25rem;
@@ -24,7 +24,7 @@
 /* ================================================ */
 /* Tablet Responsive */
 @media only screen and (min-width: 768px) {
-  .toggleLocale > svg {
+  .toggleLanguage > svg {
     display: inline;
   }
 }
@@ -35,7 +35,7 @@
   @media (hover: hover) {
     /* when supported */
 
-    .toggleLocale:hover {
+    .toggleLanguage:hover {
       opacity: 0.6;
       cursor: pointer;
     }
