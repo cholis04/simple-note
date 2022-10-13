@@ -8,7 +8,7 @@
 
 .wrapper {
   width: 100%;
-  max-width: 460px;
+  max-width: 475px;
   padding: 0.5rem 1.625rem;
 
   display: grid;
@@ -27,6 +27,7 @@
   color: var(--text-focal-color);
   font-weight: var(--fw-bold);
   font-size: var(--fs-xxl);
+  text-align: center;
 }
 
 .register__form {

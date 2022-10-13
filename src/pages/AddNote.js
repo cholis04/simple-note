@@ -28,28 +28,28 @@ const initialState = {
   title: {
     value: '',
     maxChar: 50,
-    error: null,
+    invalid: null,
   },
   bodyText: {
     value: '',
     maxChar: 1500,
-    error: null,
+    invalid: null,
   },
 };
 
 function AddNote() {
+  const [form, setForm] = useState(() => initialState);
   const { lang } = useContext(LanguageContext);
-  const [form, setForm] = useState(initialState);
   const { addNote, availableNotes } = useContext(NotesContext);
 
   const navigate = useNavigate();
   const location = useLocation();
 
-  const validForm = !form.title.error && !form.bodyText.error;
+  const validForm = !form.title.invalid && !form.bodyText.invalid;
   const emptyForm = form.title.value === '' || form.bodyText.value === '';
 
   // Validation Form
-  const validateError = (field, value) => {
+  const validate = (field, value) => {
     switch (field) {
       case 'title':
         return titleValidation(value);
@@ -71,7 +71,7 @@ function AddNote() {
         [currentElement]: {
           ...prevForm[currentElement],
           value: sliceValue,
-          error: validateError(currentElement, sliceValue),
+          invalid: validate(currentElement, sliceValue),
         },
       };
     });
@@ -146,9 +146,9 @@ function AddNote() {
                   autoFocus={true}
                 />
 
-                {form.bodyText.error && (
+                {form.bodyText.invalid && (
                   <InvalidMessage
-                    errorText={locale[lang].validation[form.bodyText.error]}
+                    text={locale[lang].validation[form.bodyText.invalid]}
                   />
                 )}
               </div>
@@ -172,9 +172,9 @@ function AddNote() {
                   onChange={handleInputChange}
                 />
 
-                {form.title.error && (
+                {form.title.invalid && (
                   <InvalidMessage
-                    errorText={locale[lang].validation[form.title.error]}
+                    text={locale[lang].validation[form.title.invalid]}
                   />
                 )}
               </div>

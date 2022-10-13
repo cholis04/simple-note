@@ -2,16 +2,16 @@ import PropTypes from 'prop-types';
 
 import styles from './InvalidMessage.module.css';
 
-const InvalidMessage = ({ errorText }) => {
+const InvalidMessage = ({ text }) => {
   return (
     <p role="alert" className={styles.invalidMessage}>
-      *{errorText}
+      *{text}
     </p>
   );
 };
 
 InvalidMessage.propTypes = {
-  errorText: PropTypes.string,
+  text: PropTypes.string,
 };
 
 export default InvalidMessage;

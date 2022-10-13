@@ -15,7 +15,7 @@ export const locale = {
     },
     submitButton: 'Tambahkan',
     validation: {
-      required: 'Tidak boleh kosong!',
+      required: 'Wajib diisi!',
       onlyWord: 'Hanya huruf dan angka!',
       minOneWord: 'Minimal 1 kata',
     },
@@ -36,7 +36,7 @@ export const locale = {
     },
     submitButton: 'Add',
     validation: {
-      required: 'Can not be empty!',
+      required: 'Required!',
       onlyWord: 'Only letters and numbers!',
       minOneWord: 'At least 1 word',
     },
