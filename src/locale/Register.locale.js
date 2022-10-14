@@ -1,6 +1,6 @@
 export const locale = {
   id: {
-    pageTitle: 'Daftar Akun',
+    pageTitle: 'Catatan Singkat - Daftar Akun',
     headingText: 'Daftar Pengguna Baru!',
     linkText: 'Sudah memiliki akun? Silahkan',
     links: {
@@ -36,7 +36,7 @@ export const locale = {
     },
   },
   en: {
-    pageTitle: 'Register Account',
+    pageTitle: 'Simple Note - Register Account',
     headingText: 'Sign Up for New User!',
     linkText: 'Already have an account? Please',
     links: {

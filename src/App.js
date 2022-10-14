@@ -1,20 +1,23 @@
+import Router from './Router/';
+
 import NotesContextProvider from './context/NotesContext';
 import ModeContextProvider from './context/ModeContext';
-
-import Router from './Router';
+import LanguageContextProvider from './context/LanguageContext';
+import AuthContextProvider from './context/AuthContext';
 
 import ScrollToTop from './elements/ScrollToTop';
-import LanguageContextProvider from './context/LanguageContext';
 
 function App() {
   return (
     <LanguageContextProvider>
       <ModeContextProvider>
-        <NotesContextProvider>
-          <ScrollToTop>
-            <Router />
-          </ScrollToTop>
-        </NotesContextProvider>
+        <AuthContextProvider>
+          <NotesContextProvider>
+            <ScrollToTop>
+              <Router />
+            </ScrollToTop>
+          </NotesContextProvider>
+        </AuthContextProvider>
       </ModeContextProvider>
     </LanguageContextProvider>
   );

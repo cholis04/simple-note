@@ -1,6 +1,6 @@
 export const locale = {
   id: {
-    pageTitle: 'Masuk',
+    pageTitle: 'Catatan Singkat - Masuk',
     headingText: 'Masuk untuk Melanjutkan!',
     linkText: 'Belum memiliki akun? Silahkan',
     links: {
@@ -27,7 +27,7 @@ export const locale = {
     },
   },
   en: {
-    pageTitle: 'Login',
+    pageTitle: 'Simple Note - Login',
     headingText: 'Sign In to Continue!',
     linkText: 'Do not have an account yet? Please',
     links: {
