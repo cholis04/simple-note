@@ -6,7 +6,8 @@ import {
   TrashIcon,
 } from '@heroicons/react/solid';
 
-import { LanguageContext } from '../context/LanguageContext';
+import useLang from '../hooks/useLang';
+
 import { NotesContext } from '../context/NotesContext';
 
 import MemberLayout from '../layouts/MemberLayout';
@@ -17,13 +18,15 @@ import InfoDate from '../elements/InfoDate';
 import ButtonLinkIcon from '../elements/ButtonLinkIcon';
 
 import { countWords } from '../utils/countWord';
+import { showFormattedDate } from '../utils/showFormattedDate';
+import { formattedAttributeTime } from '../utils/formattedAttributeTime';
 
 import styles from '../styles/pages/Note.module.css';
 
 import { locale } from '../locale/Note.locale';
 
 function Note() {
-  const { lang } = useContext(LanguageContext);
+  const { lang } = useLang();
   const { getNoteById, moveNote, deleteNote } = useContext(NotesContext);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -71,7 +74,13 @@ function Note() {
       <section className={styles.detail}>
         <div className={styles.detail__wrapper}>
           <div className={styles.detail__info}>
-            <InfoDate time={note.createdAt} />
+            <InfoDate
+              humanReadable={showFormattedDate(
+                note.createdAt,
+                locale[lang].codeLang,
+              )}
+              datetime={formattedAttributeTime(note.createdAt)}
+            />
             {note.archived ? (
               <ButtonLinkIcon
                 icon={<ArrowNarrowLeftIcon />}

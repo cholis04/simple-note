@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { LanguageContext } from '../context/LanguageContext';
+import useLang from '../hooks/useLang';
+
 import { MaxNotes, NotesContext } from '../context/NotesContext';
 
 import MemberLayout from '../layouts/MemberLayout';
@@ -39,7 +40,7 @@ const initialState = {
 
 function AddNote() {
   const [form, setForm] = useState(() => initialState);
-  const { lang } = useContext(LanguageContext);
+  const { lang } = useLang();
   const { addNote, availableNotes } = useContext(NotesContext);
 
   const navigate = useNavigate();

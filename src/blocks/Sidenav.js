@@ -1,9 +1,8 @@
-import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import { LanguageContext } from '../context/LanguageContext';
-import { ModeContext } from '../context/ModeContext';
+import useLang from '../hooks/useLang';
+import useMode from '../hooks/useMode';
 
 import FooterText from '../elements/FooterText';
 
@@ -15,8 +14,8 @@ import LogoLight from '../assets/icons/logo-light.png';
 import { locale } from './Sidenav.locale';
 
 function Sidenav({ toggleSidenav }) {
-  const { lang } = useContext(LanguageContext);
-  const { mode } = useContext(ModeContext);
+  const { lang } = useLang();
+  const { mode } = useMode();
 
   // Handle Close Overlay
   const handleClose = (e) => {

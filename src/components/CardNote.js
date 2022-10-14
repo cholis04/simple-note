@@ -7,8 +7,12 @@ import {
   TrashIcon,
 } from '@heroicons/react/solid';
 
-import { LanguageContext } from '../context/LanguageContext';
+import useLang from '../hooks/useLang';
+
 import { NotesContext } from '../context/NotesContext';
+
+import { showFormattedDate } from '../utils/showFormattedDate';
+import { formattedAttributeTime } from '../utils/formattedAttributeTime';
 
 import MarkText from '../elements/MarkText';
 import InfoDate from '../elements/InfoDate';
@@ -19,7 +23,7 @@ import ButtonLinkIcon from '../elements/ButtonLinkIcon';
 import { locale } from './CardNote.locale';
 
 function CardNote({ note }) {
-  const { lang } = useContext(LanguageContext);
+  const { lang } = useLang();
   const { moveNote, deleteNote } = useContext(NotesContext);
   const { keywordTitle } = useContext(NotesContext);
 
@@ -43,7 +47,10 @@ function CardNote({ note }) {
           />
         </Link>
       </h2>
-      <InfoDate time={note.createdAt} />
+      <InfoDate
+        humanReadable={showFormattedDate(note.createdAt, locale[lang].codeLang)}
+        datetime={formattedAttributeTime(note.createdAt)}
+      />
       <p className={styles.bodyText}>{note.body}</p>
       <div className={styles.action}>
         {note.archived ? (

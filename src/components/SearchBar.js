@@ -1,7 +1,8 @@
 import { useContext } from 'react';
 import { SearchIcon } from '@heroicons/react/solid';
 
-import { LanguageContext } from '../context/LanguageContext';
+import useLang from '../hooks/useLang';
+
 import { NotesContext } from '../context/NotesContext';
 
 import styles from './SearchBar.module.css';
@@ -9,7 +10,7 @@ import styles from './SearchBar.module.css';
 import { locale } from './SearchBar.locale';
 
 function SearchBar() {
-  const { lang } = useContext(LanguageContext);
+  const { lang } = useLang();
   const { keywordTitle, setKeywordTitle } = useContext(NotesContext);
 
   const handleChange = (e) => {

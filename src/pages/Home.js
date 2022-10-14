@@ -1,6 +1,7 @@
 import { useEffect, useContext } from 'react';
 
-import { LanguageContext } from '../context/LanguageContext';
+import useLang from '../hooks/useLang';
+
 import { NotesContext } from '../context/NotesContext';
 
 import MemberLayout from '../layouts/MemberLayout';
@@ -15,8 +16,7 @@ import styles from '../styles/pages/Home.module.css';
 import { locale } from '../locale/Home.locale';
 
 function Home() {
-  const { lang } = useContext(LanguageContext);
-
+  const { lang } = useLang();
   const { activeNotes } = useContext(NotesContext);
 
   // Title Document

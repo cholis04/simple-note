@@ -6,6 +6,7 @@ export const locale = {
       archive: 'Arsipkan',
       delete: 'Hapus',
     },
+    codeLang: 'id-ID',
   },
   en: {
     confirmDelete: 'Delete note?',
@@ -14,5 +15,6 @@ export const locale = {
       archive: 'Archive',
       delete: 'Delete',
     },
+    codeLang: 'en-EN',
   },
 };

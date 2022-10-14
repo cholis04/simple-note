@@ -1,8 +1,8 @@
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import { LanguageContext } from '../context/LanguageContext';
-import { ModeContext } from '../context/ModeContext';
+import useLang from '../hooks/useLang';
+import useMode from '../hooks/useMode';
 
 import DarkNotFoundDesktop from '../assets/pictures/dark/Page_Not_Found-Desktop.png';
 import DarkNotFoundTablet from '../assets/pictures/dark/Page_Not_Found-Tablet.png';
@@ -16,8 +16,8 @@ import styles from './NotFound.module.css';
 import { locale } from './NotFound.locale';
 
 function NotFound() {
-  const { lang } = useContext(LanguageContext);
-  const { mode } = useContext(ModeContext);
+  const { lang } = useLang();
+  const { mode } = useMode();
 
   // Set Title
   useEffect(() => {

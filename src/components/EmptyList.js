@@ -1,8 +1,7 @@
-import { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-import { LanguageContext } from '../context/LanguageContext';
-import { ModeContext } from '../context/ModeContext';
+import useLang from '../hooks/useLang';
+import useMode from '../hooks/useMode';
 
 import DarkEmptyInboxDesktop from '../assets/pictures/dark/Empty_Inbox-Desktop.png';
 import DarkEmptyInboxTablet from '../assets/pictures/dark/Empty_Inbox-Tablet.png';
@@ -16,8 +15,8 @@ import styles from './EmptyList.module.css';
 import { locale } from './EmptyList.locale';
 
 function Empty() {
-  const { lang } = useContext(LanguageContext);
-  const { mode } = useContext(ModeContext);
+  const { lang } = useLang();
+  const { mode } = useMode();
   const location = useLocation();
 
   return (

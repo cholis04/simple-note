@@ -1,10 +1,10 @@
 export const locale = {
   id: {
     pageTitle: 'Masuk',
-    headingText: 'Masuk untuk melanjutkan!',
+    headingText: 'Masuk untuk Melanjutkan!',
     linkText: 'Belum memiliki akun? Silahkan',
     links: {
-      register: 'dafter disini!',
+      register: 'daftar disini!',
     },
     emailField: {
       label: 'Surel',
@@ -27,8 +27,8 @@ export const locale = {
     },
   },
   en: {
-    pageTitle: 'Sign in',
-    headingText: 'Sign in to continue!',
+    pageTitle: 'Login',
+    headingText: 'Sign In to Continue!',
     linkText: 'Do not have an account yet? Please',
     links: {
       register: 'register here!',

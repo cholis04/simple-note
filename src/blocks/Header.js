@@ -1,10 +1,9 @@
-import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { LogoutIcon, MenuAlt3Icon } from '@heroicons/react/solid';
 
-import { LanguageContext } from '../context/LanguageContext';
-import { ModeContext } from '../context/ModeContext';
+import useLang from '../hooks/useLang';
+import useMode from '../hooks/useMode';
 
 import ButtonLabel from '../elements/ButtonLabel';
 import ToggleMode from '../elements/ToggleMode';
@@ -18,8 +17,8 @@ import LogoLight from '../assets/icons/logo-light.png';
 import { locale } from './Header.locale';
 
 function Header({ toggleSidenav }) {
-  const { lang } = useContext(LanguageContext);
-  const { mode } = useContext(ModeContext);
+  const { lang } = useLang();
+  const { mode } = useMode();
   const navigate = useNavigate();
   const location = useLocation();
 

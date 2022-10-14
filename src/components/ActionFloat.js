@@ -1,9 +1,8 @@
-import React, { useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { PlusIcon } from '@heroicons/react/solid';
 
-import { LanguageContext } from '../context/LanguageContext';
+import useLang from '../hooks/useLang';
 
 import ButtonIcon from '../elements/ButtonIcon';
 
@@ -12,7 +11,7 @@ import styles from './ActionFloat.module.css';
 import { locale } from './ActionFloat.locale';
 
 function ActionFloat() {
-  const { lang } = useContext(LanguageContext);
+  const { lang } = useLang();
   const navigate = useNavigate();
   const location = useLocation();
 

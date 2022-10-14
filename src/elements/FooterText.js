@@ -1,13 +1,11 @@
-import { useContext } from 'react';
-
-import { LanguageContext } from '../context/LanguageContext';
+import useLang from '../hooks/useLang';
 
 import styles from './FooterText.module.css';
 
 import { locale } from './FooterText.locale';
 
 const FooterText = () => {
-  const { lang } = useContext(LanguageContext);
+  const { lang } = useLang();
 
   return (
     <p className={styles.paragraph}>

@@ -1,8 +1,8 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { LanguageContext } from '../context/LanguageContext';
-import { ModeContext } from '../context/ModeContext';
+import useLang from '../hooks/useLang';
+import useMode from '../hooks/useMode';
 
 import FlashMessage from '../components/FlashMessage';
 
@@ -53,8 +53,8 @@ const initialFormState = {
 function Register() {
   const [form, setForm] = useState(() => initialFormState);
   const [response, setResponse] = useState(null);
-  const { mode } = useContext(ModeContext);
-  const { lang } = useContext(LanguageContext);
+  const { lang } = useLang();
+  const { mode } = useMode();
 
   const validForm =
     !form.fullname.invalid &&

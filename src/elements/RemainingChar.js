@@ -1,14 +1,13 @@
-import { useContext } from 'react';
 import PropTypes from 'prop-types';
 
-import { LanguageContext } from '../context/LanguageContext';
+import useLang from '../hooks/useLang';
 
 import styles from './RemainingChar.module.css';
 
 import { locale } from './RemainingChar.locale';
 
 const RemainingChar = ({ num }) => {
-  const { lang } = useContext(LanguageContext);
+  const { lang } = useLang();
   return (
     <p className={styles.remainingChar}>
       <b>{num}</b> {locale[lang].label}

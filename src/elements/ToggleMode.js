@@ -1,16 +1,15 @@
-import { useContext } from 'react';
 import { MoonIcon, SunIcon } from '@heroicons/react/solid';
 
-import { LanguageContext } from '../context/LanguageContext';
-import { ModeContext } from '../context/ModeContext';
+import useLang from '../hooks/useLang';
+import useMode from '../hooks/useMode';
 
 import styles from './ToggleMode.module.css';
 
 import { locale } from './ToggleMode.locale';
 
 const ToggleMode = () => {
-  const { lang } = useContext(LanguageContext);
-  const { mode, toggleMode } = useContext(ModeContext);
+  const { lang } = useLang();
+  const { mode, toggleMode } = useMode();
 
   return (
     <button

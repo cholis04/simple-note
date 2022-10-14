@@ -1,14 +1,13 @@
-import { useContext } from 'react';
 import { TranslateIcon } from '@heroicons/react/solid';
 
-import { LanguageContext } from '../context/LanguageContext';
+import useLang from '../hooks/useLang';
 
 import styles from './ToggleLanguage.module.css';
 
 import { locale } from './ToggleLanguage.locale';
 
 const ToggleLanguage = () => {
-  const { lang, toggleLang } = useContext(LanguageContext);
+  const { lang, toggleLang } = useLang();
 
   return (
     <button
