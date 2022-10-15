@@ -5,22 +5,23 @@ export const AuthContext = createContext();
 const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  //   Handle Login
-  const login = useCallback(() => {
-    setUser({
-      name: 'Miranda Flower',
-    });
-  }, [setUser]);
+  // Handle Login
+  const loginUser = useCallback(
+    (userData) => {
+      setUser(userData);
+    },
+    [setUser],
+  );
 
-  //   Handle Logout
-  const logout = useCallback(() => {
+  // Handle Logout
+  const logoutUser = useCallback(() => {
     setUser(null);
   }, [setUser]);
 
   //   Context Value
   const contextValue = useMemo(() => {
-    return { user, login, logout };
-  }, [user, login, logout]);
+    return { user, loginUser, logoutUser };
+  }, [user, loginUser, logoutUser]);
 
   return (
     <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>

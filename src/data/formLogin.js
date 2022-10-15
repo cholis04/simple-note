@@ -35,7 +35,7 @@ export const formLogin = {
     maxChar: 60,
     rules: [
       { name: 'required', message: 'required' },
-      { name: 'minLength', payload: 12, message: 'minTwelveChar' },
+      { name: 'minLength', payload: 8, message: 'minEightChar' },
     ],
     invalid: null,
   },

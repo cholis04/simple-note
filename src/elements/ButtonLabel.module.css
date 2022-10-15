@@ -15,7 +15,7 @@
   transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-.buttonLabel:active {
+.buttonLabel:active:not([disabled]) {
   background-color: var(--tertiary-color) !important;
   color: var(--secondary-color) !important;
 }
@@ -35,7 +35,7 @@
 @media only screen and (min-width: 1024px) {
   @media (hover: hover) {
     /* when supported */
-    .buttonLabel:hover {
+    .buttonLabel:hover:not([disabled]) {
       background-color: var(--secondary-color);
       color: var(--tertiary-color);
       cursor: pointer;

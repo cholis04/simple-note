@@ -27,7 +27,7 @@ export const locale = {
       required: 'Wajib diisi!',
       onlyWord: 'Hanya huruf dan angka!',
       minThreeChar: 'Minimal 3 karakter',
-      minTwelveChar: 'Minimal 12 karakter',
+      minEightChar: 'Minimal 8 karakter',
       email: 'Email tidak valid',
     },
     response: {
@@ -63,7 +63,7 @@ export const locale = {
       required: 'Required!',
       onlyWord: 'Only letters and numbers!',
       minThreeChar: 'Minimum 3 characters',
-      minTwelveChar: 'Minimum 12 characters',
+      minEightChar: 'Minimum 8 characters',
       email: 'Invalid email',
     },
     response: {

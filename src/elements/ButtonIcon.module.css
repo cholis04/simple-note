@@ -11,7 +11,7 @@
   box-shadow: var(--shadow-bottom);
 }
 
-.buttonIcon:active {
+.buttonIcon:active:not([disabled]) {
   background-color: var(--tertiary-color);
   color: var(--secondary-color);
 }

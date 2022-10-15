@@ -18,12 +18,14 @@ export const locale = {
     validation: {
       required: 'Wajib diisi!',
       onlyWord: 'Hanya huruf dan angka!',
-      minTwelveChar: 'Minimal 12 karakter',
+      minEightChar: 'Minimal 8 karakter',
       email: 'Email tidak valid',
     },
+    loading: 'Memuat ...',
     response: {
-      noMatch: 'Kata sandi tidak cocok!',
-      registered: 'Akun terdaftar, silahkan masuk untuk melanjutkan!',
+      Error: 'Ups!,',
+      Emailnotfound: 'Surel tidak ditemukan!',
+      Passwordiswrong: 'Kata sandi salah!',
     },
   },
   en: {
@@ -45,12 +47,14 @@ export const locale = {
     validation: {
       required: 'Required!',
       onlyWord: 'Only letters and numbers!',
-      minTwelveChar: 'Minimum 12 characters',
+      minEightChar: 'Minimum 8 characters',
       email: 'Invalid email',
     },
+    loading: 'Loading ...',
     response: {
-      registered: 'Registered, please login to continue!',
-      noMatch: 'Password does not match!',
+      Error: 'Oops!,',
+      Emailnotfound: 'Email not found!',
+      Passwordiswrong: 'Password is wrong!',
     },
   },
 };

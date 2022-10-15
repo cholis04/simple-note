@@ -30,7 +30,7 @@ function Register() {
   const { lang } = useLang();
   const { mode } = useMode();
 
-  // Add note when form is valid and not empty
+  // Register
   const handleSubmit = (e) => {
     e.preventDefault();
 
