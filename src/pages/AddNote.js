@@ -24,17 +24,12 @@ import { locale } from '../locale/AddNote.locale';
 
 function AddNote() {
   const { addNote, availableNotes } = useContext(NotesContext);
-  const { form, emptyForm, validForm, updateForm, resetForm } =
+  const { form, emptyForm, validForm, handleFormChange, resetForm } =
     useForm(formAddNote);
   const { lang } = useLang();
 
   const navigate = useNavigate();
   const location = useLocation();
-
-  // Handle Input Text on Change
-  const handleInputChange = (e) => {
-    updateForm(e.target.id, e.target.value);
-  };
 
   // Add note when form is valid and not empty
   const handleSubmit = (e) => {
@@ -93,10 +88,10 @@ function AddNote() {
                   />
                 </div>
                 <InputTextArea
-                  id="bodyText"
+                  id="bodyText" // object keys
                   placeholder={locale[lang].bodyField.placeholder}
                   value={form.bodyText.value}
-                  onChange={handleInputChange}
+                  onChange={handleFormChange}
                   autoFocus={true}
                 />
 
@@ -119,11 +114,11 @@ function AddNote() {
                   />
                 </div>
                 <InputText
-                  id="title"
+                  id="title" // object keys
+                  type="text"
                   placeholder={locale[lang].titleField.placeholder}
                   value={form.title.value}
-                  type="text"
-                  onChange={handleInputChange}
+                  onChange={handleFormChange}
                 />
 
                 {form.title.invalid && (

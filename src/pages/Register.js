@@ -25,15 +25,10 @@ import { locale } from '../locale/Register.locale';
 
 function Register() {
   const [response, setResponse] = useState(null);
-  const { form, emptyForm, validForm, updateForm, resetForm } =
+  const { form, emptyForm, validForm, handleFormChange, resetForm } =
     useForm(formRegister);
   const { lang } = useLang();
   const { mode } = useMode();
-
-  // Handle Input Text on Change
-  const handleInputChange = (e) => {
-    updateForm(e.target.id, e.target.value);
-  };
 
   // Add note when form is valid and not empty
   const handleSubmit = (e) => {
@@ -94,11 +89,11 @@ function Register() {
               />
             </div>
             <InputText
-              id="fullname"
+              id="fullname" // object keys
               type="text"
               placeholder={locale[lang].fullnameField.placeholder}
               value={form.fullname.value}
-              onChange={handleInputChange}
+              onChange={handleFormChange}
             />
 
             {form.fullname.invalid && (
@@ -114,11 +109,11 @@ function Register() {
               <InputLabel idfor="email" text={locale[lang].emailField.label} />
             </div>
             <InputText
-              id="email"
+              id="email" // object keys
               type="email"
               placeholder={locale[lang].emailField.placeholder}
               value={form.email.value}
-              onChange={handleInputChange}
+              onChange={handleFormChange}
             />
 
             {form.email.invalid && (
@@ -137,11 +132,11 @@ function Register() {
               />
             </div>
             <InputText
-              id="password"
+              id="password" // object keys
               type="password"
               placeholder={locale[lang].passwordField.placeholder}
               value={form.password.value}
-              onChange={handleInputChange}
+              onChange={handleFormChange}
             />
 
             {form.password.invalid && (
@@ -160,11 +155,11 @@ function Register() {
               />
             </div>
             <InputText
-              id="passwordConfirm"
+              id="passwordConfirm" // object keys
               type="password"
               placeholder={locale[lang].passwordConfirmField.placeholder}
               value={form.passwordConfirm.value}
-              onChange={handleInputChange}
+              onChange={handleFormChange}
             />
 
             {form.passwordConfirm.invalid && (

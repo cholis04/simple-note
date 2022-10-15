@@ -25,15 +25,10 @@ import { locale } from '../locale/Login.locale';
 
 function Login() {
   const [response, setResponse] = useState(null);
-  const { form, emptyForm, validForm, updateForm, resetForm } =
+  const { form, emptyForm, validForm, handleFormChange, resetForm } =
     useForm(formLogin);
   const { lang } = useLang();
   const { mode } = useMode();
-
-  // Handle Input Text on Change
-  const handleInputChange = (e) => {
-    updateForm(e.target.id, e.target.value);
-  };
 
   // Add note when form is valid and not empty
   const handleSubmit = (e) => {
@@ -83,11 +78,11 @@ function Login() {
               <InputLabel idfor="email" text={locale[lang].emailField.label} />
             </div>
             <InputText
-              id="email"
+              id="email" // object keys
               type="email"
               placeholder={locale[lang].emailField.placeholder}
               value={form.email.value}
-              onChange={handleInputChange}
+              onChange={handleFormChange}
             />
 
             {form.email.invalid && (
@@ -106,11 +101,11 @@ function Login() {
               />
             </div>
             <InputText
-              id="password"
+              id="password" // object keys
               type="password"
               placeholder={locale[lang].passwordField.placeholder}
               value={form.password.value}
-              onChange={handleInputChange}
+              onChange={handleFormChange}
             />
 
             {form.password.invalid && (

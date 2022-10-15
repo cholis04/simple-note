@@ -62,11 +62,17 @@ const useForm = (initialValue) => {
     });
   };
 
+  // Handle Input Text on Change
+  const handleFormChange = (e) => {
+    updateForm(e.target.id, e.target.value);
+  };
+
+  // Reset Form
   const resetForm = () => {
     setForm(initialValue);
   };
 
-  return { form, validForm, emptyForm, updateForm, resetForm };
+  return { form, validForm, emptyForm, handleFormChange, resetForm };
 };
 
 export default useForm;
