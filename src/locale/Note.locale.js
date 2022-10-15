@@ -10,6 +10,7 @@ export const locale = {
       delete: 'Hapus',
     },
     numberOfWords: 'Jumlah Kata',
+    codeLang: 'id-ID',
   },
   en: {
     pageTitle: 'Note -',
@@ -21,6 +22,7 @@ export const locale = {
       archive: 'Archive',
       delete: 'Delete',
     },
-    numberOfWords: 'Num of Words',
+    numberOfWords: 'Word Count',
+    codeLang: 'en-EN',
   },
 };

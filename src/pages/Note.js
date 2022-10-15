@@ -18,8 +18,7 @@ import InfoDate from '../elements/InfoDate';
 import ButtonLinkIcon from '../elements/ButtonLinkIcon';
 
 import { countWords } from '../utils/countWord';
-import { showFormattedDate } from '../utils/showFormattedDate';
-import { formattedAttributeTime } from '../utils/formattedAttributeTime';
+import { AttributeTime, showDate } from '../utils/formattedTime';
 
 import styles from '../styles/pages/Note.module.css';
 
@@ -75,11 +74,8 @@ function Note() {
         <div className={styles.detail__wrapper}>
           <div className={styles.detail__info}>
             <InfoDate
-              humanReadable={showFormattedDate(
-                note.createdAt,
-                locale[lang].codeLang,
-              )}
-              datetime={formattedAttributeTime(note.createdAt)}
+              humanReadable={showDate(note.createdAt, locale[lang].codeLang)}
+              datetime={AttributeTime(note.createdAt)}
             />
             {note.archived ? (
               <ButtonLinkIcon

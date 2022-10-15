@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import useLang from '../hooks/useLang';
 import useMode from '../hooks/useMode';
+import useForm from '../hooks/useForm';
 
 import FlashMessage from '../components/FlashMessage';
 
@@ -13,67 +14,21 @@ import ButtonLabel from '../elements/ButtonLabel';
 import ToggleMode from '../elements/ToggleMode';
 import ToggleLanguage from '../elements/ToggleLanguage';
 
-import { emailValidation, passwordValidation } from '../utils/validationSign';
-
 import styles from '../styles/pages/Login.module.css';
 
 import LogoDark from '../assets/icons/logo-dark.png';
 import LogoLight from '../assets/icons/logo-light.png';
 
+import { formLogin } from '../data/formLogin';
+
 import { locale } from '../locale/Login.locale';
 
-// Initial Form State
-const initialFormState = {
-  email: {
-    value: '',
-    maxChar: 120,
-    invalid: null,
-  },
-  password: {
-    value: '',
-    maxChar: 60,
-    invalid: null,
-  },
-};
-
 function Login() {
-  const [form, setForm] = useState(() => initialFormState);
   const [response, setResponse] = useState(null);
+  const { form, emptyForm, validForm, updateForm, resetForm } =
+    useForm(formLogin);
   const { lang } = useLang();
   const { mode } = useMode();
-
-  const validForm = !form.email.invalid && !form.password.invalid;
-  const emptyForm = form.email.value === '' || form.password.value === '';
-
-  // Validation Form
-  const validate = (field, value) => {
-    switch (field) {
-      case 'email':
-        return emailValidation(value);
-      case 'password':
-        return passwordValidation(value);
-
-      default:
-        break;
-    }
-  };
-
-  // Controlled Form on Change
-  const updateForm = (currentElement, currentValue) => {
-    const maxChar = form[currentElement].maxChar;
-    const sliceValue = currentValue.slice(0, maxChar);
-
-    setForm((prevForm) => {
-      return {
-        ...prevForm,
-        [currentElement]: {
-          ...prevForm[currentElement],
-          value: sliceValue.trimStart(),
-          invalid: validate(currentElement, sliceValue),
-        },
-      };
-    });
-  };
 
   // Handle Input Text on Change
   const handleInputChange = (e) => {
@@ -92,7 +47,7 @@ function Login() {
       });
 
       // Reset Form
-      setForm(initialFormState);
+      resetForm();
     }
   };
 

@@ -1,7 +1,8 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import useLang from '../hooks/useLang';
+import useForm from '../hooks/useForm';
 
 import { MaxNotes, NotesContext } from '../context/NotesContext';
 
@@ -15,68 +16,20 @@ import InputTextArea from '../elements/InputTextArea';
 import InvalidMessage from '../elements/InvalidMessage';
 import ButtonLabel from '../elements/ButtonLabel';
 
-import {
-  bodyTextValidation,
-  titleValidation,
-} from '../utils/validationAddNote';
-
 import styles from '../styles/pages/AddNote.module.css';
+
+import { formAddNote } from '../data/formAddNote';
 
 import { locale } from '../locale/AddNote.locale';
 
-// Initial Form State
-const initialState = {
-  title: {
-    value: '',
-    maxChar: 50,
-    invalid: null,
-  },
-  bodyText: {
-    value: '',
-    maxChar: 1500,
-    invalid: null,
-  },
-};
-
 function AddNote() {
-  const [form, setForm] = useState(() => initialState);
-  const { lang } = useLang();
   const { addNote, availableNotes } = useContext(NotesContext);
+  const { form, emptyForm, validForm, updateForm, resetForm } =
+    useForm(formAddNote);
+  const { lang } = useLang();
 
   const navigate = useNavigate();
   const location = useLocation();
-
-  const validForm = !form.title.invalid && !form.bodyText.invalid;
-  const emptyForm = form.title.value === '' || form.bodyText.value === '';
-
-  // Validation Form
-  const validate = (field, value) => {
-    switch (field) {
-      case 'title':
-        return titleValidation(value);
-      case 'bodyText':
-        return bodyTextValidation(value);
-      default:
-        break;
-    }
-  };
-
-  // Controlled Form on Change
-  const updateForm = (currentElement, currentValue) => {
-    const maxChar = form[currentElement].maxChar;
-    const sliceValue = currentValue.slice(0, maxChar);
-
-    setForm((prevForm) => {
-      return {
-        ...prevForm,
-        [currentElement]: {
-          ...prevForm[currentElement],
-          value: sliceValue,
-          invalid: validate(currentElement, sliceValue),
-        },
-      };
-    });
-  };
 
   // Handle Input Text on Change
   const handleInputChange = (e) => {
@@ -93,7 +46,7 @@ function AddNote() {
       addNote(form.title.value, form.bodyText.value);
 
       // Clear form and Redirect to Home
-      setForm(initialState);
+      resetForm();
       navigate('/');
     }
   };

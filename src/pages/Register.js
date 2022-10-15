@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import useLang from '../hooks/useLang';
 import useMode from '../hooks/useMode';
+import useForm from '../hooks/useForm';
 
 import FlashMessage from '../components/FlashMessage';
 
@@ -13,92 +14,21 @@ import ButtonLabel from '../elements/ButtonLabel';
 import ToggleMode from '../elements/ToggleMode';
 import ToggleLanguage from '../elements/ToggleLanguage';
 
-import {
-  emailValidation,
-  fullnameValidation,
-  passwordValidation,
-} from '../utils/validationSign';
-
 import styles from '../styles/pages/Register.module.css';
 
 import LogoDark from '../assets/icons/logo-dark.png';
 import LogoLight from '../assets/icons/logo-light.png';
 
+import { formRegister } from '../data/formRegister';
+
 import { locale } from '../locale/Register.locale';
 
-// Initial Form State
-const initialFormState = {
-  fullname: {
-    value: '',
-    maxChar: 50,
-    invalid: null,
-  },
-  email: {
-    value: '',
-    maxChar: 120,
-    invalid: null,
-  },
-  password: {
-    value: '',
-    maxChar: 60,
-    invalid: null,
-  },
-  passwordConfirm: {
-    value: '',
-    maxChar: 60,
-    invalid: null,
-  },
-};
-
 function Register() {
-  const [form, setForm] = useState(() => initialFormState);
   const [response, setResponse] = useState(null);
+  const { form, emptyForm, validForm, updateForm, resetForm } =
+    useForm(formRegister);
   const { lang } = useLang();
   const { mode } = useMode();
-
-  const validForm =
-    !form.fullname.invalid &&
-    !form.email.invalid &&
-    !form.password.invalid &&
-    !form.passwordConfirm.invalid;
-  const emptyForm =
-    form.fullname.value === '' ||
-    form.email.value === '' ||
-    form.password.value === '' ||
-    form.passwordConfirm.value === '';
-
-  // Validation Form
-  const validate = (field, value) => {
-    switch (field) {
-      case 'fullname':
-        return fullnameValidation(value);
-      case 'email':
-        return emailValidation(value);
-      case 'password':
-        return passwordValidation(value);
-      case 'passwordConfirm':
-        return passwordValidation(value);
-      default:
-        break;
-    }
-  };
-
-  // Controlled Form on Change
-  const updateForm = (currentElement, currentValue) => {
-    const maxChar = form[currentElement].maxChar;
-    const sliceValue = currentValue.slice(0, maxChar);
-
-    setForm((prevForm) => {
-      return {
-        ...prevForm,
-        [currentElement]: {
-          ...prevForm[currentElement],
-          value: sliceValue.trimStart(),
-          invalid: validate(currentElement, sliceValue),
-        },
-      };
-    });
-  };
 
   // Handle Input Text on Change
   const handleInputChange = (e) => {
@@ -124,7 +54,7 @@ function Register() {
         });
 
         // Reset Form
-        setForm(initialFormState);
+        resetForm();
       }
     }
   };

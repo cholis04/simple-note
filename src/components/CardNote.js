@@ -11,8 +11,7 @@ import useLang from '../hooks/useLang';
 
 import { NotesContext } from '../context/NotesContext';
 
-import { showFormattedDate } from '../utils/showFormattedDate';
-import { formattedAttributeTime } from '../utils/formattedAttributeTime';
+import { AttributeTime, showDate } from '../utils/formattedTime';
 
 import MarkText from '../elements/MarkText';
 import InfoDate from '../elements/InfoDate';
@@ -48,8 +47,8 @@ function CardNote({ note }) {
         </Link>
       </h2>
       <InfoDate
-        humanReadable={showFormattedDate(note.createdAt, locale[lang].codeLang)}
-        datetime={formattedAttributeTime(note.createdAt)}
+        humanReadable={showDate(note.createdAt, locale[lang].codeLang)}
+        datetime={AttributeTime(note.createdAt)}
       />
       <p className={styles.bodyText}>{note.body}</p>
       <div className={styles.action}>
