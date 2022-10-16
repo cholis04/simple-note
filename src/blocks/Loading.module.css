@@ -1,32 +1,24 @@
-.footer {
-  display: none;
-  margin-top: 2rem;
-  padding: 3em 0;
-  border-top: 1px solid var(--line-color);
+.container {
+  display: flex;
+  min-height: 100vh;
+
+  justify-content: center;
+  align-items: center;
 }
 
-.wrapper {
-  margin: 0 auto;
-  padding: 0 1.625em;
-  max-width: var(--maxWidth);
+.loadingText {
+  font-size: var(--fs-m);
+  font-weight: var(--fw-semibold);
+  color: var(--text-common-color);
 }
-
 /* ================================================ */
 /* Tablet Responsive */
 @media only screen and (min-width: 768px) {
-  .footer {
-    display: block;
-    padding: 2em 0;
-  }
 }
 
 /* ================================================ */
 /* Desktop Responsive */
 @media only screen and (min-width: 1024px) {
-  .footer {
-    padding: 4em 0;
-  }
-
   @media (hover: hover) {
     /* when supported */
   }

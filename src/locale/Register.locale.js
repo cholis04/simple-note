@@ -30,9 +30,11 @@ export const locale = {
       minEightChar: 'Minimal 8 karakter',
       email: 'Email tidak valid',
     },
+    loading: 'Memuat ...',
     response: {
       noMatch: 'Kata sandi tidak cocok!',
       registered: 'Akun terdaftar, silahkan masuk untuk melanjutkan!',
+      Emailalreadyuse: 'Alamat Surel sudah digunakan!',
     },
   },
   en: {
@@ -66,9 +68,11 @@ export const locale = {
       minEightChar: 'Minimum 8 characters',
       email: 'Invalid email',
     },
+    loading: 'Loading ...',
     response: {
-      registered: 'Registered, please login to continue!',
       noMatch: 'Password does not match!',
+      registered: 'Registered, please login to continue!',
+      Emailalreadyuse: 'Email already use!',
     },
   },
 };

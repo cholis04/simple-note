@@ -5,6 +5,8 @@ import useLang from '../hooks/useLang';
 import useMode from '../hooks/useMode';
 import useForm from '../hooks/useForm';
 
+import { register } from '../fetcher/userFetcher';
+
 import FlashMessage from '../components/FlashMessage';
 
 import InputText from '../elements/InputText';
@@ -25,14 +27,17 @@ import { locale } from '../locale/Register.locale';
 
 function Register() {
   const [response, setResponse] = useState(null);
+  const [loading, setLoading] = useState(false);
+
   const { form, emptyForm, validForm, handleFormChange, resetForm } =
     useForm(formRegister);
   const { lang } = useLang();
   const { mode } = useMode();
 
   // Register
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     // Password does not match
     if (form.password.value !== form.passwordConfirm.value) {
@@ -43,13 +48,30 @@ function Register() {
     } else {
       // Check Validation
       if (validForm && !emptyForm) {
-        setResponse({
-          type: 'success',
-          message: 'registered',
+        // Fetch Register
+        const resJson = await register({
+          name: form.fullname.value,
+          email: form.email.value,
+          password: form.password.value,
         });
 
-        // Reset Form
-        resetForm();
+        if (resJson.error) {
+          setResponse({
+            type: 'error',
+            message: resJson.data,
+          });
+        } else {
+          setResponse({
+            type: 'success',
+            message: 'registered',
+          });
+
+          // Reset Form
+          resetForm();
+        }
+
+        // Loading False
+        setLoading(false);
       }
     }
   };
@@ -74,7 +96,10 @@ function Register() {
         {response && (
           <FlashMessage
             type={response.type}
-            message={locale[lang].response[response.message]}
+            message={
+              locale[lang].response[response.message.replaceAll(' ', '')] ||
+              response.message
+            }
           />
         )}
 
@@ -172,9 +197,11 @@ function Register() {
           {/* Submit button */}
           <div className={styles.submitButton}>
             <ButtonLabel
-              label={locale[lang].buttonRegister}
+              label={
+                loading ? locale[lang].loading : locale[lang].buttonRegister
+              }
               fullWidth={true}
-              disabled={!validForm || emptyForm}
+              disabled={!validForm || emptyForm || loading}
             />
           </div>
         </form>

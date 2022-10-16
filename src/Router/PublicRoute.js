@@ -2,10 +2,14 @@ import { Navigate, Outlet } from 'react-router-dom';
 
 import useAuth from '../hooks/useAuth';
 
-const PublicRoute = () => {
-  const { user } = useAuth();
+import Loading from '../blocks/Loading';
 
-  return user ? <Navigate to="/" /> : <Outlet />;
+const PublicRoute = () => {
+  const { user, loading } = useAuth();
+
+  if (loading) return <Loading />;
+
+  return user ? <Navigate to="/" replace={true} /> : <Outlet />;
 };
 
 export default PublicRoute;

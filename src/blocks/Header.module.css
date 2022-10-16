@@ -66,13 +66,20 @@
   justify-content: center;
 }
 
-.link > svg {
-  width: 1.25rem;
-  height: 1.25rem;
-}
-
 .link:active {
   text-decoration: underline;
+}
+
+.buttonLogout {
+  border: none;
+  color: var(--text-common-color);
+  background: none;
+  cursor: pointer;
+}
+
+.buttonLogout > svg {
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .menuToggle {
@@ -126,6 +133,9 @@
     /* when supported */
 
     .link:hover {
+      color: var(--text-focal-color);
+    }
+    .buttonLogout:hover {
       color: var(--text-focal-color);
     }
   }

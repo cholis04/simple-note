@@ -54,12 +54,18 @@
   font-weight: var(--fw-medium);
 }
 
-.menuLink:active {
-  text-decoration: underline;
+.buttonLogout {
+  border: none;
+  background: none;
+
+  color: var(--error-color);
+  font-size: var(--fs-xxl);
+  font-weight: var(--fw-medium);
 }
 
-.lastMenuLink {
-  color: var(--error-color);
+.menuLink:active,
+.buttonLogout:active {
+  text-decoration: underline;
 }
 
 /* ================================================ */

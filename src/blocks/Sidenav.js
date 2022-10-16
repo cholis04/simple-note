@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import useLang from '../hooks/useLang';
 import useMode from '../hooks/useMode';
+import useAuth from '../hooks/useAuth';
 
 import FooterText from '../elements/FooterText';
 
@@ -16,11 +17,19 @@ import { locale } from './Sidenav.locale';
 function Sidenav({ toggleSidenav }) {
   const { lang } = useLang();
   const { mode } = useMode();
+  const { handleLogout } = useAuth();
 
   // Handle Close Overlay
   const handleClose = (e) => {
     if (e.target.id === 'overlay-aside') {
       toggleSidenav();
+    }
+  };
+
+  // Logout
+  const logout = () => {
+    if (window.confirm(locale[lang].logoutConfirm)) {
+      handleLogout();
     }
   };
 
@@ -51,12 +60,9 @@ function Sidenav({ toggleSidenav }) {
             </Link>
           </li>
           <li>
-            <Link
-              to="/keluar"
-              className={`${styles.menuLink} ${styles.lastMenuLink}`}
-            >
+            <button className={styles.buttonLogout} onClick={logout}>
               {locale[lang].links.logout}
-            </Link>
+            </button>
           </li>
         </ul>
       </nav>

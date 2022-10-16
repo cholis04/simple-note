@@ -7,6 +7,7 @@ export const locale = {
       archiveList: 'Daftar Arsip',
       logout: 'Keluar',
     },
+    logoutConfirm: 'Yakin ingin pergi?',
   },
   en: {
     title: 'Simple Note',
@@ -16,5 +17,6 @@ export const locale = {
       archiveList: 'Archive List',
       logout: 'Logout',
     },
+    logoutConfirm: 'Sure you want to go?',
   },
 };

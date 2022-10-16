@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import useLang from '../hooks/useLang';
 import useMode from '../hooks/useMode';
 import useForm from '../hooks/useForm';
+import useAuth from '../hooks/useAuth';
 
 import { login } from '../fetcher/userFetcher';
-import { putAccessToken } from '../fetcher/settings';
 
 import FlashMessage from '../components/FlashMessage';
 
@@ -33,6 +33,7 @@ function Login() {
   const { form, emptyForm, validForm, handleFormChange } = useForm(formLogin);
   const { lang } = useLang();
   const { mode } = useMode();
+  const { handleLogin } = useAuth();
 
   //  Login
   const handleSubmit = async (e) => {
@@ -41,6 +42,7 @@ function Login() {
 
     // Check Validation
     if (validForm && !emptyForm) {
+      // Fetch Login
       const resJson = await login({
         email: form.email.value,
         password: form.password.value,
@@ -51,11 +53,11 @@ function Login() {
           type: 'error',
           message: resJson.data,
         });
-      } else {
-        putAccessToken(resJson.data.accessToken);
-      }
 
-      setLoading(false);
+        setLoading(false);
+      } else {
+        handleLogin(resJson.data.accessToken);
+      }
     }
   };
 
@@ -86,7 +88,7 @@ function Login() {
           />
         )}
 
-        {/* Register Form */}
+        {/* Login Form */}
         <form className={styles.login__form} onSubmit={handleSubmit}>
           {/* Email Input Group */}
           <div className={`${styles.input__group} ${styles.text__group}`}>

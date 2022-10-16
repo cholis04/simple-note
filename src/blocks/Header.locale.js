@@ -7,7 +7,10 @@ export const locale = {
       archiveList: 'Arsip',
       logout: 'Keluar',
     },
+    logoutConfirm: 'Yakin ingin pergi?',
     menuToggle: 'Buka Menu',
+    loading: 'Memuat ...',
+    error: 'Gagal memuat!',
   },
   en: {
     greeting: 'Hi',
@@ -17,6 +20,9 @@ export const locale = {
       archiveList: 'Archive List',
       logout: 'Logout',
     },
+    logoutConfirm: 'Sure you want to go?',
     menuToggle: 'Open Menu',
+    loading: 'Loading ...',
+    error: 'Failed to load!',
   },
 };
