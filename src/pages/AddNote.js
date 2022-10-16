@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import useLang from '../hooks/useLang';
 import useForm from '../hooks/useForm';
 
-import { MaxNotes, NotesContext } from '../context/NotesContext';
+import { NotesContext } from '../context/NotesContext';
 
 import MemberLayout from '../layouts/MemberLayout';
 
@@ -23,7 +23,7 @@ import { formAddNote } from '../data/formAddNote';
 import { locale } from '../locale/AddNote.locale';
 
 function AddNote() {
-  const { addNote, availableNotes } = useContext(NotesContext);
+  const { addNote } = useContext(NotesContext);
   const { form, emptyForm, validForm, handleFormChange, resetForm } =
     useForm(formAddNote);
   const { lang } = useLang();
@@ -72,76 +72,66 @@ function AddNote() {
             />
           </div>
 
-          {availableNotes ? (
-            <form onSubmit={handleSubmit} className={styles.note__form}>
-              {/* TextArea Input Group */}
-              <div
-                className={`${styles.input__group} ${styles.textarea__group}`}
-              >
-                <div className={styles.input__header}>
-                  <InputLabel
-                    idfor="bodyText"
-                    text={locale[lang].bodyField.label}
-                  />
-                  <RemainingChar
-                    num={form.bodyText.maxChar - form.bodyText.value.length}
-                  />
-                </div>
-                <InputTextArea
-                  id="bodyText" // object keys
-                  placeholder={locale[lang].bodyField.placeholder}
-                  value={form.bodyText.value}
-                  onChange={handleFormChange}
-                  autoFocus={true}
+          <form onSubmit={handleSubmit} className={styles.note__form}>
+            {/* TextArea Input Group */}
+            <div className={`${styles.input__group} ${styles.textarea__group}`}>
+              <div className={styles.input__header}>
+                <InputLabel
+                  idfor="bodyText"
+                  text={locale[lang].bodyField.label}
                 />
-
-                {form.bodyText.invalid && (
-                  <InvalidMessage
-                    text={locale[lang].validation[form.bodyText.invalid]}
-                  />
-                )}
-              </div>
-
-              {/* Title Input Group */}
-              <div className={`${styles.input__group} ${styles.text__group}`}>
-                <div className={styles.input__header}>
-                  <InputLabel
-                    idfor="title"
-                    text={locale[lang].titleField.label}
-                  />
-                  <RemainingChar
-                    num={form.title.maxChar - form.title.value.length}
-                  />
-                </div>
-                <InputText
-                  id="title" // object keys
-                  type="text"
-                  placeholder={locale[lang].titleField.placeholder}
-                  value={form.title.value}
-                  onChange={handleFormChange}
+                <RemainingChar
+                  num={form.bodyText.maxChar - form.bodyText.value.length}
                 />
-
-                {form.title.invalid && (
-                  <InvalidMessage
-                    text={locale[lang].validation[form.title.invalid]}
-                  />
-                )}
               </div>
-
-              {/* Submit Button */}
-              <ButtonLabel
-                label={locale[lang].submitButton}
-                fullWidth={true}
-                disabled={!validForm || emptyForm}
+              <InputTextArea
+                id="bodyText" // object keys
+                placeholder={locale[lang].bodyField.placeholder}
+                value={form.bodyText.value}
+                onChange={handleFormChange}
+                autoFocus={true}
               />
-            </form>
-          ) : (
-            <p className={styles.note__formLimit}>
-              Maaf ✋, anda telah mencapai{' '}
-              <b>Jumlah Maksimal {MaxNotes} Catatan</b>. <br />
-              Silahkan hapus beberapa untuk menambah catatan yang baru!
-            </p>
-          )}
+
+              {form.bodyText.invalid && (
+                <InvalidMessage
+                  text={locale[lang].validation[form.bodyText.invalid]}
+                />
+              )}
+            </div>
+
+            {/* Title Input Group */}
+            <div className={`${styles.input__group} ${styles.text__group}`}>
+              <div className={styles.input__header}>
+                <InputLabel
+                  idfor="title"
+                  text={locale[lang].titleField.label}
+                />
+                <RemainingChar
+                  num={form.title.maxChar - form.title.value.length}
+                />
+              </div>
+              <InputText
+                id="title" // object keys
+                type="text"
+                placeholder={locale[lang].titleField.placeholder}
+                value={form.title.value}
+                onChange={handleFormChange}
+              />
+
+              {form.title.invalid && (
+                <InvalidMessage
+                  text={locale[lang].validation[form.title.invalid]}
+                />
+              )}
+            </div>
+
+            {/* Submit Button */}
+            <ButtonLabel
+              label={locale[lang].submitButton}
+              fullWidth={true}
+              disabled={!validForm || emptyForm}
+            />
+          </form>
         </div>
       </section>
     </MemberLayout>

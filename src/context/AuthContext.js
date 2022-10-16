@@ -10,16 +10,19 @@ import { getUserLogged } from '../fetcher/userFetcher';
 
 export const AuthContext = createContext();
 
-export const LocalStorageAuth = 'auth-HSBSKSIUOS89JLS2983';
+export const LocalStorageAuth = 'auth-KSBSKSIUOS89JLS2983';
 
 const AuthContextProvider = ({ children }) => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
 
-  // Get user
-  const getUser = async () => {
-    setLoading(true);
+  // Remove auth storage
+  const cleanLocalStorage = () => {
+    localStorage.removeItem(LocalStorageAuth);
+  };
 
+  // Get user
+  const getUser = useCallback(async () => {
     const resJson = await getUserLogged();
 
     if (resJson.error === false) {
@@ -28,18 +31,23 @@ const AuthContextProvider = ({ children }) => {
     } else {
       setUser(null);
       setLoading(false);
+      cleanLocalStorage();
     }
-  };
+  }, []);
 
   // Handle Login
-  const handleLogin = useCallback((accessToken) => {
-    localStorage.setItem(LocalStorageAuth, accessToken);
-    getUser();
-  }, []);
+  const handleLogin = useCallback(
+    (accessToken) => {
+      setLoading(true);
+      localStorage.setItem(LocalStorageAuth, accessToken);
+      getUser();
+    },
+    [getUser],
+  );
 
   // Handle Logout
   const handleLogout = useCallback(() => {
-    localStorage.removeItem(LocalStorageAuth);
+    cleanLocalStorage();
     setUser(null);
   }, []);
 
@@ -48,11 +56,14 @@ const AuthContextProvider = ({ children }) => {
     return { user, loading, handleLogin, handleLogout };
   }, [user, loading, handleLogin, handleLogout]);
 
+  // Check local storage token
   useEffect(() => {
     if (localStorage.getItem(LocalStorageAuth)) {
       getUser();
+    } else {
+      setLoading(false);
     }
-  }, []);
+  }, [getUser]);
 
   return (
     <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import useLang from '../hooks/useLang';
 
@@ -8,6 +8,11 @@ import { locale } from './Loading.locale';
 
 function Loading() {
   const { lang } = useLang();
+
+  // Set Title
+  useEffect(() => {
+    document.title = locale[lang].loading;
+  }, [lang]);
 
   return (
     <div className={styles.container}>

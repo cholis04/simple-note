@@ -82,7 +82,7 @@ function CardNote({ note }) {
 
 CardNote.propTypes = {
   note: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     createdAt: PropTypes.string.isRequired,
     body: PropTypes.string.isRequired,
