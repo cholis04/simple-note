@@ -51,23 +51,49 @@ export const NotesReducer = (state, action) => {
         },
       };
 
-    // After Move & Delete
-    case 'ALTER_ACTIVE_NOTES':
+    // Move into Archive Notes
+    case 'MOVE_INTO_ARCHIVE_NOTE':
       return {
-        ...state,
-        actve: {
-          data: state.active.data.filter((note) => note.id !== action.id),
+        active: {
+          ...state['active'],
+          data: state.active.data.filter((note) => note.id !== action.payload),
+        },
+        archive: {
+          ...state['archive'],
           stale: true,
         },
       };
 
-    // After Move & Delete
-    case 'ALTER_ARCHIVE_NOTES':
+    // Move into Active Notes
+    case 'MOVE_INTO_ACTIVE_NOTE':
+      return {
+        active: {
+          ...state['active'],
+          stale: true,
+        },
+        archive: {
+          ...state['archive'],
+          data: state.archive.data.filter((note) => note.id !== action.payload),
+        },
+      };
+
+    // Delete Active Note
+    case 'DELETE_ACTIVE_NOTE':
+      return {
+        ...state,
+        active: {
+          ...state['active'],
+          data: state.active.data.filter((note) => note.id !== action.payload),
+        },
+      };
+
+    // Delete Archive Note
+    case 'DELETE_ARCHIVE_NOTE':
       return {
         ...state,
         archive: {
-          data: state.archive.data.filter((note) => note.id !== action.id),
-          stale: true,
+          ...state['archive'],
+          data: state.archive.data.filter((note) => note.id !== action.payload),
         },
       };
 

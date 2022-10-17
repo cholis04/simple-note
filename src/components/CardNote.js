@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import {
@@ -20,62 +20,116 @@ import styles from './CardNote.module.css';
 import ButtonLinkIcon from '../elements/ButtonLinkIcon';
 
 import { locale } from './CardNote.locale';
+import { archiveNote, deleteNote, unarchiveNote } from '../fetcher/noteFetcher';
 
 function CardNote({ note }) {
-  const { lang } = useLang();
-  const { moveNote, deleteNote } = useContext(NotesContext);
+  const [loading, setLoading] = useState(false);
+
+  const { dispatch } = useContext(NotesContext);
   const { keywordTitle } = useContext(NotesContext);
+
+  const { lang } = useLang();
 
   const regExpKeyword = new RegExp(keywordTitle, 'gi');
 
   // Handle Delete Note
-  const onClickButtonDelete = (id) => {
+  const onClickButtonDelete = async (id, archived) => {
     if (window.confirm(locale[lang].confirmDelete)) {
-      deleteNote(id);
+      // Delete Note
+      setLoading(true);
+
+      const resJson = await deleteNote(id);
+
+      if (resJson.error === false) {
+        if (archived) {
+          dispatch({ type: 'DELETE_ARCHIVE_NOTE', payload: id });
+        } else {
+          dispatch({ type: 'DELETE_ACTIVE_NOTE', payload: id });
+        }
+      }
+      setLoading(false);
+    }
+  };
+
+  // Handle Move Note
+  const onClickButtonMove = async (id, archived) => {
+    setLoading(true);
+
+    if (archived) {
+      const resJson = await unarchiveNote(id);
+
+      if (resJson.error === false) {
+        dispatch({ type: 'MOVE_INTO_ACTIVE_NOTE', payload: id });
+      }
+      setLoading(false);
+    } else {
+      const resJson = await archiveNote(id);
+
+      if (resJson.error === false) {
+        dispatch({ type: 'MOVE_INTO_ARCHIVE_NOTE', payload: id });
+      }
+      setLoading(false);
     }
   };
 
   return (
     <article id={note.id} className={styles.articleCard}>
-      <h2 className={styles.title}>
-        <Link className={styles.titleUrl} to={`/catatan/${note.id}`}>
+      {loading ? (
+        <h2 className={styles.title}>
           <MarkText
             keyword={keywordTitle}
             regExpKeyword={regExpKeyword}
             text={note.title}
           />
-        </Link>
-      </h2>
+        </h2>
+      ) : (
+        <h2 className={styles.title}>
+          <Link className={styles.titleUrl} to={`/catatan/${note.id}`}>
+            <MarkText
+              keyword={keywordTitle}
+              regExpKeyword={regExpKeyword}
+              text={note.title}
+            />
+          </Link>
+        </h2>
+      )}
+
       <InfoDate
         humanReadable={showDate(note.createdAt, locale[lang].codeLang)}
         datetime={AttributeTime(note.createdAt)}
       />
       <p className={styles.bodyText}>{note.body}</p>
-      <div className={styles.action}>
-        {note.archived ? (
+      {loading ? (
+        <div className={styles.action}>
+          <p className={styles.loading}>Loading ...</p>
+        </div>
+      ) : (
+        <div className={styles.action}>
+          {note.archived ? (
+            <ButtonLinkIcon
+              icon={<ArrowNarrowLeftIcon />}
+              onClick={() => onClickButtonMove(note.id, note.archived)}
+              label={locale[lang].action.activate}
+              color="secondary"
+              iconPosition="before"
+            />
+          ) : (
+            <ButtonLinkIcon
+              icon={<ArrowNarrowRightIcon />}
+              onClick={() => onClickButtonMove(note.id, note.archived)}
+              label={locale[lang].action.archive}
+              color="secondary"
+            />
+          )}
           <ButtonLinkIcon
-            icon={<ArrowNarrowLeftIcon />}
-            onClick={() => moveNote(note.id)}
-            label={locale[lang].action.activate}
-            color="secondary"
+            icon={<TrashIcon />}
+            onClick={() => onClickButtonDelete(note.id, note.archived)}
+            label={locale[lang].action.delete}
+            color="error"
             iconPosition="before"
           />
-        ) : (
-          <ButtonLinkIcon
-            icon={<ArrowNarrowRightIcon />}
-            onClick={() => moveNote(note.id)}
-            label={locale[lang].action.archive}
-            color="secondary"
-          />
-        )}
-        <ButtonLinkIcon
-          icon={<TrashIcon />}
-          onClick={() => onClickButtonDelete(note.id)}
-          label={locale[lang].action.delete}
-          color="error"
-          iconPosition="before"
-        />
-      </div>
+        </div>
+      )}
     </article>
   );
 }

@@ -7,6 +7,7 @@ export const locale = {
       delete: 'Hapus',
     },
     codeLang: 'id-ID',
+    loading: 'Memuat ...',
   },
   en: {
     confirmDelete: 'Delete note?',
@@ -16,5 +17,6 @@ export const locale = {
       delete: 'Delete',
     },
     codeLang: 'en-EN',
+    loading: 'Loading ...',
   },
 };

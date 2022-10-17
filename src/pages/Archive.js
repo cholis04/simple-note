@@ -42,24 +42,22 @@ function Archive() {
         aria-label={locale[lang].headingText}
       >
         <div className={styles.main__notelistWrapper}>
-          <div className={styles.main__notelistWrapper}>
-            {loading && <p>Loading ...</p>}
-
-            {!loading && error ? (
-              <p>Error</p>
-            ) : (
-              <>
-                {data.length <= 0 && <EmptyList />}
-                {data.length >= 1 && (
-                  <div className={styles.main__noteBox}>
-                    {data.map((note) => (
-                      <CardNote key={note.id} note={note} />
-                    ))}
-                  </div>
-                )}
-              </>
-            )}
-          </div>
+          {loading ? (
+            <p>Loading ...</p>
+          ) : error ? (
+            <p>Error</p>
+          ) : (
+            <>
+              {data.length <= 0 && <EmptyList />}
+              {data.length >= 1 && (
+                <div className={styles.main__noteBox}>
+                  {data.map((note) => (
+                    <CardNote key={note.id} note={note} />
+                  ))}
+                </div>
+              )}
+            </>
+          )}
         </div>
       </section>
 

@@ -42,9 +42,9 @@ function Home() {
         aria-label={locale[lang].headingText}
       >
         <div className={styles.main__notelistWrapper}>
-          {loading && <p>Loading ...</p>}
-
-          {!loading && error ? (
+          {loading ? (
+            <p>Loading ...</p>
+          ) : error ? (
             <p>Error</p>
           ) : (
             <>

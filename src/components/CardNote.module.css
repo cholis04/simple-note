@@ -58,6 +58,16 @@
   align-items: center;
 }
 
+.loading {
+  width: 100%;
+
+  font-size: var(--fs-s);
+  font-weight: var(--fs-semibold);
+  color: var(--text-common-color);
+
+  text-align: center;
+}
+
 /* ================================================ */
 /* Tablet Responsive */
 @media only screen and (min-width: 768px) {
