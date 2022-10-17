@@ -4,6 +4,8 @@ import { NotesContext } from '../context/NotesContext';
 
 import { getActiveNotes, getArchivedNotes } from '../fetcher/noteFetcher';
 
+import { sliceBodyNote } from '../utils/sliceBodyNote';
+
 const useNotes = (type) => {
   const { stale, filteredActiveNotes, filteredArchiveNotes, dispatch } =
     useContext(NotesContext);
@@ -25,7 +27,7 @@ const useNotes = (type) => {
       setLoading(false);
       dispatch({
         type: 'UPDATE_ACTIVE_NOTES',
-        payload: resJson.data.reverse(),
+        payload: sliceBodyNote(resJson.data).reverse(),
       });
     }
   }, [dispatch]);
@@ -41,7 +43,7 @@ const useNotes = (type) => {
       setLoading(false);
       dispatch({
         type: 'UPDATE_ARCHIVE_NOTES',
-        payload: resJson.data.reverse(),
+        payload: sliceBodyNote(resJson.data).reverse(),
       });
     }
   }, [dispatch]);

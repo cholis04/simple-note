@@ -11,6 +11,8 @@ import useLang from '../hooks/useLang';
 
 import { NotesContext } from '../context/NotesContext';
 
+import { archiveNote, deleteNote, unarchiveNote } from '../fetcher/noteFetcher';
+
 import { AttributeTime, showDate } from '../utils/formattedTime';
 
 import MarkText from '../elements/MarkText';
@@ -20,7 +22,6 @@ import styles from './CardNote.module.css';
 import ButtonLinkIcon from '../elements/ButtonLinkIcon';
 
 import { locale } from './CardNote.locale';
-import { archiveNote, deleteNote, unarchiveNote } from '../fetcher/noteFetcher';
 
 function CardNote({ note }) {
   const [loading, setLoading] = useState(false);
