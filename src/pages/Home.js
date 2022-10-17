@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 import useLang from '../hooks/useLang';
-import useActiveNotes from '../hooks/useActiveNotes';
+import useNotes from '../hooks/useNotes';
 
 import MemberLayout from '../layouts/MemberLayout';
 
@@ -16,16 +16,12 @@ import { locale } from '../locale/Home.locale';
 
 function Home() {
   const { lang } = useLang();
-  const { data, loading, error } = useActiveNotes();
+  const { data, loading, error } = useNotes('active');
 
   // Title Document
   useEffect(() => {
     document.title = locale[lang].pageTitle;
   }, [lang]);
-
-  if (loading) return <p>Loading</p>;
-
-  if (error) return <p>{error}</p>;
 
   // Render Component
   return (
@@ -46,13 +42,21 @@ function Home() {
         aria-label={locale[lang].headingText}
       >
         <div className={styles.main__notelistWrapper}>
-          {data.length <= 0 && <EmptyList />}
-          {data.length >= 1 && (
-            <div className={styles.main__noteBox}>
-              {data.map((note) => (
-                <CardNote key={note.id} note={note} />
-              ))}
-            </div>
+          {loading && <p>Loading ...</p>}
+
+          {!loading && error ? (
+            <p>Error</p>
+          ) : (
+            <>
+              {data.length <= 0 && <EmptyList />}
+              {data.length >= 1 && (
+                <div className={styles.main__noteBox}>
+                  {data.map((note) => (
+                    <CardNote key={note.id} note={note} />
+                  ))}
+                </div>
+              )}
+            </>
           )}
         </div>
       </section>

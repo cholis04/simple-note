@@ -1,17 +1,30 @@
-import { createContext, useState, useMemo, useCallback } from 'react';
+import { createContext, useMemo, useCallback, useReducer } from 'react';
 
 import { useSearchParams } from 'react-router-dom';
+
+import { initialState, NotesReducer } from '../reducer/NoteReducer';
 
 export const NotesContext = createContext();
 
 const NotesContextProvider = (props) => {
-  const [activeNotes, setActiveNotes] = useState([]);
-  // const [archiveNotes, setArchiveNotes] = useState([]);
+  const [notes, dispatch] = useReducer(NotesReducer, initialState);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
   // Query Params
   const keywordTitle = searchParams.get('judul') || '';
+
+  // Declare Notes
+  const activeNotes = notes.active.data;
+  const archiveNotes = notes.archive.data;
+
+  // Stale Data
+  const stale = useMemo(() => {
+    return {
+      active: notes.active.stale,
+      archive: notes.archive.stale,
+    };
+  }, [notes.active.stale, notes.archive.stale]);
 
   // Filter Data when keyword available
   const filteredActiveNotes =
@@ -21,12 +34,12 @@ const NotesContextProvider = (props) => {
         )
       : activeNotes;
 
-  // const filteredArchiveNotes =
-  //   keywordTitle !== null
-  //     ? archiveNotes.filter((note) =>
-  //         note.title.toLowerCase().includes(keywordTitle.toLowerCase()),
-  //       )
-  //     : archiveNotes;
+  const filteredArchiveNotes =
+    keywordTitle !== null
+      ? archiveNotes.filter((note) =>
+          note.title.toLowerCase().includes(keywordTitle.toLowerCase()),
+        )
+      : archiveNotes;
 
   // Set Params
   const setKeywordTitle = useCallback(
@@ -49,71 +62,23 @@ const NotesContextProvider = (props) => {
   //   [notes],
   // );
 
-  // Add Note
-  const addNote = useCallback(
-    (newTitle, newBodyText) => {
-      const date = new Date();
-
-      setActiveNotes([
-        {
-          id: date.getTime(),
-          title: newTitle.trim(),
-          body: newBodyText.trim(),
-          createdAt: date.toJSON(),
-          archived: false,
-        },
-        ...activeNotes,
-      ]);
-    },
-    [activeNotes],
-  );
-
-  // Move Note Archived False or True by ID
-  const moveNote = useCallback(
-    (id) => {
-      const filteredNotes = activeNotes.map((note) => {
-        if (note.id === id) {
-          return {
-            ...note,
-            archived: !note.archived,
-          };
-        }
-
-        return note;
-      });
-      setActiveNotes(filteredNotes);
-    },
-    [activeNotes],
-  );
-
-  // Delete Note by Id
-  const deleteNote = useCallback(
-    (id) => {
-      const deletedNotes = activeNotes.filter((note) => note.id !== id);
-      setActiveNotes(deletedNotes);
-    },
-    [activeNotes],
-  );
-
   // Context Value
   const contextValue = useMemo(() => {
     return {
       keywordTitle,
       filteredActiveNotes,
-      // filteredArchiveNotes,
+      filteredArchiveNotes,
+      stale,
       setKeywordTitle,
-      addNote,
-      moveNote,
-      deleteNote,
+      dispatch,
     };
   }, [
     keywordTitle,
     filteredActiveNotes,
-    // filteredArchiveNotes,
+    filteredArchiveNotes,
+    stale,
     setKeywordTitle,
-    addNote,
-    moveNote,
-    deleteNote,
+    dispatch,
   ]);
 
   return (

@@ -1,10 +1,13 @@
 import {
   createContext,
   useCallback,
+  useContext,
   useEffect,
   useMemo,
   useState,
 } from 'react';
+
+import { NotesContext } from './NotesContext';
 
 import { getUserLogged } from '../fetcher/userFetcher';
 
@@ -15,6 +18,8 @@ export const LocalStorageAuth = 'auth-KSBSKSIUOS89JLS2983';
 const AuthContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+
+  const { dispatch } = useContext(NotesContext);
 
   // Remove auth storage
   const cleanLocalStorage = () => {
@@ -49,7 +54,8 @@ const AuthContextProvider = ({ children }) => {
   const handleLogout = useCallback(() => {
     cleanLocalStorage();
     setUser(null);
-  }, []);
+    dispatch({ type: 'RESET' });
+  }, [dispatch]);
 
   //   Context Value
   const contextValue = useMemo(() => {

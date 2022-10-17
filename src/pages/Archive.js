@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 import useLang from '../hooks/useLang';
-import useArchiveNotes from '../hooks/useArchiveNotes';
+import useNotes from '../hooks/useNotes';
 
 import MemberLayout from '../layouts/MemberLayout';
 
@@ -16,16 +16,12 @@ import { locale } from '../locale/Archive.locale';
 
 function Archive() {
   const { lang } = useLang();
-  const { data, loading, error } = useArchiveNotes();
+  const { data, loading, error } = useNotes('archive');
 
   // Title Document
   useEffect(() => {
     document.title = locale[lang].pageTitle;
   }, [lang]);
-
-  if (loading) return <p>Loading</p>;
-
-  if (error) return <p>{error}</p>;
 
   // Render Component
   return (
@@ -47,13 +43,21 @@ function Archive() {
       >
         <div className={styles.main__notelistWrapper}>
           <div className={styles.main__notelistWrapper}>
-            {data.length <= 0 && <EmptyList />}
-            {data.length >= 1 && (
-              <div className={styles.main__noteBox}>
-                {data.map((note) => (
-                  <CardNote key={note.id} note={note} />
-                ))}
-              </div>
+            {loading && <p>Loading ...</p>}
+
+            {!loading && error ? (
+              <p>Error</p>
+            ) : (
+              <>
+                {data.length <= 0 && <EmptyList />}
+                {data.length >= 1 && (
+                  <div className={styles.main__noteBox}>
+                    {data.map((note) => (
+                      <CardNote key={note.id} note={note} />
+                    ))}
+                  </div>
+                )}
+              </>
             )}
           </div>
         </div>

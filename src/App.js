@@ -11,13 +11,13 @@ function App() {
   return (
     <LanguageContextProvider>
       <ModeContextProvider>
-        <AuthContextProvider>
-          <NotesContextProvider>
+        <NotesContextProvider>
+          <AuthContextProvider>
             <ScrollToTop>
               <Router />
             </ScrollToTop>
-          </NotesContextProvider>
-        </AuthContextProvider>
+          </AuthContextProvider>
+        </NotesContextProvider>
       </ModeContextProvider>
     </LanguageContextProvider>
   );
