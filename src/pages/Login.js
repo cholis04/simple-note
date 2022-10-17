@@ -39,6 +39,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setResponse(null);
 
     // Check Validation
     if (validForm && !emptyForm) {

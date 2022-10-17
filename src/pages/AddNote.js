@@ -1,12 +1,16 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+
+import { NotesContext } from '../context/NotesContext';
 
 import useLang from '../hooks/useLang';
 import useForm from '../hooks/useForm';
 
-import { NotesContext } from '../context/NotesContext';
+import { addNote } from '../fetcher/noteFetcher';
 
 import MemberLayout from '../layouts/MemberLayout';
+
+import FlashMessage from '../components/FlashMessage';
 
 import ButtonLinkIcon from '../elements/ButtonLinkIcon';
 import InputLabel from '../elements/InputLabel';
@@ -23,26 +27,47 @@ import { formAddNote } from '../data/formAddNote';
 import { locale } from '../locale/AddNote.locale';
 
 function AddNote() {
-  const { addNote } = useContext(NotesContext);
-  const { form, emptyForm, validForm, handleFormChange, resetForm } =
-    useForm(formAddNote);
-  const { lang } = useLang();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
 
+  const { form, emptyForm, validForm, handleFormChange, resetForm } =
+    useForm(formAddNote);
+  const { lang } = useLang();
+
+  const { dispatch } = useContext(NotesContext);
+
   // Add note when form is valid and not empty
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError(false);
 
     // Check Validation
     if (validForm && !emptyForm) {
       // Add Note
-      addNote(form.title.value, form.bodyText.value);
+      const resJson = await addNote({
+        title: form.title.value,
+        body: form.bodyText.value,
+      });
 
-      // Clear form and Redirect to Home
-      resetForm();
-      navigate('/');
+      if (resJson.error) {
+        setError(true);
+        setLoading(false);
+      } else {
+        dispatch({
+          type: 'STALE_ACTIVE_NOTES',
+        });
+        // Clear form and Redirect to Home
+        if (window.confirm(locale[lang].success)) {
+          navigate('/');
+        } else {
+          resetForm();
+          setLoading(false);
+        }
+      }
     }
   };
 
@@ -127,11 +152,14 @@ function AddNote() {
 
             {/* Submit Button */}
             <ButtonLabel
-              label={locale[lang].submitButton}
+              label={loading ? locale[lang].loading : locale[lang].submitButton}
               fullWidth={true}
-              disabled={!validForm || emptyForm}
+              disabled={!validForm || emptyForm || loading}
             />
           </form>
+
+          {/* If Error */}
+          {error && <FlashMessage type="error" message={locale[lang].error} />}
         </div>
       </section>
     </MemberLayout>

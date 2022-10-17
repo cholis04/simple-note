@@ -38,6 +38,7 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setResponse(null);
 
     // Password does not match
     if (form.password.value !== form.passwordConfirm.value) {
@@ -45,6 +46,7 @@ function Register() {
         type: 'error',
         message: 'noMatch',
       });
+      setLoading(false);
     } else {
       // Check Validation
       if (validForm && !emptyForm) {

@@ -25,7 +25,7 @@ const useNotes = (type) => {
       setLoading(false);
       dispatch({
         type: 'UPDATE_ACTIVE_NOTES',
-        payload: resJson.data,
+        payload: resJson.data.reverse(),
       });
     }
   }, [dispatch]);
@@ -41,7 +41,7 @@ const useNotes = (type) => {
       setLoading(false);
       dispatch({
         type: 'UPDATE_ARCHIVE_NOTES',
-        payload: resJson.data,
+        payload: resJson.data.reverse(),
       });
     }
   }, [dispatch]);

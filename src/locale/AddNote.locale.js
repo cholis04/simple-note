@@ -20,6 +20,9 @@ export const locale = {
       onlyWord: 'Hanya huruf dan angka!',
       minOneWord: 'Minimal 1 kata',
     },
+    loading: 'Menambahkan ...',
+    error: 'Gagal menambahkan catatan!',
+    success: 'Catatan ditambahkan!. Lihat semua catatan?',
   },
   en: {
     pageTitle: 'New Note',
@@ -42,5 +45,8 @@ export const locale = {
       onlyWord: 'Only letters and numbers!',
       minOneWord: 'At least 1 word',
     },
+    loading: 'Adding notes ...',
+    error: 'Failed to add note!',
+    success: 'Note added!. See all notes?',
   },
 };
