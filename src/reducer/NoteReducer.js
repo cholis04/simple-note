@@ -1,4 +1,7 @@
 export const initialState = {
+  all: {
+    data: [],
+  },
   active: {
     data: [],
     stale: true,
@@ -21,16 +24,6 @@ export const NotesReducer = (state, action) => {
         },
       };
 
-    // After Add Note Fetch
-    case 'STALE_ACTIVE_NOTES':
-      return {
-        ...state,
-        active: {
-          ...state['active'],
-          stale: true,
-        },
-      };
-
     // After Get Note Fetch
     case 'UPDATE_ARCHIVE_NOTES':
       return {
@@ -42,18 +35,23 @@ export const NotesReducer = (state, action) => {
       };
 
     // After Add Note Fetch
-    case 'STALE_ARCHIVE_NOTES':
+    case 'ADD_NOTE':
       return {
         ...state,
-        archive: {
-          ...state['archive'],
+        all: {
+          ...state['all'],
+          data: [...state['all'].data, action.payload],
+        },
+        active: {
+          ...state['active'],
           stale: true,
         },
       };
 
     // Move into Archive Notes
-    case 'MOVE_INTO_ARCHIVE_NOTE':
+    case 'ARCHIVE_NOTE':
       return {
+        ...state,
         active: {
           ...state['active'],
           data: state.active.data.filter((note) => note.id !== action.payload),
@@ -65,8 +63,9 @@ export const NotesReducer = (state, action) => {
       };
 
     // Move into Active Notes
-    case 'MOVE_INTO_ACTIVE_NOTE':
+    case 'ACTIVE_NOTE':
       return {
+        ...state,
         active: {
           ...state['active'],
           stale: true,
@@ -77,20 +76,17 @@ export const NotesReducer = (state, action) => {
         },
       };
 
-    // Delete Active Note
-    case 'DELETE_ACTIVE_NOTE':
+    // Delete Archive Note
+    case 'DELETE_NOTE':
       return {
-        ...state,
+        all: {
+          ...state['data'],
+          data: state.active.data.filter((note) => note.id !== action.payload),
+        },
         active: {
           ...state['active'],
           data: state.active.data.filter((note) => note.id !== action.payload),
         },
-      };
-
-    // Delete Archive Note
-    case 'DELETE_ARCHIVE_NOTE':
-      return {
-        ...state,
         archive: {
           ...state['archive'],
           data: state.archive.data.filter((note) => note.id !== action.payload),

@@ -33,7 +33,7 @@ function CardNote({ note }) {
   const regExpKeyword = new RegExp(keywordTitle, 'gi');
 
   // Handle Delete Note
-  const onClickButtonDelete = async (id, archived) => {
+  const onClickButtonDelete = async (id) => {
     if (window.confirm(locale[lang].confirmDelete)) {
       // Delete Note
       setLoading(true);
@@ -41,11 +41,7 @@ function CardNote({ note }) {
       const resJson = await deleteNote(id);
 
       if (resJson.error === false) {
-        if (archived) {
-          dispatch({ type: 'DELETE_ARCHIVE_NOTE', payload: id });
-        } else {
-          dispatch({ type: 'DELETE_ACTIVE_NOTE', payload: id });
-        }
+        dispatch({ type: 'DELETE_NOTE', payload: id });
       }
       setLoading(false);
     }
@@ -59,14 +55,14 @@ function CardNote({ note }) {
       const resJson = await unarchiveNote(id);
 
       if (resJson.error === false) {
-        dispatch({ type: 'MOVE_INTO_ACTIVE_NOTE', payload: id });
+        dispatch({ type: 'ACTIVE_NOTE', payload: id });
       }
       setLoading(false);
     } else {
       const resJson = await archiveNote(id);
 
       if (resJson.error === false) {
-        dispatch({ type: 'MOVE_INTO_ARCHIVE_NOTE', payload: id });
+        dispatch({ type: 'ARCHIVE_NOTE', payload: id });
       }
       setLoading(false);
     }
@@ -123,7 +119,7 @@ function CardNote({ note }) {
           )}
           <ButtonLinkIcon
             icon={<TrashIcon />}
-            onClick={() => onClickButtonDelete(note.id, note.archived)}
+            onClick={() => onClickButtonDelete(note.id)}
             label={locale[lang].action.delete}
             color="error"
             iconPosition="before"

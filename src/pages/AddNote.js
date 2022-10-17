@@ -58,7 +58,8 @@ function AddNote() {
         setLoading(false);
       } else {
         dispatch({
-          type: 'STALE_ACTIVE_NOTES',
+          type: 'ADD_NOTE',
+          payload: resJson.data,
         });
         // Clear form and Redirect to Home
         if (window.confirm(locale[lang].success)) {
