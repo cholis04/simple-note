@@ -65,6 +65,12 @@
   gap: 2rem;
 }
 
+.detail__actionLoading {
+  font-size: var(--fs-s);
+  font-weight: var(--fw-semibold);
+  color: var(--text-common-color);
+}
+
 /* ================================================ */
 /* Tablet Responsive */
 @media only screen and (min-width: 768px) {

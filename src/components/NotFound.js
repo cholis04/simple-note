@@ -44,7 +44,7 @@ function NotFound() {
       <p className={styles.paragraph}>
         {locale[lang].paragraphText}{' '}
         <Link className={styles.link} to="/">
-          {locale[lang].LinkText}
+          {locale[lang].linkText}
         </Link>
         .
       </p>

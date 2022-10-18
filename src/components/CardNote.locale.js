@@ -7,7 +7,11 @@ export const locale = {
       delete: 'Hapus',
     },
     codeLang: 'id-ID',
-    loading: 'Memuat ...',
+    loadingText: {
+      active: 'Mengaktifkan ...',
+      archive: 'Mengarsipkan ...',
+      delete: 'Menghapus ...',
+    },
   },
   en: {
     confirmDelete: 'Delete note?',
@@ -17,6 +21,10 @@ export const locale = {
       delete: 'Delete',
     },
     codeLang: 'en-EN',
-    loading: 'Loading ...',
+    loadingText: {
+      active: 'Activating ...',
+      archive: 'Archiving ...',
+      delete: 'Deleting ...',
+    },
   },
 };

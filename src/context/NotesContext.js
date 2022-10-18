@@ -15,6 +15,7 @@ const NotesContextProvider = (props) => {
   const keywordTitle = searchParams.get('judul') || '';
 
   // Declare Notes
+  const allNotes = notes.all.data;
   const activeNotes = notes.active.data;
   const archiveNotes = notes.archive.data;
 
@@ -55,12 +56,12 @@ const NotesContextProvider = (props) => {
   );
 
   // Find Note by Id
-  // const getNoteById = useCallback(
-  //   (id) => {
-  //     return notes.find((note) => note.id === id);
-  //   },
-  //   [notes],
-  // );
+  const getNoteById = useCallback(
+    (id) => {
+      return allNotes.find((note) => note.id === id);
+    },
+    [allNotes],
+  );
 
   // Context Value
   const contextValue = useMemo(() => {
@@ -69,6 +70,7 @@ const NotesContextProvider = (props) => {
       filteredActiveNotes,
       filteredArchiveNotes,
       stale,
+      getNoteById,
       setKeywordTitle,
       dispatch,
     };
@@ -77,6 +79,7 @@ const NotesContextProvider = (props) => {
     filteredActiveNotes,
     filteredArchiveNotes,
     stale,
+    getNoteById,
     setKeywordTitle,
     dispatch,
   ]);

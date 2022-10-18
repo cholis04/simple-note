@@ -1,18 +1,20 @@
-import { useContext, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
   ArrowNarrowLeftIcon,
   ArrowNarrowRightIcon,
   TrashIcon,
 } from '@heroicons/react/solid';
 
-import useLang from '../hooks/useLang';
-
 import { NotesContext } from '../context/NotesContext';
+
+import useLang from '../hooks/useLang';
+import useNote from '../hooks/useNote';
 
 import MemberLayout from '../layouts/MemberLayout';
 
 import NotFound from '../components/NotFound';
+import Loading from '../components/Loading';
 
 import InfoDate from '../elements/InfoDate';
 import ButtonLinkIcon from '../elements/ButtonLinkIcon';
@@ -23,48 +25,92 @@ import { AttributeTime, showDate } from '../utils/formattedTime';
 import styles from '../styles/pages/Note.module.css';
 
 import { locale } from '../locale/Note.locale';
+import { archiveNote, deleteNote, unarchiveNote } from '../fetcher/noteFetcher';
 
 function Note() {
-  const { lang } = useLang();
-  const { getNoteById, moveNote, deleteNote } = useContext(NotesContext);
+  const [actionLoading, setActionLoading] = useState(false);
+  const [loadingText, setLodingText] = useState(null);
+
+  const { dispatch } = useContext(NotesContext);
+
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const note = getNoteById(Number(id));
-
-  // Title Document
-  useEffect(() => {
-    if (note !== undefined)
-      document.title = `${locale[lang].pageTitle} ${note?.title}`;
-  }, [note, lang]);
+  const { lang } = useLang();
+  const { note, loading, error } = useNote(id);
 
   // Handle Delete Note
-  const onClickButtonDelete = () => {
+  const onClickButtonDelete = async (id, archived) => {
     if (window.confirm(locale[lang].confirmDelete)) {
-      if (note.archived) {
-        deleteNote(note.id);
+      setLodingText('delete');
+      setActionLoading(true);
+
+      const resJson = await deleteNote(id);
+
+      if (resJson.error) {
+        setLodingText(null);
+        setActionLoading(false);
+
+        window.alert('Action Error');
+      } else {
+        dispatch({
+          type: 'DELETE_NOTE',
+          payload: id,
+        });
+      }
+
+      if (archived) {
         navigate('/arsip');
       } else {
-        deleteNote(note.id);
         navigate('/');
       }
     }
   };
 
   // Handle Move Note
-  const onClickButtonMove = () => {
-    moveNote(note.id);
-    if (note.archived) {
-      window.alert(locale[lang].notifActive);
+  const onClickButtonMove = async (id, archived) => {
+    setLodingText(archived ? 'active' : 'archive');
+    setActionLoading(true);
+
+    const moveFetcher = archived ? unarchiveNote : archiveNote;
+    const resJson = await moveFetcher(id);
+
+    if (resJson.error) {
+      setLodingText(null);
+      setActionLoading(false);
+
+      window.alert('Action Error');
     } else {
-      window.alert(locale[lang].notifArchived);
+      if (archived) {
+        dispatch({
+          type: 'ACTIVE_NOTE',
+          payload: id,
+        });
+        window.alert(locale[lang].notifActive);
+      } else {
+        dispatch({
+          type: 'ARCHIVE_NOTE',
+          payload: id,
+        });
+        window.alert(locale[lang].notifArchived);
+      }
+
+      setLodingText(null);
+      setActionLoading(false);
     }
   };
 
-  // Render NofFound when note is undefined
-  if (note === undefined) {
-    return <NotFound />;
-  }
+  // Title Document
+  useEffect(() => {
+    if (error === false)
+      document.title = `${locale[lang].pageTitle} ${note?.title}`;
+  }, [note, error, lang]);
+
+  // Render Loading when data is fetching
+  if (loading) return <Loading text="note" />;
+
+  // Render NofFound when note is undefined || Error
+  if (error) return <NotFound />;
 
   // Render Component
   return (
@@ -77,21 +123,31 @@ function Note() {
               humanReadable={showDate(note.createdAt, locale[lang].codeLang)}
               datetime={AttributeTime(note.createdAt)}
             />
-            {note.archived ? (
-              <ButtonLinkIcon
-                icon={<ArrowNarrowLeftIcon />}
-                onClick={onClickButtonMove}
-                label={locale[lang].links.activate}
-                color="secondary"
-                iconPosition="before"
-              />
+            {loadingText === 'active' || loadingText === 'archive' ? (
+              <span className={styles.detail__actionLoading}>
+                {locale[lang].loadingText[loadingText]}
+              </span>
             ) : (
-              <ButtonLinkIcon
-                icon={<ArrowNarrowRightIcon />}
-                onClick={onClickButtonMove}
-                label={locale[lang].links.archive}
-                color="secondary"
-              />
+              <>
+                {note.archived ? (
+                  <ButtonLinkIcon
+                    icon={<ArrowNarrowLeftIcon />}
+                    onClick={() => onClickButtonMove(note.id, note.archived)}
+                    label={locale[lang].links.activate}
+                    color="secondary"
+                    iconPosition="before"
+                    disabled={actionLoading}
+                  />
+                ) : (
+                  <ButtonLinkIcon
+                    icon={<ArrowNarrowRightIcon />}
+                    onClick={() => onClickButtonMove(note.id, note.archived)}
+                    label={locale[lang].links.archive}
+                    color="secondary"
+                    disabled={actionLoading}
+                  />
+                )}
+              </>
             )}
           </div>
           <h1 className={styles.detail__titleNote}>{note.title}</h1>
@@ -103,13 +159,18 @@ function Note() {
             </p>
           </div>
           <div className={styles.detail__action}>
-            <ButtonLinkIcon
-              icon={<TrashIcon />}
-              onClick={onClickButtonDelete}
-              label={locale[lang].links.delete}
-              color="error"
-              iconPosition="before"
-            />
+            {loadingText === 'delete' ? (
+              <span>{locale[lang].loadingText[loadingText]}</span>
+            ) : (
+              <ButtonLinkIcon
+                icon={<TrashIcon />}
+                onClick={() => onClickButtonDelete(note.id, note.archived)}
+                label={locale[lang].links.delete}
+                color="error"
+                iconPosition="before"
+                disabled={actionLoading}
+              />
+            )}
           </div>
         </div>
       </section>

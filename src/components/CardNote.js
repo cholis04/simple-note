@@ -25,6 +25,7 @@ import { locale } from './CardNote.locale';
 
 function CardNote({ note }) {
   const [loading, setLoading] = useState(false);
+  const [loadingText, setLoadingText] = useState(null);
 
   const { dispatch } = useContext(NotesContext);
   const { keywordTitle } = useContext(NotesContext);
@@ -37,6 +38,7 @@ function CardNote({ note }) {
   const onClickButtonDelete = async (id) => {
     if (window.confirm(locale[lang].confirmDelete)) {
       // Delete Note
+      setLoadingText('delete');
       setLoading(true);
 
       const resJson = await deleteNote(id);
@@ -50,9 +52,10 @@ function CardNote({ note }) {
 
   // Handle Move Note
   const onClickButtonMove = async (id, archived) => {
-    setLoading(true);
-
     if (archived) {
+      setLoadingText('active');
+      setLoading(true);
+
       const resJson = await unarchiveNote(id);
 
       if (resJson.error === false) {
@@ -60,6 +63,9 @@ function CardNote({ note }) {
       }
       setLoading(false);
     } else {
+      setLoadingText('archive');
+      setLoading(true);
+
       const resJson = await archiveNote(id);
 
       if (resJson.error === false) {
@@ -98,7 +104,9 @@ function CardNote({ note }) {
       <p className={styles.bodyText}>{note.body}</p>
       {loading ? (
         <div className={styles.action}>
-          <p className={styles.loading}>Loading ...</p>
+          <p className={styles.loading}>
+            {locale[lang].loadingText[loadingText]}
+          </p>
         </div>
       ) : (
         <div className={styles.action}>

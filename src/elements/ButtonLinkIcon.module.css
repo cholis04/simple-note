@@ -20,6 +20,10 @@
   margin-right: 0.2rem;
 }
 
+.buttonLinkIcon:disabled {
+  color: var(--disabled-color);
+}
+
 .primary {
   color: var(--primary-color);
 }

@@ -11,6 +11,11 @@ export const locale = {
     },
     numberOfWords: 'Jumlah Kata',
     codeLang: 'id-ID',
+    loadingText: {
+      active: 'Mengaktifkan ...',
+      archive: 'Mengarsipkan ...',
+      delete: 'Menghapus ...',
+    },
   },
   en: {
     pageTitle: 'Note -',
@@ -24,5 +29,10 @@ export const locale = {
     },
     numberOfWords: 'Word Count',
     codeLang: 'en-EN',
+    loadingText: {
+      active: 'Activating ...',
+      archive: 'Archiving ...',
+      delete: 'Deleting ...',
+    },
   },
 };

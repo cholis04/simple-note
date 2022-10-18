@@ -48,10 +48,30 @@ export const NotesReducer = (state, action) => {
         },
       };
 
+    // After Fetch Succes
+    case 'FETCH_NOTE':
+      return {
+        ...state,
+        all: {
+          data: [...state['all'].data, action.payload],
+        },
+      };
+
     // Move into Archive Notes
     case 'ARCHIVE_NOTE':
       return {
-        ...state,
+        all: {
+          ...state['all'],
+          data: state.all.data.map((note) => {
+            if (note.id === action.payload)
+              return {
+                ...note,
+                archived: !note.archived,
+              };
+
+            return note;
+          }),
+        },
         active: {
           ...state['active'],
           data: state.active.data.filter((note) => note.id !== action.payload),
@@ -65,7 +85,18 @@ export const NotesReducer = (state, action) => {
     // Move into Active Notes
     case 'ACTIVE_NOTE':
       return {
-        ...state,
+        all: {
+          ...state['all'],
+          data: state.all.data.map((note) => {
+            if (note.id === action.payload)
+              return {
+                ...note,
+                archived: !note.archived,
+              };
+
+            return note;
+          }),
+        },
         active: {
           ...state['active'],
           stale: true,
@@ -80,8 +111,8 @@ export const NotesReducer = (state, action) => {
     case 'DELETE_NOTE':
       return {
         all: {
-          ...state['data'],
-          data: state.active.data.filter((note) => note.id !== action.payload),
+          ...state['all'],
+          data: state.all.data.filter((note) => note.id !== action.payload),
         },
         active: {
           ...state['active'],

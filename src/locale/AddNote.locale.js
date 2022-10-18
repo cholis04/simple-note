@@ -45,7 +45,7 @@ export const locale = {
       onlyWord: 'Only letters and numbers!',
       minOneWord: 'At least 1 word',
     },
-    loading: 'Adding notes ...',
+    loading: 'Adding note ...',
     error: 'Failed to add note!',
     success: 'Note added!. See all notes?',
   },

@@ -16,54 +16,38 @@ const useNotes = (type) => {
   const [error, setError] = useState(false);
 
   const data = type === 'active' ? filteredActiveNotes : filteredArchiveNotes;
-
-  // Get Active Notes
-  const getActive = useCallback(async () => {
-    const resJson = await getActiveNotes();
-    if (resJson.error) {
-      setLoading(false);
-      setError(true);
-    } else {
-      setLoading(false);
-      dispatch({
-        type: 'UPDATE_ACTIVE_NOTES',
-        payload: sliceBodyNote(resJson.data).reverse(),
-      });
-    }
-  }, [dispatch]);
-
-  // Get Archive Notes
-  const getArchive = useCallback(async () => {
-    const resJson = await getArchivedNotes();
-
-    if (resJson.error) {
-      setLoading(false);
-      setError(true);
-    } else {
-      setLoading(false);
-      dispatch({
-        type: 'UPDATE_ARCHIVE_NOTES',
-        payload: sliceBodyNote(resJson.data).reverse(),
-      });
-    }
-  }, [dispatch]);
+  const fetcher = type === 'active' ? getActiveNotes : getArchivedNotes;
 
   // Fetch Note
-  const fetchNote = useCallback(() => {
-    if (type === 'active') {
-      getActive();
-    }
+  const getNotes = useCallback(async () => {
+    const resJson = await fetcher();
 
-    if (type === 'archive') {
-      getArchive();
+    if (resJson.error) {
+      setLoading(false);
+      setError(true);
+    } else {
+      if (type === 'active') {
+        dispatch({
+          type: 'UPDATE_ACTIVE_NOTES',
+          payload: sliceBodyNote(resJson.data).reverse(),
+        });
+      }
+
+      if (type === 'archive') {
+        dispatch({
+          type: 'UPDATE_ARCHIVE_NOTES',
+          payload: sliceBodyNote(resJson.data).reverse(),
+        });
+      }
+      setLoading(false);
     }
-  }, [type, getArchive, getActive]);
+  }, [dispatch, fetcher, type]);
 
   useEffect(() => {
     if (loading) {
-      fetchNote();
+      getNotes();
     }
-  }, [loading, fetchNote]);
+  }, [loading, getNotes]);
 
   return {
     data,

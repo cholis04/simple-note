@@ -7,7 +7,7 @@ import Loading from '../components/Loading';
 const ProtectedRoute = () => {
   const { user, loading } = useAuth();
 
-  if (loading) return <Loading />;
+  if (loading) return <Loading text="user" />;
 
   return user ? <Outlet /> : <Navigate to="/masuk" replace={true} />;
 };

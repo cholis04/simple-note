@@ -1,8 +1,14 @@
 export const locale = {
   id: {
-    loading: 'Memuat ...',
+    text: {
+      user: 'Memuat data pengguna ...',
+      note: 'Mendapatkan catatan ...',
+    },
   },
   en: {
-    loading: 'Loading ...',
+    text: {
+      user: 'Loading user data ...',
+      note: 'Getting note ...',
+    },
   },
 };

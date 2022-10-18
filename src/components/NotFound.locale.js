@@ -11,6 +11,6 @@ export const locale = {
     headingText: 'Oops, an error occurred!',
     paragraphText:
       'The page you are looking for was not found. Please return to',
-    LinkText: 'homepage',
+    linkText: 'homepage',
   },
 };

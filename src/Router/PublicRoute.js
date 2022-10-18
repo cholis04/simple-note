@@ -7,7 +7,7 @@ import Loading from '../components/Loading';
 const PublicRoute = () => {
   const { user, loading } = useAuth();
 
-  if (loading) return <Loading />;
+  if (loading) return <Loading text="user" />;
 
   return user ? <Navigate to="/" replace={true} /> : <Outlet />;
 };
