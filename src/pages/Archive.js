@@ -7,6 +7,7 @@ import MemberLayout from '../layouts/MemberLayout';
 
 import SearchBar from '../components/SearchBar';
 import EmptyList from '../components/EmptyList';
+import LoadingList from '../components/LoadingList';
 import CardNote from '../components/CardNote';
 import ActionFloat from '../components/ActionFloat';
 
@@ -30,7 +31,8 @@ function Archive() {
       <div className={styles.main__heading}>
         <div className={styles.main__headingWrapper}>
           <h1 className={styles.main__title}>
-            {locale[lang].headingText} ({data.length})
+            {locale[lang].headingText}{' '}
+            {!loading && !error && `(${data.length})`}
           </h1>
           <SearchBar />
         </div>
@@ -43,7 +45,7 @@ function Archive() {
       >
         <div className={styles.main__notelistWrapper}>
           {loading ? (
-            <p>Loading ...</p>
+            <LoadingList />
           ) : error ? (
             <p>Error</p>
           ) : (

@@ -43,6 +43,7 @@
   --surface-color: hsl(0, 0%, 15%);
   --field-color: hsl(0, 0%, 23%);
   --line-color: hsl(0, 0%, 30%);
+  --skeleton-color: hsl(0, 0%, 28%);
 
   /* App Color */
   --success-color: hsl(148, 45%, 61%);
@@ -69,6 +70,7 @@
   --surface-color: hsl(0, 0%, 100%);
   --field-color: hsl(0, 0%, 96%);
   --line-color: hsl(0, 0%, 71%);
+  --skeleton-color: hsl(0, 0%, 85%);
 
   /* App Color */
   --success-color: hsl(148, 46%, 47%);
