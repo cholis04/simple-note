@@ -20,7 +20,7 @@ h3,
 h4,
 h5,
 h6 {
-  line-height: 160%;
+  line-height: var(--lh-heading);
 }
 
 p,
@@ -28,7 +28,7 @@ span,
 input,
 textarea,
 a {
-  line-height: 180%;
+  line-height: var(--lh-paragraph);
 }
 
 a {

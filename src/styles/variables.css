@@ -16,6 +16,10 @@
   --fs-s: 0.878em;
   --fs-xs: 0.823em;
 
+  /* Line Height */
+  --lh-heading: 1.6;
+  --lh-paragraph: 1.8;
+
   /* Shadow Effects */
   --shadow-bottom: 0 4px 15px -4px hsla(0, 0%, 0%, 10%);
   --shadow-top: 0 -4px 15px -4px hsla(0, 0%, 0%, 10%);
