@@ -8,6 +8,7 @@ import MemberLayout from '../layouts/MemberLayout';
 import SearchBar from '../components/SearchBar';
 import EmptyList from '../components/EmptyList';
 import LoadingList from '../components/LoadingList';
+import ErrorList from '../components/ErrorList';
 import CardNote from '../components/CardNote';
 import ActionFloat from '../components/ActionFloat';
 
@@ -47,7 +48,7 @@ function Home() {
           {loading ? (
             <LoadingList />
           ) : error ? (
-            <p>Error</p>
+            <ErrorList />
           ) : (
             <>
               {data.length <= 0 && <EmptyList />}

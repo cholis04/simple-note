@@ -1,0 +1,38 @@
+.errorBox {
+  min-height: 42vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 1rem;
+}
+
+.errorText {
+  text-align: center;
+  padding: 0 2em;
+
+  font-size: var(--fs-m);
+  font-weight: var(--fw-medium);
+  color: var(--error-color);
+}
+
+.icon {
+  width: 2em;
+  height: 2em;
+  color: var(--error-color);
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+@media only screen and (min-width: 768px) {
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+@media only screen and (min-width: 1024px) {
+  @media (hover: hover) {
+    /* when supported */
+  }
+}
