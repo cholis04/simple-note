@@ -78,7 +78,7 @@ function CardNote({ note }) {
   return (
     <article id={note.id} className={styles.articleCard}>
       {loading ? (
-        <h2 className={styles.title}>
+        <h2 className={styles.title} title={note.title}>
           <MarkText
             keyword={keywordTitle}
             regExpKeyword={regExpKeyword}
@@ -86,7 +86,7 @@ function CardNote({ note }) {
           />
         </h2>
       ) : (
-        <h2 className={styles.title}>
+        <h2 className={styles.title} title={note.title}>
           <Link className={styles.titleUrl} to={`/catatan/${note.id}`}>
             <MarkText
               keyword={keywordTitle}

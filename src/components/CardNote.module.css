@@ -13,6 +13,12 @@
   margin-bottom: 1rem;
   font-weight: var(--fw-bold);
   color: var(--text-focal-color);
+
+  word-break: break-word;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .titleUrl {
@@ -42,8 +48,8 @@
   font-size: var(--fs-m);
   font-weight: var(--fw-reguler);
   color: var(--text-focal-color);
-  word-break: break-word;
 
+  word-break: break-word;
   display: -webkit-box;
   overflow: hidden;
   -webkit-line-clamp: 3;
