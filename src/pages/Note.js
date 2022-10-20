@@ -11,6 +11,8 @@ import { NotesContext } from '../context/NotesContext';
 import useLang from '../hooks/useLang';
 import useNote from '../hooks/useNote';
 
+import { archiveNote, deleteNote, unarchiveNote } from '../fetcher/noteFetcher';
+
 import MemberLayout from '../layouts/MemberLayout';
 
 import NotFound from '../components/NotFound';
@@ -25,7 +27,6 @@ import { AttributeTime, showDate } from '../utils/formattedTime';
 import styles from '../styles/pages/Note.module.css';
 
 import { locale } from '../locale/Note.locale';
-import { archiveNote, deleteNote, unarchiveNote } from '../fetcher/noteFetcher';
 
 function Note() {
   const [actionLoading, setActionLoading] = useState(false);
