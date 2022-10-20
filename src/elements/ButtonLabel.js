@@ -6,7 +6,6 @@ const ButtonLabel = ({ label, title, fullWidth, onClick, disabled }) => {
   return (
     <button
       className={styles.buttonLabel}
-      aria-label="Buat Catatan"
       style={{ width: fullWidth ? '100%' : 'auto' }}
       title={title}
       onClick={onClick}

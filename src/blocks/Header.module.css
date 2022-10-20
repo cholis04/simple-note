@@ -11,36 +11,48 @@
 .wrapper {
   margin: 0 auto;
   padding: 0 1.625em;
-  height: var(--navHeight);
+  height: var(--navHeightMobile);
   max-width: var(--maxWidth);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.brand {
-  font-size: var(--fs-xl);
-  font-weight: var(--fw-bold);
-  color: var(--text-focal-color);
-  text-decoration: none;
-}
-.brand:active {
-  text-decoration: underline;
-}
-
-.menu {
-  list-style-type: none;
+.personalization,
+.account,
+.settings {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
+}
+
+.personalization {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.accountName {
+  display: inline-block;
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text-focal-color);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-m);
+}
+
+.menu {
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  list-style-type: none;
 }
 
 .menuItem {
-  margin-right: 0;
-}
-
-.menuLastItem {
-  display: none;
+  margin-right: 1rem;
 }
 
 .link {
@@ -48,9 +60,39 @@
   font-size: var(--fs-m);
   font-weight: var(--fw-semibold);
   text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 .link:active {
   text-decoration: underline;
+}
+
+.buttonLogout {
+  border: none;
+  color: var(--text-common-color);
+  background: none;
+  cursor: pointer;
+}
+
+.buttonLogout > svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.menuToggle {
+  margin-left: 1rem;
+  background: none;
+  border: none;
+
+  color: var(--text-common-color);
+}
+
+.menuToggle > svg {
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 /* ================================================ */
@@ -58,28 +100,43 @@
 @media only screen and (min-width: 768px) {
   .wrapper {
     padding: 0 2em;
-  }
-  .menuItem {
-    margin-right: 1rem;
+    height: var(--navHeight);
   }
 
-  .menuLastItem {
-    display: inline-block;
+  .accountName {
+    max-width: 280px;
   }
 }
 
 /* ================================================ */
 /* Desktop Responsive */
 @media only screen and (min-width: 1024px) {
+  .personalization {
+    width: auto;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .accountName {
+    max-width: 180px;
+  }
+
+  .menu {
+    display: flex;
+  }
+
+  .menuToggle {
+    display: none;
+  }
+
   @media (hover: hover) {
     /* when supported */
 
     .link:hover {
       color: var(--text-focal-color);
     }
-
-    .brand:hover {
-      color: var(--secondary-color);
+    .buttonLogout:hover {
+      color: var(--text-focal-color);
     }
   }
 }

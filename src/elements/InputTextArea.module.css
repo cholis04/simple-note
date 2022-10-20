@@ -33,6 +33,7 @@
 
 .inputTextArea::placeholder {
   color: var(--text-common-color);
+  opacity: 1;
 }
 
 /* ================================================ */

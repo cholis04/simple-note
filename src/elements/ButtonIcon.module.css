@@ -6,12 +6,12 @@
   border: none;
 
   background-color: var(--primary-color);
-  color: var(--text-focal-color);
+  color: var(--text-onprimary-color);
 
   box-shadow: var(--shadow-bottom);
 }
 
-.buttonIcon:active {
+.buttonIcon:active:not([disabled]) {
   background-color: var(--tertiary-color);
   color: var(--secondary-color);
 }

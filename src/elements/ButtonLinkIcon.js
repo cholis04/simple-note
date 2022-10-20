@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './ButtonLinkIcon.module.css';
@@ -8,6 +7,7 @@ const ButtonLinkIcon = ({
   color,
   icon,
   onClick,
+  disabled,
   iconPosition = 'after',
 }) => {
   const resolveColor = (cl) => {
@@ -21,6 +21,7 @@ const ButtonLinkIcon = ({
       <button
         onClick={onClick}
         className={`${styles.buttonLinkIcon} ${resolveColor(color)}`}
+        disabled={disabled}
       >
         {label}
       </button>
@@ -30,6 +31,7 @@ const ButtonLinkIcon = ({
     <button
       onClick={onClick}
       className={`${styles.buttonLinkIcon} ${resolveColor(color)}`}
+      disabled={disabled}
     >
       {iconPosition === 'after' ? (
         <>
@@ -49,6 +51,7 @@ ButtonLinkIcon.propTypes = {
   color: PropTypes.string.isRequired,
   icon: PropTypes.element,
   onClick: PropTypes.func,
+  disabled: PropTypes.bool,
   iconPosition: PropTypes.oneOf(['after', 'before']),
 };
 

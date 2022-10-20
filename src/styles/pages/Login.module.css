@@ -1,0 +1,90 @@
+.main {
+  padding: 4rem 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 475px;
+  padding: 0.5rem 1.625rem;
+
+  display: grid;
+  gap: 2rem;
+}
+
+.main__header {
+  display: grid;
+  place-items: center;
+  gap: 1rem;
+  padding: 0;
+}
+
+.main__headingText {
+  margin: 0;
+  color: var(--text-focal-color);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-xxl);
+  text-align: center;
+}
+
+.login__form {
+  padding: 2rem;
+  display: grid;
+  row-gap: 1rem;
+  background-color: var(--surface-color);
+  border-radius: 25px;
+  box-shadow: var(--shadow-bottom);
+}
+.input__group {
+  display: grid;
+  row-gap: 0.5rem;
+}
+
+.submitButton {
+  margin-top: 1rem;
+}
+
+.main__registerLink {
+  text-align: center;
+  font-size: var(--fs-m);
+  color: var(--text-common-color);
+}
+
+.link {
+  font-size: var(--fs-m);
+  font-weight: var(--fw-semibold);
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+.link:active {
+  text-decoration: underline;
+}
+
+.main__personalization {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+@media only screen and (min-width: 768px) {
+  .wrapper {
+    padding: 0.5em 2em;
+  }
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+@media only screen and (min-width: 1024px) {
+  @media (hover: hover) {
+    /* when supported */
+    .link:hover {
+      opacity: 0.7;
+    }
+  }
+}

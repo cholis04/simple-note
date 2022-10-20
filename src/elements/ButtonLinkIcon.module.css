@@ -20,24 +20,28 @@
   margin-right: 0.2rem;
 }
 
+.buttonLinkIcon:disabled {
+  color: var(--disabled-color);
+}
+
 .primary {
   color: var(--primary-color);
 }
-.primary:active {
+.primary:active:not([disabled]) {
   border-bottom: 2px solid var(--primary-color);
 }
 
 .error {
   color: var(--error-color);
 }
-.error:active {
+.error:active:not([disabled]) {
   border-bottom: 2px solid var(--error-color);
 }
 
 .secondary {
   color: var(--secondary-color);
 }
-.secondary:active {
+.secondary:active:not([disabled]) {
   border-bottom: 2px solid var(--secondary-color);
 }
 
@@ -51,7 +55,7 @@
 @media only screen and (min-width: 1024px) {
   @media (hover: hover) {
     /* when supported */
-    .buttonLinkIcon:hover {
+    .buttonLinkIcon:hover:not([disabled]) {
       opacity: 0.6;
       cursor: pointer;
     }

@@ -1,29 +1,50 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+import useLang from '../hooks/useLang';
+import useMode from '../hooks/useMode';
+
+import DarkNotFoundDesktop from '../assets/pictures/dark/Page_Not_Found-Desktop.png';
+import DarkNotFoundTablet from '../assets/pictures/dark/Page_Not_Found-Tablet.png';
+import DarkNotFoundMobile from '../assets/pictures/dark/Page_Not_Found-Mobile.png';
+import LightNotFoundDesktop from '../assets/pictures/light/Page_Not_Found-Desktop.png';
+import LightNotFoundTablet from '../assets/pictures/light/Page_Not_Found-Tablet.png';
+import LightNotFoundMobile from '../assets/pictures/light/Page_Not_Found-Mobile.png';
+
 import styles from './NotFound.module.css';
 
-import PageNotFoundDesktop from '../assets/images/Page_Not_Found-Desktop.png';
-import PageNotFoundTablet from '../assets/images/Page_Not_Found-Tablet.png';
-import PageNotFoundMobile from '../assets/images/Page_Not_Found-Mobile.png';
+import { locale } from './NotFound.locale';
 
 function NotFound() {
+  const { lang } = useLang();
+  const { mode } = useMode();
+
+  // Set Title
   useEffect(() => {
-    document.title = 'Halaman tidak ditemukan!';
-  });
+    document.title = locale[lang].pageTitle;
+  }, [lang]);
 
   return (
     <main className={styles.main}>
       <picture className={styles.boxImage}>
-        <source media="(min-width:960px)" srcSet={PageNotFoundDesktop} />
-        <source media="(min-width:480px)" srcSet={PageNotFoundTablet} />
-        <img src={PageNotFoundMobile} alt="" />
+        <source
+          media="(min-width:960px)"
+          srcSet={mode === 'dark' ? DarkNotFoundDesktop : LightNotFoundDesktop}
+        />
+        <source
+          media="(min-width:480px)"
+          srcSet={mode === 'dark' ? DarkNotFoundTablet : LightNotFoundTablet}
+        />
+        <img
+          src={mode === 'dark' ? DarkNotFoundMobile : LightNotFoundMobile}
+          alt=""
+        />
       </picture>
-      <h1 className={styles.title}>Ups, terjadi kesalahan!</h1>
+      <h1 className={styles.title}>{locale[lang].headingText}</h1>
       <p className={styles.paragraph}>
-        Halaman yang anda cari tidak ditemukan. Silahkan kembali ke{' '}
+        {locale[lang].paragraphText}{' '}
         <Link className={styles.link} to="/">
-          halaman utama
+          {locale[lang].linkText}
         </Link>
         .
       </p>

@@ -1,11 +1,16 @@
 import { useContext } from 'react';
 import { SearchIcon } from '@heroicons/react/solid';
 
+import useLang from '../hooks/useLang';
+
 import { NotesContext } from '../context/NotesContext';
 
 import styles from './SearchBar.module.css';
 
+import { locale } from './SearchBar.locale';
+
 function SearchBar() {
+  const { lang } = useLang();
   const { keywordTitle, setKeywordTitle } = useContext(NotesContext);
 
   const handleChange = (e) => {
@@ -18,10 +23,9 @@ function SearchBar() {
       <div className={styles.inputGroup}>
         <SearchIcon className={styles.icon} />
         <input
-          name="cari-catatan"
           type="search"
-          placeholder="Cari berdasarkan judul ... "
-          aria-label="Cari catatan berdasarkan judul"
+          placeholder={locale[lang].placeholder}
+          aria-label={locale[lang].label}
           value={keywordTitle}
           onChange={handleChange}
           className={styles.textbox}

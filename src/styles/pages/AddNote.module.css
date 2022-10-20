@@ -2,8 +2,6 @@
 .note {
   min-height: 100vh;
   padding: 2rem 0;
-
-  display: grid;
 }
 
 .note__wrapper {
@@ -11,9 +9,13 @@
   width: 100%;
   max-width: 768px;
   padding: 0 1.625rem;
+
+  display: grid;
+  row-gap: 2rem;
 }
 
 .note__headBar {
+  margin-top: -2rem;
   padding: 0.7rem 0;
   display: flex;
   justify-content: center;
@@ -27,11 +29,9 @@
   text-align: center;
 }
 
-.note__form {
-  margin-top: 2rem;
-}
-
 .input__group {
+  display: grid;
+  row-gap: 0.5rem;
   margin-bottom: 2rem;
 }
 
@@ -81,4 +81,7 @@
 /* ================================================ */
 /* Desktop Responsive */
 @media only screen and (min-width: 1024px) {
+  @media (hover: hover) {
+    /* when supported */
+  }
 }

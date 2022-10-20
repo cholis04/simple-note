@@ -1,84 +1,72 @@
-import { useEffect, useContext } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { PlusIcon } from '@heroicons/react/solid';
+import { useEffect } from 'react';
 
-import { NotesContext } from '../context/NotesContext';
+import useLang from '../hooks/useLang';
+import useNotes from '../hooks/useNotes';
 
-import Header from '../blocks/Header';
-import Footer from '../blocks/Footer';
+import MemberLayout from '../layouts/MemberLayout';
 
 import SearchBar from '../components/SearchBar';
 import EmptyList from '../components/EmptyList';
+import LoadingList from '../components/LoadingList';
+import ErrorList from '../components/ErrorList';
 import CardNote from '../components/CardNote';
-
-import ButtonIcon from '../elements/ButtonIcon';
+import ActionFloat from '../components/ActionFloat';
 
 import styles from '../styles/pages/Home.module.css';
 
-function Home() {
-  const navigate = useNavigate();
-  const location = useLocation();
+import { locale } from '../locale/Home.locale';
 
-  const { activeNotes } = useContext(NotesContext);
+function Home() {
+  const { lang } = useLang();
+  const { data, loading, error } = useNotes('active');
 
   // Title Document
   useEffect(() => {
-    document.title = 'Daftar Catatan';
-  }, []);
-
-  // Navigate Rounte on Button Click
-  const onAddButtonClick = () => {
-    navigate('/catatan/baru', {
-      state: {
-        from: location.pathname,
-      },
-    });
-  };
+    document.title = locale[lang].pageTitle;
+  }, [lang]);
 
   // Render Component
   return (
-    <>
-      <Header />
-      <main>
-        {/* Main Heading */}
-        <div className={styles.main__heading}>
-          <div className={styles.main__headingWrapper}>
-            <h1 className={styles.main__title}>
-              Daftar Catatan ({activeNotes.length})
-            </h1>
-            <SearchBar />
-          </div>
+    <MemberLayout>
+      {/* Main Heading */}
+      <div className={styles.main__heading}>
+        <div className={styles.main__headingWrapper}>
+          <h1 className={styles.main__title}>
+            {locale[lang].headingText}{' '}
+            {!loading && !error && `(${data.length})`}
+          </h1>
+          <SearchBar />
         </div>
+      </div>
 
-        {/* Note List */}
-        <section
-          className={styles.main__notelist}
-          id="daftar-catatan"
-          aria-label="Daftar Catatan"
-        >
-          <div className={styles.main__notelistWrapper}>
-            {activeNotes.length <= 0 && <EmptyList />}
-            {activeNotes.length >= 1 && (
-              <div className={styles.main__noteBox}>
-                {activeNotes.map((note) => (
-                  <CardNote key={note.id} note={note} />
-                ))}
-              </div>
-            )}
-          </div>
-        </section>
-
-        {/* Float Button on Mobile Screen */}
-        <div className={styles.main__buttonFloat}>
-          <ButtonIcon
-            icon={<PlusIcon />}
-            label="Buat catatan baru"
-            onClick={onAddButtonClick}
-          />
+      {/* Note List */}
+      <section
+        className={styles.main__notelist}
+        aria-label={locale[lang].headingText}
+      >
+        <div className={styles.main__notelistWrapper}>
+          {loading ? (
+            <LoadingList />
+          ) : error ? (
+            <ErrorList />
+          ) : (
+            <>
+              {data.length <= 0 && <EmptyList />}
+              {data.length >= 1 && (
+                <div className={styles.main__noteBox}>
+                  {data.map((note) => (
+                    <CardNote key={note.id} note={note} />
+                  ))}
+                </div>
+              )}
+            </>
+          )}
         </div>
-      </main>
-      <Footer />
-    </>
+      </section>
+
+      {/* Float Button on Mobile Screen */}
+      <ActionFloat />
+    </MemberLayout>
   );
 }
 

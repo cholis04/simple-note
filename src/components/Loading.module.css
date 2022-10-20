@@ -1,14 +1,16 @@
-.charLeft {
-  color: var(--text-common-color);
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-medium);
+.container {
+  display: flex;
+  min-height: 100vh;
+
+  justify-content: center;
+  align-items: center;
 }
 
-.charLeft > b {
+.loadingText {
+  font-size: var(--fs-m);
   font-weight: var(--fw-semibold);
-  color: var(--secondary-color);
+  color: var(--text-common-color);
 }
-
 /* ================================================ */
 /* Tablet Responsive */
 @media only screen and (min-width: 768px) {
@@ -17,4 +19,7 @@
 /* ================================================ */
 /* Desktop Responsive */
 @media only screen and (min-width: 1024px) {
+  @media (hover: hover) {
+    /* when supported */
+  }
 }

@@ -1,5 +1,6 @@
 .boxEmpty {
   padding-bottom: 6em;
+  min-height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
