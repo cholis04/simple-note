@@ -1,4 +1,4 @@
-import Router from './router/Router';
+import Router from './Router/Router';
 
 import NotesContextProvider from './context/NotesContext';
 import ModeContextProvider from './context/ModeContext';
